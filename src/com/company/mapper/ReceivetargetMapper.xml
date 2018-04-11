@@ -115,5 +115,4 @@
     where tid = #{tid,jdbcType=INTEGER}
   </update>
 
-  <
 </mapper>
