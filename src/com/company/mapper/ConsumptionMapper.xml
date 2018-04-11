@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.ConsumptionMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Consumption">
+    <id column="checkInId" jdbcType="VARCHAR" property="checkinid" />
+    <result column="commodityName" jdbcType="VARCHAR" property="commodityname" />
+    <result column="consumptionNumber" jdbcType="INTEGER" property="consumptionnumber" />
+    <result column="consumptionMoney" jdbcType="DOUBLE" property="consumptionmoney" />
+    <result column="consumptionTime" jdbcType="DATE" property="consumptiontime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    checkInId, commodityName, consumptionNumber, consumptionMoney, consumptionTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consumption
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from consumption
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Consumption">
+    insert into consumption (checkInId, commodityName, consumptionNumber, 
+      consumptionMoney, consumptionTime)
+    values (#{checkinid,jdbcType=VARCHAR}, #{commodityname,jdbcType=VARCHAR}, #{consumptionnumber,jdbcType=INTEGER}, 
+      #{consumptionmoney,jdbcType=DOUBLE}, #{consumptiontime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Consumption">
+    insert into consumption
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkinid != null">
+        checkInId,
+      </if>
+      <if test="commodityname != null">
+        commodityName,
+      </if>
+      <if test="consumptionnumber != null">
+        consumptionNumber,
+      </if>
+      <if test="consumptionmoney != null">
+        consumptionMoney,
+      </if>
+      <if test="consumptiontime != null">
+        consumptionTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkinid != null">
+        #{checkinid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null">
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="consumptionnumber != null">
+        #{consumptionnumber,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionmoney != null">
+        #{consumptionmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptiontime != null">
+        #{consumptiontime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Consumption">
+    update consumption
+    <set>
+      <if test="commodityname != null">
+        commodityName = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="consumptionnumber != null">
+        consumptionNumber = #{consumptionnumber,jdbcType=INTEGER},
+      </if>
+      <if test="consumptionmoney != null">
+        consumptionMoney = #{consumptionmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="consumptiontime != null">
+        consumptionTime = #{consumptiontime,jdbcType=DATE},
+      </if>
+    </set>
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Consumption">
+    update consumption
+    set commodityName = #{commodityname,jdbcType=VARCHAR},
+      consumptionNumber = #{consumptionnumber,jdbcType=INTEGER},
+      consumptionMoney = #{consumptionmoney,jdbcType=DOUBLE},
+      consumptionTime = #{consumptiontime,jdbcType=DATE}
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </update>
+</mapper>

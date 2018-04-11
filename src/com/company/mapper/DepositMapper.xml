@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.DepositMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Deposit">
+    <id column="checkInId" jdbcType="VARCHAR" property="checkinid" />
+    <result column="depositRegisterTime" jdbcType="DATE" property="depositregistertime" />
+    <result column="deposit" jdbcType="DOUBLE" property="deposit" />
+    <result column="depositPayWayName" jdbcType="VARCHAR" property="depositpaywayname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    checkInId, depositRegisterTime, deposit, depositPayWayName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from deposit
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from deposit
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Deposit">
+    insert into deposit (checkInId, depositRegisterTime, deposit, 
+      depositPayWayName)
+    values (#{checkinid,jdbcType=VARCHAR}, #{depositregistertime,jdbcType=DATE}, #{deposit,jdbcType=DOUBLE}, 
+      #{depositpaywayname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Deposit">
+    insert into deposit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkinid != null">
+        checkInId,
+      </if>
+      <if test="depositregistertime != null">
+        depositRegisterTime,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="depositpaywayname != null">
+        depositPayWayName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkinid != null">
+        #{checkinid,jdbcType=VARCHAR},
+      </if>
+      <if test="depositregistertime != null">
+        #{depositregistertime,jdbcType=DATE},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="depositpaywayname != null">
+        #{depositpaywayname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Deposit">
+    update deposit
+    <set>
+      <if test="depositregistertime != null">
+        depositRegisterTime = #{depositregistertime,jdbcType=DATE},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="depositpaywayname != null">
+        depositPayWayName = #{depositpaywayname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Deposit">
+    update deposit
+    set depositRegisterTime = #{depositregistertime,jdbcType=DATE},
+      deposit = #{deposit,jdbcType=DOUBLE},
+      depositPayWayName = #{depositpaywayname,jdbcType=VARCHAR}
+    where checkInId = #{checkinid,jdbcType=VARCHAR}
+  </update>
+</mapper>

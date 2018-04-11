@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Room">
+    <id column="roomNumber" jdbcType="VARCHAR" property="roomnumber" />
+    <result column="roomStateID" jdbcType="VARCHAR" property="roomstateid" />
+    <result column="roomAmount" jdbcType="INTEGER" property="roomamount" />
+    <result column="guestRoomLevelID" jdbcType="VARCHAR" property="guestroomlevelid" />
+    <result column="standardPriceDay" jdbcType="DOUBLE" property="standardpriceday" />
+    <result column="standardPrice" jdbcType="DOUBLE" property="standardprice" />
+    <result column="maxDuration" jdbcType="DOUBLE" property="maxduration" />
+    <result column="firstPrice" jdbcType="DOUBLE" property="firstprice" />
+    <result column="firstDuration" jdbcType="DOUBLE" property="firstduration" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    roomNumber, roomStateID, roomAmount, guestRoomLevelID, standardPriceDay, standardPrice, 
+    maxDuration, firstPrice, firstDuration
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where roomNumber = #{roomnumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from room
+    where roomNumber = #{roomnumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Room">
+    insert into room (roomNumber, roomStateID, roomAmount, 
+      guestRoomLevelID, standardPriceDay, standardPrice, 
+      maxDuration, firstPrice, firstDuration
+      )
+    values (#{roomnumber,jdbcType=VARCHAR}, #{roomstateid,jdbcType=VARCHAR}, #{roomamount,jdbcType=INTEGER}, 
+      #{guestroomlevelid,jdbcType=VARCHAR}, #{standardpriceday,jdbcType=DOUBLE}, #{standardprice,jdbcType=DOUBLE}, 
+      #{maxduration,jdbcType=DOUBLE}, #{firstprice,jdbcType=DOUBLE}, #{firstduration,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomnumber != null">
+        roomNumber,
+      </if>
+      <if test="roomstateid != null">
+        roomStateID,
+      </if>
+      <if test="roomamount != null">
+        roomAmount,
+      </if>
+      <if test="guestroomlevelid != null">
+        guestRoomLevelID,
+      </if>
+      <if test="standardpriceday != null">
+        standardPriceDay,
+      </if>
+      <if test="standardprice != null">
+        standardPrice,
+      </if>
+      <if test="maxduration != null">
+        maxDuration,
+      </if>
+      <if test="firstprice != null">
+        firstPrice,
+      </if>
+      <if test="firstduration != null">
+        firstDuration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomnumber != null">
+        #{roomnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roomstateid != null">
+        #{roomstateid,jdbcType=VARCHAR},
+      </if>
+      <if test="roomamount != null">
+        #{roomamount,jdbcType=INTEGER},
+      </if>
+      <if test="guestroomlevelid != null">
+        #{guestroomlevelid,jdbcType=VARCHAR},
+      </if>
+      <if test="standardpriceday != null">
+        #{standardpriceday,jdbcType=DOUBLE},
+      </if>
+      <if test="standardprice != null">
+        #{standardprice,jdbcType=DOUBLE},
+      </if>
+      <if test="maxduration != null">
+        #{maxduration,jdbcType=DOUBLE},
+      </if>
+      <if test="firstprice != null">
+        #{firstprice,jdbcType=DOUBLE},
+      </if>
+      <if test="firstduration != null">
+        #{firstduration,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Room">
+    update room
+    <set>
+      <if test="roomstateid != null">
+        roomStateID = #{roomstateid,jdbcType=VARCHAR},
+      </if>
+      <if test="roomamount != null">
+        roomAmount = #{roomamount,jdbcType=INTEGER},
+      </if>
+      <if test="guestroomlevelid != null">
+        guestRoomLevelID = #{guestroomlevelid,jdbcType=VARCHAR},
+      </if>
+      <if test="standardpriceday != null">
+        standardPriceDay = #{standardpriceday,jdbcType=DOUBLE},
+      </if>
+      <if test="standardprice != null">
+        standardPrice = #{standardprice,jdbcType=DOUBLE},
+      </if>
+      <if test="maxduration != null">
+        maxDuration = #{maxduration,jdbcType=DOUBLE},
+      </if>
+      <if test="firstprice != null">
+        firstPrice = #{firstprice,jdbcType=DOUBLE},
+      </if>
+      <if test="firstduration != null">
+        firstDuration = #{firstduration,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where roomNumber = #{roomnumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Room">
+    update room
+    set roomStateID = #{roomstateid,jdbcType=VARCHAR},
+      roomAmount = #{roomamount,jdbcType=INTEGER},
+      guestRoomLevelID = #{guestroomlevelid,jdbcType=VARCHAR},
+      standardPriceDay = #{standardpriceday,jdbcType=DOUBLE},
+      standardPrice = #{standardprice,jdbcType=DOUBLE},
+      maxDuration = #{maxduration,jdbcType=DOUBLE},
+      firstPrice = #{firstprice,jdbcType=DOUBLE},
+      firstDuration = #{firstduration,jdbcType=DOUBLE}
+    where roomNumber = #{roomnumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

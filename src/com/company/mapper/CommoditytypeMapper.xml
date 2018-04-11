@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.CommoditytypeMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Commoditytype">
+    <id column="commodityTypeID" jdbcType="VARCHAR" property="commoditytypeid" />
+    <result column="txtname" jdbcType="VARCHAR" property="txtname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commodityTypeID, txtname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commoditytype
+    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from commoditytype
+    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Commoditytype">
+    insert into commoditytype (commodityTypeID, txtname)
+    values (#{commoditytypeid,jdbcType=VARCHAR}, #{txtname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Commoditytype">
+    insert into commoditytype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commoditytypeid != null">
+        commodityTypeID,
+      </if>
+      <if test="txtname != null">
+        txtname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commoditytypeid != null">
+        #{commoditytypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="txtname != null">
+        #{txtname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Commoditytype">
+    update commoditytype
+    <set>
+      <if test="txtname != null">
+        txtname = #{txtname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Commoditytype">
+    update commoditytype
+    set txtname = #{txtname,jdbcType=VARCHAR}
+    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+  </update>
+</mapper>

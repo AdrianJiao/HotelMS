@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.CommodityMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Commodity">
+    <id column="commodityName" jdbcType="VARCHAR" property="commodityname" />
+    <result column="commodityTypeID" jdbcType="VARCHAR" property="commoditytypeid" />
+    <result column="salePrice" jdbcType="DOUBLE" property="saleprice" />
+    <result column="uOMID" jdbcType="VARCHAR" property="uomid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commodityName, commodityTypeID, salePrice, uOMID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where commodityName = #{commodityname,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from commodity
+    where commodityName = #{commodityname,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Commodity">
+    insert into commodity (commodityName, commodityTypeID, salePrice, 
+      uOMID)
+    values (#{commodityname,jdbcType=VARCHAR}, #{commoditytypeid,jdbcType=VARCHAR}, #{saleprice,jdbcType=DOUBLE}, 
+      #{uomid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Commodity">
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityname != null">
+        commodityName,
+      </if>
+      <if test="commoditytypeid != null">
+        commodityTypeID,
+      </if>
+      <if test="saleprice != null">
+        salePrice,
+      </if>
+      <if test="uomid != null">
+        uOMID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityname != null">
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditytypeid != null">
+        #{commoditytypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="saleprice != null">
+        #{saleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="uomid != null">
+        #{uomid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Commodity">
+    update commodity
+    <set>
+      <if test="commoditytypeid != null">
+        commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="saleprice != null">
+        salePrice = #{saleprice,jdbcType=DOUBLE},
+      </if>
+      <if test="uomid != null">
+        uOMID = #{uomid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where commodityName = #{commodityname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Commodity">
+    update commodity
+    set commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR},
+      salePrice = #{saleprice,jdbcType=DOUBLE},
+      uOMID = #{uomid,jdbcType=VARCHAR}
+    where commodityName = #{commodityname,jdbcType=VARCHAR}
+  </update>
+</mapper>
