@@ -126,4 +126,5 @@
       reserveState = #{reservestate,jdbcType=VARCHAR}
     where receivetargetReserveId = #{receivetargetreserveid,jdbcType=VARCHAR}
   </update>
+
 </mapper>

@@ -1,6 +1,9 @@
 package com.company.mapper;
 
 import com.company.bean.Receivetarget;
+import com.company.utils.Page;
+
+import java.util.List;
 
 public interface ReceivetargetMapper {
     int deleteByPrimaryKey(Integer tid);
@@ -14,4 +17,6 @@ public interface ReceivetargetMapper {
     int updateByPrimaryKeySelective(Receivetarget record);
 
     int updateByPrimaryKey(Receivetarget record);
+
+    Page queryPartReceivetarget();
 }

@@ -14,4 +14,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //通过用户名和密码查询用户是否存在
+    int selectByUsernameAndPassword(User user);
 }

@@ -68,4 +68,12 @@
       password = #{password,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+
+  <!--通过用户名和密码查询用户是否存在-->
+  <select id="selectByUsernameAndPassword" parameterType="User" resultType="Integer">
+    SELECT  count(*)  from  user
+    <where>
+      and username = #{username} AND password = #{password}
+    </where>
+  </select>
 </mapper>

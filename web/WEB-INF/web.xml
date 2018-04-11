@@ -20,4 +20,9 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
+    <!--错误页面自定义-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error/error.jsp</location>
+    </error-page>
 </web-app>

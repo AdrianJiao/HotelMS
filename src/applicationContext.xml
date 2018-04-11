@@ -55,4 +55,13 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSizePerFile" value="5242880"/>
     </bean>
+
+    <!--视图解析器前后缀添加-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 自定义异常发生后的视图解析器-->
+    <bean id="handlerExceptionResolver" class="com.company.utils.CustomExceptionResolver"/>
 </beans>
