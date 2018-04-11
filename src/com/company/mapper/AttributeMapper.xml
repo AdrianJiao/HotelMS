@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.AttributeMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Attribute">
+    <id column="far_id" jdbcType="INTEGER" property="far_id" />
+    <result column="attributeName" jdbcType="VARCHAR" property="attributeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    far_id, attributeName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attribute
+    where far_id = #{far_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from attribute
+    where far_id = #{far_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Attribute">
+    insert into attribute (far_id, attributeName)
+    values (#{far_id,jdbcType=INTEGER}, #{attributeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Attribute">
+    insert into attribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="far_id != null">
+        far_id,
+      </if>
+      <if test="attributeName != null">
+        attributeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="far_id != null">
+        #{far_id,jdbcType=INTEGER},
+      </if>
+      <if test="attributeName != null">
+        #{attributeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Attribute">
+    update attribute
+    <set>
+      <if test="attributeName != null">
+        attributeName = #{attributeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where far_id = #{far_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Attribute">
+    update attribute
+    set attributeName = #{attributeName,jdbcType=VARCHAR}
+    where far_id = #{far_id,jdbcType=INTEGER}
+  </update>
+</mapper>

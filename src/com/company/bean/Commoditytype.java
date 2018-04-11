@@ -3,7 +3,7 @@ package com.company.bean;
 public class Commoditytype {
     private String commodityTypeID;
 
-    private String txtname;
+    private String commodityTypeName;
 
     public String getCommodityTypeID() {
         return commodityTypeID;
@@ -13,11 +13,11 @@ public class Commoditytype {
         this.commodityTypeID = commodityTypeID == null ? null : commodityTypeID.trim();
     }
 
-    public String getTxtname() {
-        return txtname;
+    public String getCommodityTypeName() {
+        return commodityTypeName;
     }
 
-    public void setTxtname(String txtname) {
-        this.txtname = txtname == null ? null : txtname.trim();
+    public void setCommodityTypeName(String commodityTypeName) {
+        this.commodityTypeName = commodityTypeName == null ? null : commodityTypeName.trim();
     }
 }

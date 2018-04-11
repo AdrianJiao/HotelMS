@@ -9,7 +9,7 @@ public class Deposit {
 
     private Double deposit;
 
-    private String depositPayWayName;
+    private String depositPayWayId;
 
     public String getCheckInId() {
         return checkInId;
@@ -35,11 +35,11 @@ public class Deposit {
         this.deposit = deposit;
     }
 
-    public String getDepositPayWayName() {
-        return depositPayWayName;
+    public String getDepositPayWayId() {
+        return depositPayWayId;
     }
 
-    public void setDepositPayWayName(String depositPayWayName) {
-        this.depositPayWayName = depositPayWayName == null ? null : depositPayWayName.trim();
+    public void setDepositPayWayId(String depositPayWayId) {
+        this.depositPayWayId = depositPayWayId == null ? null : depositPayWayId.trim();
     }
 }

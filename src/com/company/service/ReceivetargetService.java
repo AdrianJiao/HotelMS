@@ -11,4 +11,6 @@ public interface ReceivetargetService {
     List<Receivetarget > queryPartReceivetargets();
 
     int updateReceivetarget(Receivetarget receivetarget);
+
+    Receivetarget queryReceivetargetByTeamCode(String teamCode);
 }

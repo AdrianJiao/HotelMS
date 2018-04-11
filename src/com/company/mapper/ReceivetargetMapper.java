@@ -14,4 +14,6 @@ public interface ReceivetargetMapper {
     int updateByPrimaryKeySelective(Receivetarget record);
 
     int updateByPrimaryKey(Receivetarget record);
+
+    Receivetarget queryReceivetargetByTeamCode(String teamCode);
 }

@@ -26,6 +26,11 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
 
     @Override
     public int updateReceivetarget(Receivetarget receivetarget) {
-        return receivetargetMapper.insert(receivetarget);
+        return receivetargetMapper.updateByPrimaryKeySelective(receivetarget);
+    }
+
+    @Override
+    public Receivetarget queryReceivetargetByTeamCode(String teamCode) {
+        return receivetargetMapper.queryReceivetargetByTeamCode(teamCode);
     }
 }

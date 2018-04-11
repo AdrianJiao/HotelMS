@@ -5,10 +5,10 @@
     <id column="checkInId" jdbcType="VARCHAR" property="checkInId" />
     <result column="depositRegisterTime" jdbcType="DATE" property="depositRegisterTime" />
     <result column="deposit" jdbcType="DOUBLE" property="deposit" />
-    <result column="depositPayWayName" jdbcType="VARCHAR" property="depositPayWayName" />
+    <result column="depositPayWayId" jdbcType="VARCHAR" property="depositPayWayId" />
   </resultMap>
   <sql id="Base_Column_List">
-    checkInId, depositRegisterTime, deposit, depositPayWayName
+    checkInId, depositRegisterTime, deposit, depositPayWayId
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -22,9 +22,9 @@
   </delete>
   <insert id="insert" parameterType="com.company.bean.Deposit">
     insert into deposit (checkInId, depositRegisterTime, deposit, 
-      depositPayWayName)
+      depositPayWayId)
     values (#{checkInId,jdbcType=VARCHAR}, #{depositRegisterTime,jdbcType=DATE}, #{deposit,jdbcType=DOUBLE}, 
-      #{depositPayWayName,jdbcType=VARCHAR})
+      #{depositPayWayId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Deposit">
     insert into deposit
@@ -38,8 +38,8 @@
       <if test="deposit != null">
         deposit,
       </if>
-      <if test="depositPayWayName != null">
-        depositPayWayName,
+      <if test="depositPayWayId != null">
+        depositPayWayId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -52,8 +52,8 @@
       <if test="deposit != null">
         #{deposit,jdbcType=DOUBLE},
       </if>
-      <if test="depositPayWayName != null">
-        #{depositPayWayName,jdbcType=VARCHAR},
+      <if test="depositPayWayId != null">
+        #{depositPayWayId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -66,8 +66,8 @@
       <if test="deposit != null">
         deposit = #{deposit,jdbcType=DOUBLE},
       </if>
-      <if test="depositPayWayName != null">
-        depositPayWayName = #{depositPayWayName,jdbcType=VARCHAR},
+      <if test="depositPayWayId != null">
+        depositPayWayId = #{depositPayWayId,jdbcType=VARCHAR},
       </if>
     </set>
     where checkInId = #{checkInId,jdbcType=VARCHAR}
@@ -76,7 +76,7 @@
     update deposit
     set depositRegisterTime = #{depositRegisterTime,jdbcType=DATE},
       deposit = #{deposit,jdbcType=DOUBLE},
-      depositPayWayName = #{depositPayWayName,jdbcType=VARCHAR}
+      depositPayWayId = #{depositPayWayId,jdbcType=VARCHAR}
     where checkInId = #{checkInId,jdbcType=VARCHAR}
   </update>
 </mapper>

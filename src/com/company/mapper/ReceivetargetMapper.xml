@@ -114,4 +114,11 @@
       contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=INTEGER}
   </update>
+
+  <select id="queryReceivetargetByTeamCode" parameterType="string"  resultType="receivetarget">
+    select
+    <include refid="Base_Column_List" />
+    from receivetarget
+    where teamCode = #{teamCode}
+  </select>
 </mapper>

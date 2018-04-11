@@ -3,10 +3,10 @@
 <mapper namespace="com.company.mapper.CommoditytypeMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.Commoditytype">
     <id column="commodityTypeID" jdbcType="VARCHAR" property="commodityTypeID" />
-    <result column="txtname" jdbcType="VARCHAR" property="txtname" />
+    <result column="commodityTypeName" jdbcType="VARCHAR" property="commodityTypeName" />
   </resultMap>
   <sql id="Base_Column_List">
-    commodityTypeID, txtname
+    commodityTypeID, commodityTypeName
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -19,8 +19,10 @@
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.Commoditytype">
-    insert into commoditytype (commodityTypeID, txtname)
-    values (#{commodityTypeID,jdbcType=VARCHAR}, #{txtname,jdbcType=VARCHAR})
+    insert into commoditytype (commodityTypeID, commodityTypeName
+      )
+    values (#{commodityTypeID,jdbcType=VARCHAR}, #{commodityTypeName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Commoditytype">
     insert into commoditytype
@@ -28,31 +30,31 @@
       <if test="commodityTypeID != null">
         commodityTypeID,
       </if>
-      <if test="txtname != null">
-        txtname,
+      <if test="commodityTypeName != null">
+        commodityTypeName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commodityTypeID != null">
         #{commodityTypeID,jdbcType=VARCHAR},
       </if>
-      <if test="txtname != null">
-        #{txtname,jdbcType=VARCHAR},
+      <if test="commodityTypeName != null">
+        #{commodityTypeName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Commoditytype">
     update commoditytype
     <set>
-      <if test="txtname != null">
-        txtname = #{txtname,jdbcType=VARCHAR},
+      <if test="commodityTypeName != null">
+        commodityTypeName = #{commodityTypeName,jdbcType=VARCHAR},
       </if>
     </set>
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.Commoditytype">
     update commoditytype
-    set txtname = #{txtname,jdbcType=VARCHAR}
+    set commodityTypeName = #{commodityTypeName,jdbcType=VARCHAR}
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
 </mapper>

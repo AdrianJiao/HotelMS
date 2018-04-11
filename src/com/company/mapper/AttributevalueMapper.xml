@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.AttributevalueMapper">
+  <resultMap id="BaseResultMap" type="com.company.bean.Attributevalue">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="far_id" jdbcType="INTEGER" property="far_id" />
+    <result column="attributeDetailsName" jdbcType="VARCHAR" property="attributeDetailsName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, far_id, attributeDetailsName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attributevalue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from attributevalue
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.company.bean.Attributevalue">
+    insert into attributevalue (id, far_id, attributeDetailsName
+      )
+    values (#{id,jdbcType=INTEGER}, #{far_id,jdbcType=INTEGER}, #{attributeDetailsName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.company.bean.Attributevalue">
+    insert into attributevalue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="far_id != null">
+        far_id,
+      </if>
+      <if test="attributeDetailsName != null">
+        attributeDetailsName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="far_id != null">
+        #{far_id,jdbcType=INTEGER},
+      </if>
+      <if test="attributeDetailsName != null">
+        #{attributeDetailsName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Attributevalue">
+    update attributevalue
+    <set>
+      <if test="far_id != null">
+        far_id = #{far_id,jdbcType=INTEGER},
+      </if>
+      <if test="attributeDetailsName != null">
+        attributeDetailsName = #{attributeDetailsName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.company.bean.Attributevalue">
+    update attributevalue
+    set far_id = #{far_id,jdbcType=INTEGER},
+      attributeDetailsName = #{attributeDetailsName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
