@@ -3,13 +3,13 @@ package com.company.mapper;
 import com.company.bean.Attribute;
 
 public interface AttributeMapper {
-    int deleteByPrimaryKey(Integer far_id);
+    int deleteByPrimaryKey(Integer aid);
 
     int insert(Attribute record);
 
     int insertSelective(Attribute record);
 
-    Attribute selectByPrimaryKey(Integer far_id);
+    Attribute selectByPrimaryKey(Integer aid);
 
     int updateByPrimaryKeySelective(Attribute record);
 

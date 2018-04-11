@@ -1,19 +1,11 @@
 package com.company.bean;
 
 public class Attributevalue {
-    private Integer id;
-
     private Integer far_id;
 
+    private Integer aid;
+
     private String attributeDetailsName;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getFar_id() {
         return far_id;
@@ -21,6 +13,14 @@ public class Attributevalue {
 
     public void setFar_id(Integer far_id) {
         this.far_id = far_id;
+    }
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 
     public String getAttributeDetailsName() {
