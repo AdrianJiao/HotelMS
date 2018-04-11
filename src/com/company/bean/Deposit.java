@@ -3,28 +3,28 @@ package com.company.bean;
 import java.util.Date;
 
 public class Deposit {
-    private String checkinid;
+    private String checkInId;
 
-    private Date depositregistertime;
+    private Date depositRegisterTime;
 
     private Double deposit;
 
-    private String depositpaywayname;
+    private String depositPayWayName;
 
-    public String getCheckinid() {
-        return checkinid;
+    public String getCheckInId() {
+        return checkInId;
     }
 
-    public void setCheckinid(String checkinid) {
-        this.checkinid = checkinid == null ? null : checkinid.trim();
+    public void setCheckInId(String checkInId) {
+        this.checkInId = checkInId == null ? null : checkInId.trim();
     }
 
-    public Date getDepositregistertime() {
-        return depositregistertime;
+    public Date getDepositRegisterTime() {
+        return depositRegisterTime;
     }
 
-    public void setDepositregistertime(Date depositregistertime) {
-        this.depositregistertime = depositregistertime;
+    public void setDepositRegisterTime(Date depositRegisterTime) {
+        this.depositRegisterTime = depositRegisterTime;
     }
 
     public Double getDeposit() {
@@ -35,11 +35,11 @@ public class Deposit {
         this.deposit = deposit;
     }
 
-    public String getDepositpaywayname() {
-        return depositpaywayname;
+    public String getDepositPayWayName() {
+        return depositPayWayName;
     }
 
-    public void setDepositpaywayname(String depositpaywayname) {
-        this.depositpaywayname = depositpaywayname == null ? null : depositpaywayname.trim();
+    public void setDepositPayWayName(String depositPayWayName) {
+        this.depositPayWayName = depositPayWayName == null ? null : depositPayWayName.trim();
     }
 }

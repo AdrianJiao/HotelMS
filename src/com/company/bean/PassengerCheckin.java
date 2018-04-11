@@ -3,42 +3,42 @@ package com.company.bean;
 import java.util.Date;
 
 public class PassengerCheckin {
-    private String passengercheckinid;
+    private String passengerCheckInId;
 
     private Integer pid;
 
-    private String roomnumber;
+    private String roomNumber;
 
-    private Date registertime;
+    private Date registerTime;
 
-    private String rentouttypeid;
+    private String rentOutTypeID;
 
-    private String passengertypeid;
+    private String passengerTypeID;
 
-    private Double staynumber;
+    private Double stayNumber;
 
-    private String billunitid;
+    private String billUnitID;
 
-    private String depositpaywayid;
+    private String depositPayWayID;
 
-    private Integer changingroomnumber;
+    private Integer changingRoomNumber;
 
-    private Double changroommoney;
+    private Double changRoomMoney;
 
-    private Date changroomtime;
+    private Date changRoomTime;
 
-    private Double sumconst;
+    private Double sumConst;
 
-    private String isbillid;
+    private String isBillID;
 
-    private Date paytime;
+    private Date payTime;
 
-    public String getPassengercheckinid() {
-        return passengercheckinid;
+    public String getPassengerCheckInId() {
+        return passengerCheckInId;
     }
 
-    public void setPassengercheckinid(String passengercheckinid) {
-        this.passengercheckinid = passengercheckinid == null ? null : passengercheckinid.trim();
+    public void setPassengerCheckInId(String passengerCheckInId) {
+        this.passengerCheckInId = passengerCheckInId == null ? null : passengerCheckInId.trim();
     }
 
     public Integer getPid() {
@@ -49,107 +49,107 @@ public class PassengerCheckin {
         this.pid = pid;
     }
 
-    public String getRoomnumber() {
-        return roomnumber;
+    public String getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setRoomnumber(String roomnumber) {
-        this.roomnumber = roomnumber == null ? null : roomnumber.trim();
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber == null ? null : roomNumber.trim();
     }
 
-    public Date getRegistertime() {
-        return registertime;
+    public Date getRegisterTime() {
+        return registerTime;
     }
 
-    public void setRegistertime(Date registertime) {
-        this.registertime = registertime;
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
     }
 
-    public String getRentouttypeid() {
-        return rentouttypeid;
+    public String getRentOutTypeID() {
+        return rentOutTypeID;
     }
 
-    public void setRentouttypeid(String rentouttypeid) {
-        this.rentouttypeid = rentouttypeid == null ? null : rentouttypeid.trim();
+    public void setRentOutTypeID(String rentOutTypeID) {
+        this.rentOutTypeID = rentOutTypeID == null ? null : rentOutTypeID.trim();
     }
 
-    public String getPassengertypeid() {
-        return passengertypeid;
+    public String getPassengerTypeID() {
+        return passengerTypeID;
     }
 
-    public void setPassengertypeid(String passengertypeid) {
-        this.passengertypeid = passengertypeid == null ? null : passengertypeid.trim();
+    public void setPassengerTypeID(String passengerTypeID) {
+        this.passengerTypeID = passengerTypeID == null ? null : passengerTypeID.trim();
     }
 
-    public Double getStaynumber() {
-        return staynumber;
+    public Double getStayNumber() {
+        return stayNumber;
     }
 
-    public void setStaynumber(Double staynumber) {
-        this.staynumber = staynumber;
+    public void setStayNumber(Double stayNumber) {
+        this.stayNumber = stayNumber;
     }
 
-    public String getBillunitid() {
-        return billunitid;
+    public String getBillUnitID() {
+        return billUnitID;
     }
 
-    public void setBillunitid(String billunitid) {
-        this.billunitid = billunitid == null ? null : billunitid.trim();
+    public void setBillUnitID(String billUnitID) {
+        this.billUnitID = billUnitID == null ? null : billUnitID.trim();
     }
 
-    public String getDepositpaywayid() {
-        return depositpaywayid;
+    public String getDepositPayWayID() {
+        return depositPayWayID;
     }
 
-    public void setDepositpaywayid(String depositpaywayid) {
-        this.depositpaywayid = depositpaywayid == null ? null : depositpaywayid.trim();
+    public void setDepositPayWayID(String depositPayWayID) {
+        this.depositPayWayID = depositPayWayID == null ? null : depositPayWayID.trim();
     }
 
-    public Integer getChangingroomnumber() {
-        return changingroomnumber;
+    public Integer getChangingRoomNumber() {
+        return changingRoomNumber;
     }
 
-    public void setChangingroomnumber(Integer changingroomnumber) {
-        this.changingroomnumber = changingroomnumber;
+    public void setChangingRoomNumber(Integer changingRoomNumber) {
+        this.changingRoomNumber = changingRoomNumber;
     }
 
-    public Double getChangroommoney() {
-        return changroommoney;
+    public Double getChangRoomMoney() {
+        return changRoomMoney;
     }
 
-    public void setChangroommoney(Double changroommoney) {
-        this.changroommoney = changroommoney;
+    public void setChangRoomMoney(Double changRoomMoney) {
+        this.changRoomMoney = changRoomMoney;
     }
 
-    public Date getChangroomtime() {
-        return changroomtime;
+    public Date getChangRoomTime() {
+        return changRoomTime;
     }
 
-    public void setChangroomtime(Date changroomtime) {
-        this.changroomtime = changroomtime;
+    public void setChangRoomTime(Date changRoomTime) {
+        this.changRoomTime = changRoomTime;
     }
 
-    public Double getSumconst() {
-        return sumconst;
+    public Double getSumConst() {
+        return sumConst;
     }
 
-    public void setSumconst(Double sumconst) {
-        this.sumconst = sumconst;
+    public void setSumConst(Double sumConst) {
+        this.sumConst = sumConst;
     }
 
-    public String getIsbillid() {
-        return isbillid;
+    public String getIsBillID() {
+        return isBillID;
     }
 
-    public void setIsbillid(String isbillid) {
-        this.isbillid = isbillid == null ? null : isbillid.trim();
+    public void setIsBillID(String isBillID) {
+        this.isBillID = isBillID == null ? null : isBillID.trim();
     }
 
-    public Date getPaytime() {
-        return paytime;
+    public Date getPayTime() {
+        return payTime;
     }
 
-    public void setPaytime(Date paytime) {
-        this.paytime = paytime;
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
     }
 }

@@ -25,10 +25,10 @@ public class UserController {
     //登录用户进行后台
     @RequestMapping(value = "/Login/tomain.do", method = RequestMethod.POST)
     public String login(User user, HttpSession session, Model model) {
-        String username = user.getUsername();
+        String username = user.getUserName();
         String password = user.getPassword();
 
-        if (username != null && !"".equals(username.trim()) && password != null && !"".equals(username.trim())) {
+        if (username != null && !"".equals(username.trim()) && password != null && !"".equals(password.trim())) {
             //查询用户
             boolean isLoginSuccess = userService.checkUser(user);
 

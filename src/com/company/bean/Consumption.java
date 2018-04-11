@@ -3,53 +3,53 @@ package com.company.bean;
 import java.util.Date;
 
 public class Consumption {
-    private String checkinid;
+    private String checkInId;
 
-    private String commodityname;
+    private String commodityName;
 
-    private Integer consumptionnumber;
+    private Integer consumptionNumber;
 
-    private Double consumptionmoney;
+    private Double consumptionMoney;
 
-    private Date consumptiontime;
+    private Date consumptionTime;
 
-    public String getCheckinid() {
-        return checkinid;
+    public String getCheckInId() {
+        return checkInId;
     }
 
-    public void setCheckinid(String checkinid) {
-        this.checkinid = checkinid == null ? null : checkinid.trim();
+    public void setCheckInId(String checkInId) {
+        this.checkInId = checkInId == null ? null : checkInId.trim();
     }
 
-    public String getCommodityname() {
-        return commodityname;
+    public String getCommodityName() {
+        return commodityName;
     }
 
-    public void setCommodityname(String commodityname) {
-        this.commodityname = commodityname == null ? null : commodityname.trim();
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName == null ? null : commodityName.trim();
     }
 
-    public Integer getConsumptionnumber() {
-        return consumptionnumber;
+    public Integer getConsumptionNumber() {
+        return consumptionNumber;
     }
 
-    public void setConsumptionnumber(Integer consumptionnumber) {
-        this.consumptionnumber = consumptionnumber;
+    public void setConsumptionNumber(Integer consumptionNumber) {
+        this.consumptionNumber = consumptionNumber;
     }
 
-    public Double getConsumptionmoney() {
-        return consumptionmoney;
+    public Double getConsumptionMoney() {
+        return consumptionMoney;
     }
 
-    public void setConsumptionmoney(Double consumptionmoney) {
-        this.consumptionmoney = consumptionmoney;
+    public void setConsumptionMoney(Double consumptionMoney) {
+        this.consumptionMoney = consumptionMoney;
     }
 
-    public Date getConsumptiontime() {
-        return consumptiontime;
+    public Date getConsumptionTime() {
+        return consumptionTime;
     }
 
-    public void setConsumptiontime(Date consumptiontime) {
-        this.consumptiontime = consumptiontime;
+    public void setConsumptionTime(Date consumptionTime) {
+        this.consumptionTime = consumptionTime;
     }
 }

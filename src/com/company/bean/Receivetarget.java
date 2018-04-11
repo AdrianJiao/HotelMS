@@ -5,17 +5,17 @@ import java.util.Date;
 public class Receivetarget {
     private Integer tid;
 
-    private String targettypeid;
+    private String targetTypeID;
 
     private String principal;
 
-    private String teamname;
+    private String teamName;
 
-    private String teamcode;
+    private String teamCode;
 
-    private Date registertime;
+    private Date registerTime;
 
-    private String contactphonenumber;
+    private String contactPhoneNUmber;
 
     public Integer getTid() {
         return tid;
@@ -25,12 +25,12 @@ public class Receivetarget {
         this.tid = tid;
     }
 
-    public String getTargettypeid() {
-        return targettypeid;
+    public String getTargetTypeID() {
+        return targetTypeID;
     }
 
-    public void setTargettypeid(String targettypeid) {
-        this.targettypeid = targettypeid == null ? null : targettypeid.trim();
+    public void setTargetTypeID(String targetTypeID) {
+        this.targetTypeID = targetTypeID == null ? null : targetTypeID.trim();
     }
 
     public String getPrincipal() {
@@ -41,35 +41,35 @@ public class Receivetarget {
         this.principal = principal == null ? null : principal.trim();
     }
 
-    public String getTeamname() {
-        return teamname;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setTeamname(String teamname) {
-        this.teamname = teamname == null ? null : teamname.trim();
+    public void setTeamName(String teamName) {
+        this.teamName = teamName == null ? null : teamName.trim();
     }
 
-    public String getTeamcode() {
-        return teamcode;
+    public String getTeamCode() {
+        return teamCode;
     }
 
-    public void setTeamcode(String teamcode) {
-        this.teamcode = teamcode == null ? null : teamcode.trim();
+    public void setTeamCode(String teamCode) {
+        this.teamCode = teamCode == null ? null : teamCode.trim();
     }
 
-    public Date getRegistertime() {
-        return registertime;
+    public Date getRegisterTime() {
+        return registerTime;
     }
 
-    public void setRegistertime(Date registertime) {
-        this.registertime = registertime;
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
     }
 
-    public String getContactphonenumber() {
-        return contactphonenumber;
+    public String getContactPhoneNUmber() {
+        return contactPhoneNUmber;
     }
 
-    public void setContactphonenumber(String contactphonenumber) {
-        this.contactphonenumber = contactphonenumber == null ? null : contactphonenumber.trim();
+    public void setContactPhoneNUmber(String contactPhoneNUmber) {
+        this.contactPhoneNUmber = contactPhoneNUmber == null ? null : contactPhoneNUmber.trim();
     }
 }

@@ -1,16 +1,16 @@
 package com.company.bean;
 
 public class Commoditytype {
-    private String commoditytypeid;
+    private String commodityTypeID;
 
     private String txtname;
 
-    public String getCommoditytypeid() {
-        return commoditytypeid;
+    public String getCommodityTypeID() {
+        return commodityTypeID;
     }
 
-    public void setCommoditytypeid(String commoditytypeid) {
-        this.commoditytypeid = commoditytypeid == null ? null : commoditytypeid.trim();
+    public void setCommodityTypeID(String commodityTypeID) {
+        this.commodityTypeID = commodityTypeID == null ? null : commodityTypeID.trim();
     }
 
     public String getTxtname() {

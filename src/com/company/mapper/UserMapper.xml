@@ -3,7 +3,7 @@
 <mapper namespace="com.company.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.User">
     <id column="uid" jdbcType="INTEGER" property="uid" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -22,7 +22,7 @@
   <insert id="insert" parameterType="com.company.bean.User">
     insert into user (uid, userName, password
       )
-    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+    values (#{uid,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.User">
@@ -31,7 +31,7 @@
       <if test="uid != null">
         uid,
       </if>
-      <if test="username != null">
+      <if test="userName != null">
         userName,
       </if>
       <if test="password != null">
@@ -42,8 +42,8 @@
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
@@ -53,8 +53,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.User">
     update user
     <set>
-      <if test="username != null">
-        userName = #{username,jdbcType=VARCHAR},
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
@@ -64,16 +64,16 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.User">
     update user
-    set userName = #{username,jdbcType=VARCHAR},
+    set userName = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
 
   <!--通过用户名和密码查询用户是否存在-->
-  <select id="selectByUsernameAndPassword" parameterType="User" resultType="Integer">
+  <select id="selectByUsernameAndPassword" parameterType="user" resultType="Integer">
     SELECT  count(*)  from  user
     <where>
-      and username = #{username} AND password = #{password}
+      and userName = #{userName} AND password = #{password}
     </where>
   </select>
 </mapper>

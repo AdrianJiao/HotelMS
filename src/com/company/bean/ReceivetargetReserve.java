@@ -3,28 +3,28 @@ package com.company.bean;
 import java.util.Date;
 
 public class ReceivetargetReserve {
-    private String receivetargetreserveid;
+    private String receivetargetReserveId;
 
     private Integer tid;
 
-    private String roomnumber;
+    private String roomNumber;
 
-    private Integer predetermineday;
+    private Integer predetermineDay;
 
     private Double deposit;
 
-    private String paywayid;
+    private String payWayID;
 
-    private Date arrivetime;
+    private Date arriveTime;
 
-    private String reservestate;
+    private String reserveState;
 
-    public String getReceivetargetreserveid() {
-        return receivetargetreserveid;
+    public String getReceivetargetReserveId() {
+        return receivetargetReserveId;
     }
 
-    public void setReceivetargetreserveid(String receivetargetreserveid) {
-        this.receivetargetreserveid = receivetargetreserveid == null ? null : receivetargetreserveid.trim();
+    public void setReceivetargetReserveId(String receivetargetReserveId) {
+        this.receivetargetReserveId = receivetargetReserveId == null ? null : receivetargetReserveId.trim();
     }
 
     public Integer getTid() {
@@ -35,20 +35,20 @@ public class ReceivetargetReserve {
         this.tid = tid;
     }
 
-    public String getRoomnumber() {
-        return roomnumber;
+    public String getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setRoomnumber(String roomnumber) {
-        this.roomnumber = roomnumber == null ? null : roomnumber.trim();
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber == null ? null : roomNumber.trim();
     }
 
-    public Integer getPredetermineday() {
-        return predetermineday;
+    public Integer getPredetermineDay() {
+        return predetermineDay;
     }
 
-    public void setPredetermineday(Integer predetermineday) {
-        this.predetermineday = predetermineday;
+    public void setPredetermineDay(Integer predetermineDay) {
+        this.predetermineDay = predetermineDay;
     }
 
     public Double getDeposit() {
@@ -59,27 +59,27 @@ public class ReceivetargetReserve {
         this.deposit = deposit;
     }
 
-    public String getPaywayid() {
-        return paywayid;
+    public String getPayWayID() {
+        return payWayID;
     }
 
-    public void setPaywayid(String paywayid) {
-        this.paywayid = paywayid == null ? null : paywayid.trim();
+    public void setPayWayID(String payWayID) {
+        this.payWayID = payWayID == null ? null : payWayID.trim();
     }
 
-    public Date getArrivetime() {
-        return arrivetime;
+    public Date getArriveTime() {
+        return arriveTime;
     }
 
-    public void setArrivetime(Date arrivetime) {
-        this.arrivetime = arrivetime;
+    public void setArriveTime(Date arriveTime) {
+        this.arriveTime = arriveTime;
     }
 
-    public String getReservestate() {
-        return reservestate;
+    public String getReserveState() {
+        return reserveState;
     }
 
-    public void setReservestate(String reservestate) {
-        this.reservestate = reservestate == null ? null : reservestate.trim();
+    public void setReserveState(String reserveState) {
+        this.reserveState = reserveState == null ? null : reserveState.trim();
     }
 }

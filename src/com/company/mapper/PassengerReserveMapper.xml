@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.PassengerReserveMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.PassengerReserve">
-    <id column="passengerReserveId" jdbcType="VARCHAR" property="passengerreserveid" />
+    <id column="passengerReserveId" jdbcType="VARCHAR" property="passengerReserveId" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="roomNumber" jdbcType="VARCHAR" property="roomnumber" />
-    <result column="predetermineDay" jdbcType="INTEGER" property="predetermineday" />
+    <result column="roomNumber" jdbcType="VARCHAR" property="roomNumber" />
+    <result column="predetermineDay" jdbcType="INTEGER" property="predetermineDay" />
     <result column="deposit" jdbcType="DOUBLE" property="deposit" />
-    <result column="payWayID" jdbcType="VARCHAR" property="paywayid" />
-    <result column="arriveTime" jdbcType="DATE" property="arrivetime" />
-    <result column="reserveState" jdbcType="VARCHAR" property="reservestate" />
+    <result column="payWayID" jdbcType="VARCHAR" property="payWayID" />
+    <result column="arriveTime" jdbcType="DATE" property="arriveTime" />
+    <result column="reserveState" jdbcType="VARCHAR" property="reserveState" />
   </resultMap>
   <sql id="Base_Column_List">
     passengerReserveId, pid, roomNumber, predetermineDay, deposit, payWayID, arriveTime, 
@@ -19,72 +19,72 @@
     select 
     <include refid="Base_Column_List" />
     from passenger_reserve
-    where passengerReserveId = #{passengerreserveid,jdbcType=VARCHAR}
+    where passengerReserveId = #{passengerReserveId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from passenger_reserve
-    where passengerReserveId = #{passengerreserveid,jdbcType=VARCHAR}
+    where passengerReserveId = #{passengerReserveId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.PassengerReserve">
     insert into passenger_reserve (passengerReserveId, pid, roomNumber, 
       predetermineDay, deposit, payWayID, 
       arriveTime, reserveState)
-    values (#{passengerreserveid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{roomnumber,jdbcType=VARCHAR}, 
-      #{predetermineday,jdbcType=INTEGER}, #{deposit,jdbcType=DOUBLE}, #{paywayid,jdbcType=VARCHAR}, 
-      #{arrivetime,jdbcType=DATE}, #{reservestate,jdbcType=VARCHAR})
+    values (#{passengerReserveId,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{roomNumber,jdbcType=VARCHAR}, 
+      #{predetermineDay,jdbcType=INTEGER}, #{deposit,jdbcType=DOUBLE}, #{payWayID,jdbcType=VARCHAR}, 
+      #{arriveTime,jdbcType=DATE}, #{reserveState,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.PassengerReserve">
     insert into passenger_reserve
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="passengerreserveid != null">
+      <if test="passengerReserveId != null">
         passengerReserveId,
       </if>
       <if test="pid != null">
         pid,
       </if>
-      <if test="roomnumber != null">
+      <if test="roomNumber != null">
         roomNumber,
       </if>
-      <if test="predetermineday != null">
+      <if test="predetermineDay != null">
         predetermineDay,
       </if>
       <if test="deposit != null">
         deposit,
       </if>
-      <if test="paywayid != null">
+      <if test="payWayID != null">
         payWayID,
       </if>
-      <if test="arrivetime != null">
+      <if test="arriveTime != null">
         arriveTime,
       </if>
-      <if test="reservestate != null">
+      <if test="reserveState != null">
         reserveState,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="passengerreserveid != null">
-        #{passengerreserveid,jdbcType=VARCHAR},
+      <if test="passengerReserveId != null">
+        #{passengerReserveId,jdbcType=VARCHAR},
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roomnumber != null">
-        #{roomnumber,jdbcType=VARCHAR},
+      <if test="roomNumber != null">
+        #{roomNumber,jdbcType=VARCHAR},
       </if>
-      <if test="predetermineday != null">
-        #{predetermineday,jdbcType=INTEGER},
+      <if test="predetermineDay != null">
+        #{predetermineDay,jdbcType=INTEGER},
       </if>
       <if test="deposit != null">
         #{deposit,jdbcType=DOUBLE},
       </if>
-      <if test="paywayid != null">
-        #{paywayid,jdbcType=VARCHAR},
+      <if test="payWayID != null">
+        #{payWayID,jdbcType=VARCHAR},
       </if>
-      <if test="arrivetime != null">
-        #{arrivetime,jdbcType=DATE},
+      <if test="arriveTime != null">
+        #{arriveTime,jdbcType=DATE},
       </if>
-      <if test="reservestate != null">
-        #{reservestate,jdbcType=VARCHAR},
+      <if test="reserveState != null">
+        #{reserveState,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -94,36 +94,36 @@
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roomnumber != null">
-        roomNumber = #{roomnumber,jdbcType=VARCHAR},
+      <if test="roomNumber != null">
+        roomNumber = #{roomNumber,jdbcType=VARCHAR},
       </if>
-      <if test="predetermineday != null">
-        predetermineDay = #{predetermineday,jdbcType=INTEGER},
+      <if test="predetermineDay != null">
+        predetermineDay = #{predetermineDay,jdbcType=INTEGER},
       </if>
       <if test="deposit != null">
         deposit = #{deposit,jdbcType=DOUBLE},
       </if>
-      <if test="paywayid != null">
-        payWayID = #{paywayid,jdbcType=VARCHAR},
+      <if test="payWayID != null">
+        payWayID = #{payWayID,jdbcType=VARCHAR},
       </if>
-      <if test="arrivetime != null">
-        arriveTime = #{arrivetime,jdbcType=DATE},
+      <if test="arriveTime != null">
+        arriveTime = #{arriveTime,jdbcType=DATE},
       </if>
-      <if test="reservestate != null">
-        reserveState = #{reservestate,jdbcType=VARCHAR},
+      <if test="reserveState != null">
+        reserveState = #{reserveState,jdbcType=VARCHAR},
       </if>
     </set>
-    where passengerReserveId = #{passengerreserveid,jdbcType=VARCHAR}
+    where passengerReserveId = #{passengerReserveId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.PassengerReserve">
     update passenger_reserve
     set pid = #{pid,jdbcType=INTEGER},
-      roomNumber = #{roomnumber,jdbcType=VARCHAR},
-      predetermineDay = #{predetermineday,jdbcType=INTEGER},
+      roomNumber = #{roomNumber,jdbcType=VARCHAR},
+      predetermineDay = #{predetermineDay,jdbcType=INTEGER},
       deposit = #{deposit,jdbcType=DOUBLE},
-      payWayID = #{paywayid,jdbcType=VARCHAR},
-      arriveTime = #{arrivetime,jdbcType=DATE},
-      reserveState = #{reservestate,jdbcType=VARCHAR}
-    where passengerReserveId = #{passengerreserveid,jdbcType=VARCHAR}
+      payWayID = #{payWayID,jdbcType=VARCHAR},
+      arriveTime = #{arriveTime,jdbcType=DATE},
+      reserveState = #{reserveState,jdbcType=VARCHAR}
+    where passengerReserveId = #{passengerReserveId,jdbcType=VARCHAR}
   </update>
 </mapper>

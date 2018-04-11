@@ -1,93 +1,93 @@
 package com.company.bean;
 
 public class Room {
-    private String roomnumber;
+    private String roomNumber;
 
-    private String roomstateid;
+    private String roomStateID;
 
-    private Integer roomamount;
+    private Integer roomAmount;
 
-    private String guestroomlevelid;
+    private String guestRoomLevelID;
 
-    private Double standardpriceday;
+    private Double standardPriceDay;
 
-    private Double standardprice;
+    private Double standardPrice;
 
-    private Double maxduration;
+    private Double maxDuration;
 
-    private Double firstprice;
+    private Double firstPrice;
 
-    private Double firstduration;
+    private Double firstDuration;
 
-    public String getRoomnumber() {
-        return roomnumber;
+    public String getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setRoomnumber(String roomnumber) {
-        this.roomnumber = roomnumber == null ? null : roomnumber.trim();
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber == null ? null : roomNumber.trim();
     }
 
-    public String getRoomstateid() {
-        return roomstateid;
+    public String getRoomStateID() {
+        return roomStateID;
     }
 
-    public void setRoomstateid(String roomstateid) {
-        this.roomstateid = roomstateid == null ? null : roomstateid.trim();
+    public void setRoomStateID(String roomStateID) {
+        this.roomStateID = roomStateID == null ? null : roomStateID.trim();
     }
 
-    public Integer getRoomamount() {
-        return roomamount;
+    public Integer getRoomAmount() {
+        return roomAmount;
     }
 
-    public void setRoomamount(Integer roomamount) {
-        this.roomamount = roomamount;
+    public void setRoomAmount(Integer roomAmount) {
+        this.roomAmount = roomAmount;
     }
 
-    public String getGuestroomlevelid() {
-        return guestroomlevelid;
+    public String getGuestRoomLevelID() {
+        return guestRoomLevelID;
     }
 
-    public void setGuestroomlevelid(String guestroomlevelid) {
-        this.guestroomlevelid = guestroomlevelid == null ? null : guestroomlevelid.trim();
+    public void setGuestRoomLevelID(String guestRoomLevelID) {
+        this.guestRoomLevelID = guestRoomLevelID == null ? null : guestRoomLevelID.trim();
     }
 
-    public Double getStandardpriceday() {
-        return standardpriceday;
+    public Double getStandardPriceDay() {
+        return standardPriceDay;
     }
 
-    public void setStandardpriceday(Double standardpriceday) {
-        this.standardpriceday = standardpriceday;
+    public void setStandardPriceDay(Double standardPriceDay) {
+        this.standardPriceDay = standardPriceDay;
     }
 
-    public Double getStandardprice() {
-        return standardprice;
+    public Double getStandardPrice() {
+        return standardPrice;
     }
 
-    public void setStandardprice(Double standardprice) {
-        this.standardprice = standardprice;
+    public void setStandardPrice(Double standardPrice) {
+        this.standardPrice = standardPrice;
     }
 
-    public Double getMaxduration() {
-        return maxduration;
+    public Double getMaxDuration() {
+        return maxDuration;
     }
 
-    public void setMaxduration(Double maxduration) {
-        this.maxduration = maxduration;
+    public void setMaxDuration(Double maxDuration) {
+        this.maxDuration = maxDuration;
     }
 
-    public Double getFirstprice() {
-        return firstprice;
+    public Double getFirstPrice() {
+        return firstPrice;
     }
 
-    public void setFirstprice(Double firstprice) {
-        this.firstprice = firstprice;
+    public void setFirstPrice(Double firstPrice) {
+        this.firstPrice = firstPrice;
     }
 
-    public Double getFirstduration() {
-        return firstduration;
+    public Double getFirstDuration() {
+        return firstDuration;
     }
 
-    public void setFirstduration(Double firstduration) {
-        this.firstduration = firstduration;
+    public void setFirstDuration(Double firstDuration) {
+        this.firstDuration = firstDuration;
     }
 }

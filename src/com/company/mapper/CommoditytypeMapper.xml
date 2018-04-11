@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.CommoditytypeMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.Commoditytype">
-    <id column="commodityTypeID" jdbcType="VARCHAR" property="commoditytypeid" />
+    <id column="commodityTypeID" jdbcType="VARCHAR" property="commodityTypeID" />
     <result column="txtname" jdbcType="VARCHAR" property="txtname" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -12,20 +12,20 @@
     select 
     <include refid="Base_Column_List" />
     from commoditytype
-    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+    where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from commoditytype
-    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+    where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.Commoditytype">
     insert into commoditytype (commodityTypeID, txtname)
-    values (#{commoditytypeid,jdbcType=VARCHAR}, #{txtname,jdbcType=VARCHAR})
+    values (#{commodityTypeID,jdbcType=VARCHAR}, #{txtname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Commoditytype">
     insert into commoditytype
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commoditytypeid != null">
+      <if test="commodityTypeID != null">
         commodityTypeID,
       </if>
       <if test="txtname != null">
@@ -33,8 +33,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commoditytypeid != null">
-        #{commoditytypeid,jdbcType=VARCHAR},
+      <if test="commodityTypeID != null">
+        #{commodityTypeID,jdbcType=VARCHAR},
       </if>
       <if test="txtname != null">
         #{txtname,jdbcType=VARCHAR},
@@ -48,11 +48,11 @@
         txtname = #{txtname,jdbcType=VARCHAR},
       </if>
     </set>
-    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+    where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.Commoditytype">
     update commoditytype
     set txtname = #{txtname,jdbcType=VARCHAR}
-    where commodityTypeID = #{commoditytypeid,jdbcType=VARCHAR}
+    where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
 </mapper>

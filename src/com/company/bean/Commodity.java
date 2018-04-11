@@ -1,43 +1,43 @@
 package com.company.bean;
 
 public class Commodity {
-    private String commodityname;
+    private String commodityName;
 
-    private String commoditytypeid;
+    private String commodityTypeID;
 
-    private Double saleprice;
+    private Double salePrice;
 
-    private String uomid;
+    private String uOMID;
 
-    public String getCommodityname() {
-        return commodityname;
+    public String getCommodityName() {
+        return commodityName;
     }
 
-    public void setCommodityname(String commodityname) {
-        this.commodityname = commodityname == null ? null : commodityname.trim();
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName == null ? null : commodityName.trim();
     }
 
-    public String getCommoditytypeid() {
-        return commoditytypeid;
+    public String getCommodityTypeID() {
+        return commodityTypeID;
     }
 
-    public void setCommoditytypeid(String commoditytypeid) {
-        this.commoditytypeid = commoditytypeid == null ? null : commoditytypeid.trim();
+    public void setCommodityTypeID(String commodityTypeID) {
+        this.commodityTypeID = commodityTypeID == null ? null : commodityTypeID.trim();
     }
 
-    public Double getSaleprice() {
-        return saleprice;
+    public Double getSalePrice() {
+        return salePrice;
     }
 
-    public void setSaleprice(Double saleprice) {
-        this.saleprice = saleprice;
+    public void setSalePrice(Double salePrice) {
+        this.salePrice = salePrice;
     }
 
-    public String getUomid() {
-        return uomid;
+    public String getuOMID() {
+        return uOMID;
     }
 
-    public void setUomid(String uomid) {
-        this.uomid = uomid == null ? null : uomid.trim();
+    public void setuOMID(String uOMID) {
+        this.uOMID = uOMID == null ? null : uOMID.trim();
     }
 }

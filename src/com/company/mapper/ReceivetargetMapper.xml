@@ -3,12 +3,12 @@
 <mapper namespace="com.company.mapper.ReceivetargetMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.Receivetarget">
     <id column="tid" jdbcType="INTEGER" property="tid" />
-    <result column="targetTypeID" jdbcType="VARCHAR" property="targettypeid" />
+    <result column="targetTypeID" jdbcType="VARCHAR" property="targetTypeID" />
     <result column="principal" jdbcType="VARCHAR" property="principal" />
-    <result column="teamName" jdbcType="VARCHAR" property="teamname" />
-    <result column="teamCode" jdbcType="VARCHAR" property="teamcode" />
-    <result column="registerTime" jdbcType="DATE" property="registertime" />
-    <result column="contactPhoneNUmber" jdbcType="VARCHAR" property="contactphonenumber" />
+    <result column="teamName" jdbcType="VARCHAR" property="teamName" />
+    <result column="teamCode" jdbcType="VARCHAR" property="teamCode" />
+    <result column="registerTime" jdbcType="DATE" property="registerTime" />
+    <result column="contactPhoneNUmber" jdbcType="VARCHAR" property="contactPhoneNUmber" />
   </resultMap>
   <sql id="Base_Column_List">
     tid, targetTypeID, principal, teamName, teamCode, registerTime, contactPhoneNUmber
@@ -27,9 +27,9 @@
     insert into receivetarget (tid, targetTypeID, principal, 
       teamName, teamCode, registerTime, 
       contactPhoneNUmber)
-    values (#{tid,jdbcType=INTEGER}, #{targettypeid,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
-      #{teamname,jdbcType=VARCHAR}, #{teamcode,jdbcType=VARCHAR}, #{registertime,jdbcType=DATE}, 
-      #{contactphonenumber,jdbcType=VARCHAR})
+    values (#{tid,jdbcType=INTEGER}, #{targetTypeID,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
+      #{teamName,jdbcType=VARCHAR}, #{teamCode,jdbcType=VARCHAR}, #{registerTime,jdbcType=DATE}, 
+      #{contactPhoneNUmber,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Receivetarget">
     insert into receivetarget
@@ -37,22 +37,22 @@
       <if test="tid != null">
         tid,
       </if>
-      <if test="targettypeid != null">
+      <if test="targetTypeID != null">
         targetTypeID,
       </if>
       <if test="principal != null">
         principal,
       </if>
-      <if test="teamname != null">
+      <if test="teamName != null">
         teamName,
       </if>
-      <if test="teamcode != null">
+      <if test="teamCode != null">
         teamCode,
       </if>
-      <if test="registertime != null">
+      <if test="registerTime != null">
         registerTime,
       </if>
-      <if test="contactphonenumber != null">
+      <if test="contactPhoneNUmber != null">
         contactPhoneNUmber,
       </if>
     </trim>
@@ -60,59 +60,58 @@
       <if test="tid != null">
         #{tid,jdbcType=INTEGER},
       </if>
-      <if test="targettypeid != null">
-        #{targettypeid,jdbcType=VARCHAR},
+      <if test="targetTypeID != null">
+        #{targetTypeID,jdbcType=VARCHAR},
       </if>
       <if test="principal != null">
         #{principal,jdbcType=VARCHAR},
       </if>
-      <if test="teamname != null">
-        #{teamname,jdbcType=VARCHAR},
+      <if test="teamName != null">
+        #{teamName,jdbcType=VARCHAR},
       </if>
-      <if test="teamcode != null">
-        #{teamcode,jdbcType=VARCHAR},
+      <if test="teamCode != null">
+        #{teamCode,jdbcType=VARCHAR},
       </if>
-      <if test="registertime != null">
-        #{registertime,jdbcType=DATE},
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=DATE},
       </if>
-      <if test="contactphonenumber != null">
-        #{contactphonenumber,jdbcType=VARCHAR},
+      <if test="contactPhoneNUmber != null">
+        #{contactPhoneNUmber,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Receivetarget">
     update receivetarget
     <set>
-      <if test="targettypeid != null">
-        targetTypeID = #{targettypeid,jdbcType=VARCHAR},
+      <if test="targetTypeID != null">
+        targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
       </if>
       <if test="principal != null">
         principal = #{principal,jdbcType=VARCHAR},
       </if>
-      <if test="teamname != null">
-        teamName = #{teamname,jdbcType=VARCHAR},
+      <if test="teamName != null">
+        teamName = #{teamName,jdbcType=VARCHAR},
       </if>
-      <if test="teamcode != null">
-        teamCode = #{teamcode,jdbcType=VARCHAR},
+      <if test="teamCode != null">
+        teamCode = #{teamCode,jdbcType=VARCHAR},
       </if>
-      <if test="registertime != null">
-        registerTime = #{registertime,jdbcType=DATE},
+      <if test="registerTime != null">
+        registerTime = #{registerTime,jdbcType=DATE},
       </if>
-      <if test="contactphonenumber != null">
-        contactPhoneNUmber = #{contactphonenumber,jdbcType=VARCHAR},
+      <if test="contactPhoneNUmber != null">
+        contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR},
       </if>
     </set>
     where tid = #{tid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.Receivetarget">
     update receivetarget
-    set targetTypeID = #{targettypeid,jdbcType=VARCHAR},
+    set targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
       principal = #{principal,jdbcType=VARCHAR},
-      teamName = #{teamname,jdbcType=VARCHAR},
-      teamCode = #{teamcode,jdbcType=VARCHAR},
-      registerTime = #{registertime,jdbcType=DATE},
-      contactPhoneNUmber = #{contactphonenumber,jdbcType=VARCHAR}
+      teamName = #{teamName,jdbcType=VARCHAR},
+      teamCode = #{teamCode,jdbcType=VARCHAR},
+      registerTime = #{registerTime,jdbcType=DATE},
+      contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=INTEGER}
   </update>
-
 </mapper>

@@ -7,35 +7,35 @@ public class Passenger {
 
     private String name;
 
-    private String genderid;
+    private String genderID;
 
-    private Date birthdate;
+    private Date birthDate;
 
-    private String nationid;
+    private String nationID;
 
-    private String licenceissuingauthorty;
+    private String licenceIssuingAuthorty;
 
-    private Date papersvalidity;
+    private Date papersValidity;
 
     private String profession;
 
-    private String educationdegreeid;
+    private String educationDegreeID;
 
-    private String passengerlevelid;
+    private String passengerLevelID;
 
-    private String papersid;
+    private String papersID;
 
-    private String papersnumber;
+    private String papersNumber;
 
-    private String unitsoraddress;
+    private String unitsOrAddress;
 
-    private String thingreasonid;
+    private String thingReasonID;
 
-    private String wherearefrom;
+    private String whereAreFrom;
 
-    private String wheretogo;
+    private String whereToGo;
 
-    private String contactphonenumber;
+    private String contactPhoneNumber;
 
     private String remarks;
 
@@ -55,44 +55,44 @@ public class Passenger {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getGenderid() {
-        return genderid;
+    public String getGenderID() {
+        return genderID;
     }
 
-    public void setGenderid(String genderid) {
-        this.genderid = genderid == null ? null : genderid.trim();
+    public void setGenderID(String genderID) {
+        this.genderID = genderID == null ? null : genderID.trim();
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public String getNationid() {
-        return nationid;
+    public String getNationID() {
+        return nationID;
     }
 
-    public void setNationid(String nationid) {
-        this.nationid = nationid == null ? null : nationid.trim();
+    public void setNationID(String nationID) {
+        this.nationID = nationID == null ? null : nationID.trim();
     }
 
-    public String getLicenceissuingauthorty() {
-        return licenceissuingauthorty;
+    public String getLicenceIssuingAuthorty() {
+        return licenceIssuingAuthorty;
     }
 
-    public void setLicenceissuingauthorty(String licenceissuingauthorty) {
-        this.licenceissuingauthorty = licenceissuingauthorty == null ? null : licenceissuingauthorty.trim();
+    public void setLicenceIssuingAuthorty(String licenceIssuingAuthorty) {
+        this.licenceIssuingAuthorty = licenceIssuingAuthorty == null ? null : licenceIssuingAuthorty.trim();
     }
 
-    public Date getPapersvalidity() {
-        return papersvalidity;
+    public Date getPapersValidity() {
+        return papersValidity;
     }
 
-    public void setPapersvalidity(Date papersvalidity) {
-        this.papersvalidity = papersvalidity;
+    public void setPapersValidity(Date papersValidity) {
+        this.papersValidity = papersValidity;
     }
 
     public String getProfession() {
@@ -103,76 +103,76 @@ public class Passenger {
         this.profession = profession == null ? null : profession.trim();
     }
 
-    public String getEducationdegreeid() {
-        return educationdegreeid;
+    public String getEducationDegreeID() {
+        return educationDegreeID;
     }
 
-    public void setEducationdegreeid(String educationdegreeid) {
-        this.educationdegreeid = educationdegreeid == null ? null : educationdegreeid.trim();
+    public void setEducationDegreeID(String educationDegreeID) {
+        this.educationDegreeID = educationDegreeID == null ? null : educationDegreeID.trim();
     }
 
-    public String getPassengerlevelid() {
-        return passengerlevelid;
+    public String getPassengerLevelID() {
+        return passengerLevelID;
     }
 
-    public void setPassengerlevelid(String passengerlevelid) {
-        this.passengerlevelid = passengerlevelid == null ? null : passengerlevelid.trim();
+    public void setPassengerLevelID(String passengerLevelID) {
+        this.passengerLevelID = passengerLevelID == null ? null : passengerLevelID.trim();
     }
 
-    public String getPapersid() {
-        return papersid;
+    public String getPapersID() {
+        return papersID;
     }
 
-    public void setPapersid(String papersid) {
-        this.papersid = papersid == null ? null : papersid.trim();
+    public void setPapersID(String papersID) {
+        this.papersID = papersID == null ? null : papersID.trim();
     }
 
-    public String getPapersnumber() {
-        return papersnumber;
+    public String getPapersNumber() {
+        return papersNumber;
     }
 
-    public void setPapersnumber(String papersnumber) {
-        this.papersnumber = papersnumber == null ? null : papersnumber.trim();
+    public void setPapersNumber(String papersNumber) {
+        this.papersNumber = papersNumber == null ? null : papersNumber.trim();
     }
 
-    public String getUnitsoraddress() {
-        return unitsoraddress;
+    public String getUnitsOrAddress() {
+        return unitsOrAddress;
     }
 
-    public void setUnitsoraddress(String unitsoraddress) {
-        this.unitsoraddress = unitsoraddress == null ? null : unitsoraddress.trim();
+    public void setUnitsOrAddress(String unitsOrAddress) {
+        this.unitsOrAddress = unitsOrAddress == null ? null : unitsOrAddress.trim();
     }
 
-    public String getThingreasonid() {
-        return thingreasonid;
+    public String getThingReasonID() {
+        return thingReasonID;
     }
 
-    public void setThingreasonid(String thingreasonid) {
-        this.thingreasonid = thingreasonid == null ? null : thingreasonid.trim();
+    public void setThingReasonID(String thingReasonID) {
+        this.thingReasonID = thingReasonID == null ? null : thingReasonID.trim();
     }
 
-    public String getWherearefrom() {
-        return wherearefrom;
+    public String getWhereAreFrom() {
+        return whereAreFrom;
     }
 
-    public void setWherearefrom(String wherearefrom) {
-        this.wherearefrom = wherearefrom == null ? null : wherearefrom.trim();
+    public void setWhereAreFrom(String whereAreFrom) {
+        this.whereAreFrom = whereAreFrom == null ? null : whereAreFrom.trim();
     }
 
-    public String getWheretogo() {
-        return wheretogo;
+    public String getWhereToGo() {
+        return whereToGo;
     }
 
-    public void setWheretogo(String wheretogo) {
-        this.wheretogo = wheretogo == null ? null : wheretogo.trim();
+    public void setWhereToGo(String whereToGo) {
+        this.whereToGo = whereToGo == null ? null : whereToGo.trim();
     }
 
-    public String getContactphonenumber() {
-        return contactphonenumber;
+    public String getContactPhoneNumber() {
+        return contactPhoneNumber;
     }
 
-    public void setContactphonenumber(String contactphonenumber) {
-        this.contactphonenumber = contactphonenumber == null ? null : contactphonenumber.trim();
+    public void setContactPhoneNumber(String contactPhoneNumber) {
+        this.contactPhoneNumber = contactPhoneNumber == null ? null : contactPhoneNumber.trim();
     }
 
     public String getRemarks() {

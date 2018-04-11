@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.ReceivetargetCheckinMapper">
   <resultMap id="BaseResultMap" type="com.company.bean.ReceivetargetCheckin">
-    <id column="receivetargetCheckInId" jdbcType="VARCHAR" property="receivetargetcheckinid" />
+    <id column="receivetargetCheckInId" jdbcType="VARCHAR" property="receivetargetCheckInId" />
     <result column="tid" jdbcType="INTEGER" property="tid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="roomNumber" jdbcType="VARCHAR" property="roomnumber" />
-    <result column="registerTime" jdbcType="DATE" property="registertime" />
-    <result column="rentOutTypeID" jdbcType="VARCHAR" property="rentouttypeid" />
-    <result column="passengerTypeID" jdbcType="VARCHAR" property="passengertypeid" />
-    <result column="stayNumber" jdbcType="DOUBLE" property="staynumber" />
-    <result column="billUnitID" jdbcType="VARCHAR" property="billunitid" />
-    <result column="depositPayWayID" jdbcType="VARCHAR" property="depositpaywayid" />
-    <result column="changingRoomNumber" jdbcType="INTEGER" property="changingroomnumber" />
-    <result column="changRoomMoney" jdbcType="DOUBLE" property="changroommoney" />
-    <result column="changRoomTime" jdbcType="DATE" property="changroomtime" />
-    <result column="sumConst" jdbcType="DOUBLE" property="sumconst" />
-    <result column="isBillID" jdbcType="VARCHAR" property="isbillid" />
-    <result column="payTime" jdbcType="DATE" property="paytime" />
+    <result column="roomNumber" jdbcType="VARCHAR" property="roomNumber" />
+    <result column="registerTime" jdbcType="DATE" property="registerTime" />
+    <result column="rentOutTypeID" jdbcType="VARCHAR" property="rentOutTypeID" />
+    <result column="passengerTypeID" jdbcType="VARCHAR" property="passengerTypeID" />
+    <result column="stayNumber" jdbcType="DOUBLE" property="stayNumber" />
+    <result column="billUnitID" jdbcType="VARCHAR" property="billUnitID" />
+    <result column="depositPayWayID" jdbcType="VARCHAR" property="depositPayWayID" />
+    <result column="changingRoomNumber" jdbcType="INTEGER" property="changingRoomNumber" />
+    <result column="changRoomMoney" jdbcType="DOUBLE" property="changRoomMoney" />
+    <result column="changRoomTime" jdbcType="DATE" property="changRoomTime" />
+    <result column="sumConst" jdbcType="DOUBLE" property="sumConst" />
+    <result column="isBillID" jdbcType="VARCHAR" property="isBillID" />
+    <result column="payTime" jdbcType="DATE" property="payTime" />
   </resultMap>
   <sql id="Base_Column_List">
     receivetargetCheckInId, tid, pid, roomNumber, registerTime, rentOutTypeID, passengerTypeID, 
@@ -28,11 +28,11 @@
     select 
     <include refid="Base_Column_List" />
     from receivetarget_checkin
-    where receivetargetCheckInId = #{receivetargetcheckinid,jdbcType=VARCHAR}
+    where receivetargetCheckInId = #{receivetargetCheckInId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from receivetarget_checkin
-    where receivetargetCheckInId = #{receivetargetcheckinid,jdbcType=VARCHAR}
+    where receivetargetCheckInId = #{receivetargetCheckInId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.ReceivetargetCheckin">
     insert into receivetarget_checkin (receivetargetCheckInId, tid, pid, 
@@ -41,17 +41,17 @@
       depositPayWayID, changingRoomNumber, changRoomMoney, 
       changRoomTime, sumConst, isBillID, 
       payTime)
-    values (#{receivetargetcheckinid,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
-      #{roomnumber,jdbcType=VARCHAR}, #{registertime,jdbcType=DATE}, #{rentouttypeid,jdbcType=VARCHAR}, 
-      #{passengertypeid,jdbcType=VARCHAR}, #{staynumber,jdbcType=DOUBLE}, #{billunitid,jdbcType=VARCHAR}, 
-      #{depositpaywayid,jdbcType=VARCHAR}, #{changingroomnumber,jdbcType=INTEGER}, #{changroommoney,jdbcType=DOUBLE}, 
-      #{changroomtime,jdbcType=DATE}, #{sumconst,jdbcType=DOUBLE}, #{isbillid,jdbcType=VARCHAR}, 
-      #{paytime,jdbcType=DATE})
+    values (#{receivetargetCheckInId,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{roomNumber,jdbcType=VARCHAR}, #{registerTime,jdbcType=DATE}, #{rentOutTypeID,jdbcType=VARCHAR}, 
+      #{passengerTypeID,jdbcType=VARCHAR}, #{stayNumber,jdbcType=DOUBLE}, #{billUnitID,jdbcType=VARCHAR}, 
+      #{depositPayWayID,jdbcType=VARCHAR}, #{changingRoomNumber,jdbcType=INTEGER}, #{changRoomMoney,jdbcType=DOUBLE}, 
+      #{changRoomTime,jdbcType=DATE}, #{sumConst,jdbcType=DOUBLE}, #{isBillID,jdbcType=VARCHAR}, 
+      #{payTime,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.ReceivetargetCheckin">
     insert into receivetarget_checkin
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="receivetargetcheckinid != null">
+      <if test="receivetargetCheckInId != null">
         receivetargetCheckInId,
       </if>
       <if test="tid != null">
@@ -60,49 +60,49 @@
       <if test="pid != null">
         pid,
       </if>
-      <if test="roomnumber != null">
+      <if test="roomNumber != null">
         roomNumber,
       </if>
-      <if test="registertime != null">
+      <if test="registerTime != null">
         registerTime,
       </if>
-      <if test="rentouttypeid != null">
+      <if test="rentOutTypeID != null">
         rentOutTypeID,
       </if>
-      <if test="passengertypeid != null">
+      <if test="passengerTypeID != null">
         passengerTypeID,
       </if>
-      <if test="staynumber != null">
+      <if test="stayNumber != null">
         stayNumber,
       </if>
-      <if test="billunitid != null">
+      <if test="billUnitID != null">
         billUnitID,
       </if>
-      <if test="depositpaywayid != null">
+      <if test="depositPayWayID != null">
         depositPayWayID,
       </if>
-      <if test="changingroomnumber != null">
+      <if test="changingRoomNumber != null">
         changingRoomNumber,
       </if>
-      <if test="changroommoney != null">
+      <if test="changRoomMoney != null">
         changRoomMoney,
       </if>
-      <if test="changroomtime != null">
+      <if test="changRoomTime != null">
         changRoomTime,
       </if>
-      <if test="sumconst != null">
+      <if test="sumConst != null">
         sumConst,
       </if>
-      <if test="isbillid != null">
+      <if test="isBillID != null">
         isBillID,
       </if>
-      <if test="paytime != null">
+      <if test="payTime != null">
         payTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="receivetargetcheckinid != null">
-        #{receivetargetcheckinid,jdbcType=VARCHAR},
+      <if test="receivetargetCheckInId != null">
+        #{receivetargetCheckInId,jdbcType=VARCHAR},
       </if>
       <if test="tid != null">
         #{tid,jdbcType=INTEGER},
@@ -110,44 +110,44 @@
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roomnumber != null">
-        #{roomnumber,jdbcType=VARCHAR},
+      <if test="roomNumber != null">
+        #{roomNumber,jdbcType=VARCHAR},
       </if>
-      <if test="registertime != null">
-        #{registertime,jdbcType=DATE},
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=DATE},
       </if>
-      <if test="rentouttypeid != null">
-        #{rentouttypeid,jdbcType=VARCHAR},
+      <if test="rentOutTypeID != null">
+        #{rentOutTypeID,jdbcType=VARCHAR},
       </if>
-      <if test="passengertypeid != null">
-        #{passengertypeid,jdbcType=VARCHAR},
+      <if test="passengerTypeID != null">
+        #{passengerTypeID,jdbcType=VARCHAR},
       </if>
-      <if test="staynumber != null">
-        #{staynumber,jdbcType=DOUBLE},
+      <if test="stayNumber != null">
+        #{stayNumber,jdbcType=DOUBLE},
       </if>
-      <if test="billunitid != null">
-        #{billunitid,jdbcType=VARCHAR},
+      <if test="billUnitID != null">
+        #{billUnitID,jdbcType=VARCHAR},
       </if>
-      <if test="depositpaywayid != null">
-        #{depositpaywayid,jdbcType=VARCHAR},
+      <if test="depositPayWayID != null">
+        #{depositPayWayID,jdbcType=VARCHAR},
       </if>
-      <if test="changingroomnumber != null">
-        #{changingroomnumber,jdbcType=INTEGER},
+      <if test="changingRoomNumber != null">
+        #{changingRoomNumber,jdbcType=INTEGER},
       </if>
-      <if test="changroommoney != null">
-        #{changroommoney,jdbcType=DOUBLE},
+      <if test="changRoomMoney != null">
+        #{changRoomMoney,jdbcType=DOUBLE},
       </if>
-      <if test="changroomtime != null">
-        #{changroomtime,jdbcType=DATE},
+      <if test="changRoomTime != null">
+        #{changRoomTime,jdbcType=DATE},
       </if>
-      <if test="sumconst != null">
-        #{sumconst,jdbcType=DOUBLE},
+      <if test="sumConst != null">
+        #{sumConst,jdbcType=DOUBLE},
       </if>
-      <if test="isbillid != null">
-        #{isbillid,jdbcType=VARCHAR},
+      <if test="isBillID != null">
+        #{isBillID,jdbcType=VARCHAR},
       </if>
-      <if test="paytime != null">
-        #{paytime,jdbcType=DATE},
+      <if test="payTime != null">
+        #{payTime,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -160,65 +160,65 @@
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="roomnumber != null">
-        roomNumber = #{roomnumber,jdbcType=VARCHAR},
+      <if test="roomNumber != null">
+        roomNumber = #{roomNumber,jdbcType=VARCHAR},
       </if>
-      <if test="registertime != null">
-        registerTime = #{registertime,jdbcType=DATE},
+      <if test="registerTime != null">
+        registerTime = #{registerTime,jdbcType=DATE},
       </if>
-      <if test="rentouttypeid != null">
-        rentOutTypeID = #{rentouttypeid,jdbcType=VARCHAR},
+      <if test="rentOutTypeID != null">
+        rentOutTypeID = #{rentOutTypeID,jdbcType=VARCHAR},
       </if>
-      <if test="passengertypeid != null">
-        passengerTypeID = #{passengertypeid,jdbcType=VARCHAR},
+      <if test="passengerTypeID != null">
+        passengerTypeID = #{passengerTypeID,jdbcType=VARCHAR},
       </if>
-      <if test="staynumber != null">
-        stayNumber = #{staynumber,jdbcType=DOUBLE},
+      <if test="stayNumber != null">
+        stayNumber = #{stayNumber,jdbcType=DOUBLE},
       </if>
-      <if test="billunitid != null">
-        billUnitID = #{billunitid,jdbcType=VARCHAR},
+      <if test="billUnitID != null">
+        billUnitID = #{billUnitID,jdbcType=VARCHAR},
       </if>
-      <if test="depositpaywayid != null">
-        depositPayWayID = #{depositpaywayid,jdbcType=VARCHAR},
+      <if test="depositPayWayID != null">
+        depositPayWayID = #{depositPayWayID,jdbcType=VARCHAR},
       </if>
-      <if test="changingroomnumber != null">
-        changingRoomNumber = #{changingroomnumber,jdbcType=INTEGER},
+      <if test="changingRoomNumber != null">
+        changingRoomNumber = #{changingRoomNumber,jdbcType=INTEGER},
       </if>
-      <if test="changroommoney != null">
-        changRoomMoney = #{changroommoney,jdbcType=DOUBLE},
+      <if test="changRoomMoney != null">
+        changRoomMoney = #{changRoomMoney,jdbcType=DOUBLE},
       </if>
-      <if test="changroomtime != null">
-        changRoomTime = #{changroomtime,jdbcType=DATE},
+      <if test="changRoomTime != null">
+        changRoomTime = #{changRoomTime,jdbcType=DATE},
       </if>
-      <if test="sumconst != null">
-        sumConst = #{sumconst,jdbcType=DOUBLE},
+      <if test="sumConst != null">
+        sumConst = #{sumConst,jdbcType=DOUBLE},
       </if>
-      <if test="isbillid != null">
-        isBillID = #{isbillid,jdbcType=VARCHAR},
+      <if test="isBillID != null">
+        isBillID = #{isBillID,jdbcType=VARCHAR},
       </if>
-      <if test="paytime != null">
-        payTime = #{paytime,jdbcType=DATE},
+      <if test="payTime != null">
+        payTime = #{payTime,jdbcType=DATE},
       </if>
     </set>
-    where receivetargetCheckInId = #{receivetargetcheckinid,jdbcType=VARCHAR}
+    where receivetargetCheckInId = #{receivetargetCheckInId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.company.bean.ReceivetargetCheckin">
     update receivetarget_checkin
     set tid = #{tid,jdbcType=INTEGER},
       pid = #{pid,jdbcType=INTEGER},
-      roomNumber = #{roomnumber,jdbcType=VARCHAR},
-      registerTime = #{registertime,jdbcType=DATE},
-      rentOutTypeID = #{rentouttypeid,jdbcType=VARCHAR},
-      passengerTypeID = #{passengertypeid,jdbcType=VARCHAR},
-      stayNumber = #{staynumber,jdbcType=DOUBLE},
-      billUnitID = #{billunitid,jdbcType=VARCHAR},
-      depositPayWayID = #{depositpaywayid,jdbcType=VARCHAR},
-      changingRoomNumber = #{changingroomnumber,jdbcType=INTEGER},
-      changRoomMoney = #{changroommoney,jdbcType=DOUBLE},
-      changRoomTime = #{changroomtime,jdbcType=DATE},
-      sumConst = #{sumconst,jdbcType=DOUBLE},
-      isBillID = #{isbillid,jdbcType=VARCHAR},
-      payTime = #{paytime,jdbcType=DATE}
-    where receivetargetCheckInId = #{receivetargetcheckinid,jdbcType=VARCHAR}
+      roomNumber = #{roomNumber,jdbcType=VARCHAR},
+      registerTime = #{registerTime,jdbcType=DATE},
+      rentOutTypeID = #{rentOutTypeID,jdbcType=VARCHAR},
+      passengerTypeID = #{passengerTypeID,jdbcType=VARCHAR},
+      stayNumber = #{stayNumber,jdbcType=DOUBLE},
+      billUnitID = #{billUnitID,jdbcType=VARCHAR},
+      depositPayWayID = #{depositPayWayID,jdbcType=VARCHAR},
+      changingRoomNumber = #{changingRoomNumber,jdbcType=INTEGER},
+      changRoomMoney = #{changRoomMoney,jdbcType=DOUBLE},
+      changRoomTime = #{changRoomTime,jdbcType=DATE},
+      sumConst = #{sumConst,jdbcType=DOUBLE},
+      isBillID = #{isBillID,jdbcType=VARCHAR},
+      payTime = #{payTime,jdbcType=DATE}
+    where receivetargetCheckInId = #{receivetargetCheckInId,jdbcType=VARCHAR}
   </update>
 </mapper>

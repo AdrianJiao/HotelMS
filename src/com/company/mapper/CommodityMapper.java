@@ -3,13 +3,13 @@ package com.company.mapper;
 import com.company.bean.Commodity;
 
 public interface CommodityMapper {
-    int deleteByPrimaryKey(String commodityname);
+    int deleteByPrimaryKey(String commodityName);
 
     int insert(Commodity record);
 
     int insertSelective(Commodity record);
 
-    Commodity selectByPrimaryKey(String commodityname);
+    Commodity selectByPrimaryKey(String commodityName);
 
     int updateByPrimaryKeySelective(Commodity record);
 
