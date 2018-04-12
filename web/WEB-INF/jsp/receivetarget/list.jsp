@@ -111,7 +111,8 @@
 	      <tbody id="tbody">
 	        <c:forEach items="${list.result}" var="item">
 		        <tr>
-		          <td><input type="checkbox" name="id" value="${item.id}"></td>
+                    <%--将id改为tid--%>
+		          <td><input type="checkbox" name="tid" value="${item.tid}"></td>
 		          <td>${item.targetTypeName}</td>
 		          <td>${item.teamName}</td>
 		          <td>${item.teamCode}</td>
@@ -175,8 +176,8 @@
    
   /* 分页要用的 */
   $(".tcdPageCode").createPage({
-     pageCount:${list.totalPage}1,
-     current:${list.currentPage}1,
+     pageCount:${list.totalPage},
+     current:${list.currentPage},
      backFn:function(p){
      var txtname=document.getElementById("txtnameid").value;
      location.href="${ctx}/ReceiveTarget/tolist.do?currentPage="+p+"&txtname="+txtname;

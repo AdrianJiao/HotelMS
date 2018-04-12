@@ -122,14 +122,33 @@
     where teamCode = #{teamCode}
   </select>
 
-  <select id="countReceivetargetNum" resultType="int">
-    select COUNT (*) from receivetarget;
+  <select id="countAllReceivetargetNum" resultType="int">
+    select count(*) from receivetarget;
   </select>
 
+  <!--不能传递多个参数-->
+  <select id="queryPartReceivetargets" parameterType="hashmap" resultType="receivetarget">
+    select * from receivetarget tempa
+    left outer join
+    (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+    as tempb
+    on tempa.targetTypeID = tempb.far_id
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        tempa.teamName like #{txtname}
+      </if>
+    </where>
+    limit #{limit} offset #{offset};
+  </select>
 
-  <select id="queryPartReceivetargets" resultType="receivetarget">
-    select
-    <include refid="Base_Column_List" />
-    from receivetarget  limit #{limit} offset #{offset};
+  <!--查询团名为某个参数的数量-->
+  <select id="countReceivetargetNumByTeamName" parameterType="string" resultType="int">
+    select  count(*)
+    from receivetarget
+    <where>
+      <if test="_parameter != null and ! _parameter.isEmpty()">
+        teamName like #{txtname}
+      </if>
+    </where>
   </select>
 </mapper>

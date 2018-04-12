@@ -7,6 +7,7 @@ import com.company.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -31,17 +32,26 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
     }
 
     @Override
-    public int countReceivetargetNum() {
-        return receivetargetMapper.countReceivetargetNum();
+    public int countAllReceivetargetNum() {
+        return receivetargetMapper.countAllReceivetargetNum();
     }
 
     @Override
-    public Page<Receivetarget> queryPartReceivetargets(int currentPage) {
-        int totalRecordsNum = receivetargetMapper.countReceivetargetNum();
+    public int countReceivetargetNumByTeamName(String txtname) {
+        return receivetargetMapper.countReceivetargetNumByTeamName(txtname);
+    }
 
-        List<Receivetarget> receivetargets = receivetargetMapper.queryPartReceivetargets(
-                Page.RECEIVETARGET_PER_PAGE_RECORD_NUM,
-                (currentPage - 1) * Page.RECEIVETARGET_PER_PAGE_RECORD_NUM);
+    @Override
+    public Page<Receivetarget> queryPartReceivetargets(int currentPage,String txtname) {
+        //统计符合要求的总条数
+        int totalRecordsNum = receivetargetMapper.countReceivetargetNumByTeamName(txtname);
+
+        HashMap<String, Object> parameters = new HashMap<>();
+        parameters.put("limit",Page.RECEIVETARGET_PER_PAGE_RECORD_NUM);
+        parameters.put("offset",(currentPage - 1) * Page.RECEIVETARGET_PER_PAGE_RECORD_NUM);
+        parameters.put("txtname",txtname);
+
+        List<Receivetarget> receivetargets = receivetargetMapper.queryPartReceivetargets(parameters);
 
         return new Page<>(Page.RECEIVETARGET_PER_PAGE_RECORD_NUM,totalRecordsNum,receivetargets,currentPage);
     }
