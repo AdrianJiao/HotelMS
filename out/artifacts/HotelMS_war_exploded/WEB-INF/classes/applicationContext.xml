@@ -31,7 +31,7 @@
 
     <!--mybatis使用自定义数据源-->
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="jdbcUrl" value="jdbc:mysql://192.168.3.45:3306/hotelms"/>
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.3.6:3306/hotelms"/>
         <property name="user" value="root"/>
         <property name="password" value="1234"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
