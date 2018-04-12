@@ -28,4 +28,10 @@ public interface ReceivetargetMapper {
 
     //分页查询结果
     List<Receivetarget> queryPartReceivetargets(Map<String,Object> parameters);
+
+    //根据tid查询Receivetarget(填充name字段)
+    Receivetarget queryReceivetargetByTid(int tid);
+
+    //批量删除
+    int deleteBatchByTid(String[] tid);
 }

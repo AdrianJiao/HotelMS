@@ -151,4 +151,25 @@
       </if>
     </where>
   </select>
+
+  <!--根据tid查询Receivetarget(填充name字段)-->
+  <select id="queryReceivetargetByTid" parameterType="int" resultType="receivetarget">
+    select  <include refid="Base_Column_List" />
+    from receivetarget tempa
+    left outer join
+    (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+    as tempb
+    on tempa.targetTypeID = tempb.far_id
+    where tid = #{tid}
+  </select>
+
+  <!--批量删除-->
+  <delete id="deleteBatchByTid" >
+    delete from receivetarget
+    <where>
+      <foreach collection="array" item="tid">
+        or tid = #{tid}
+      </foreach>
+    </where>
+  </delete>
 </mapper>
