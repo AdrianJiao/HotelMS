@@ -13,9 +13,12 @@ public interface ReceivetargetService {
 
     List<Receivetarget> queryReceivetargetByTeamCode(String teamCode);
 
-    //查询接待对象的数量
-    int countReceivetargetNum();
+    //查询所有接待对象的数量
+    int countAllReceivetargetNum();
+
+    //查询团名为某个参数的数量
+    int countReceivetargetNumByTeamName(String txtname);
 
     //分页查询结果
-    Page<Receivetarget> queryPartReceivetargets(int currentPage);
+    Page<Receivetarget> queryPartReceivetargets(int currentPage,String txtname);
 }

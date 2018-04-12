@@ -30,13 +30,27 @@ public class ReceivetargetController {
 
     //跳转到显示接待对象界面
     @RequestMapping("tolist")
-    public String showReceivetars(Model model) {
+    public String showReceivetars(String currentPage, String txtname,Model model) {
+        int currentPageInt;
 
-       /* //首页展示
-        Page<Receivetarget> receivetargetPage = receivetargetService.queryPartReceivetargets(1);
-      */
+        if(currentPage==null||"".equals(currentPage)){
+            //进入首页
+            currentPageInt = 1;
+        }else {
+            //分页页码
+            currentPageInt = Integer.parseInt(currentPage);
+        }
 
+        if(txtname!=null&&!"".equals(txtname)){
+            //搜索字段
+            txtname = "%"+txtname+"%";
+        }
 
+        Page<Receivetarget> receivetargetPage =
+                receivetargetService.queryPartReceivetargets(currentPageInt,txtname);
+
+        //添加到视图中
+        model.addAttribute("list",receivetargetPage);
         return "receivetarget/list";
     }
 
@@ -61,10 +75,10 @@ public class ReceivetargetController {
 
     //检查团队名是否存在
     @RequestMapping("YZ")
-    public void checkTeamCode(String teamCode,HttpServletResponse response) throws IOException {
+    public void checkTeamCode(String teamCode, HttpServletResponse response) throws IOException {
         //ajax直接使用response返回
         List<Receivetarget> receivetargets = receivetargetService.queryReceivetargetByTeamCode(teamCode);
-        if (receivetargets.size()>=1) {
+        if (receivetargets.size() >= 1) {
             response.getWriter().write("1");
         }
         response.getWriter().write("0");
