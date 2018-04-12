@@ -21,8 +21,9 @@
     </servlet-mapping>
 
     <!--错误页面自定义-->
-    <error-page>
+    <!--为了显示错误路径暂时可以注掉-->
+   <!-- <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/jsp/error/error.jsp</location>
-    </error-page>
+    </error-page>-->
 </web-app>

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -82,5 +81,41 @@ public class ReceivetargetController {
             response.getWriter().write("1");
         }
         response.getWriter().write("0");
+    }
+
+
+    @RequestMapping("toupdate")
+    public String toUpdate(String tid,Model model){
+
+        //填充对象类别
+        int aid = attributeService.queryAidByAttributeName("对象类别");
+        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
+        model.addAttribute("listOne", attributevalues);
+
+        //根据tid查询数据回显
+        Receivetarget receivetarget = receivetargetService.queryReceivetargetByTid(Integer.parseInt(tid));
+        model.addAttribute("list",receivetarget);
+        return "receivetarget/update";
+    }
+
+
+    //修改接待对象信息
+    @RequestMapping("update")
+    public String update(Receivetarget receivetarget,HttpServletRequest request){
+        receivetargetService.updateReceivetarget(receivetarget);
+
+        String contextPath = request.getServletContext().getContextPath();
+
+        //转到tolist请求
+        return "redirect:tolist.do";
+    }
+
+    //批量删除Receivetarget
+    @RequestMapping("delete")
+    public String deleteReceivetars (String[] tid) {
+        receivetargetService.deleteBatchByTid(tid);
+
+        //转到tolist请求
+        return "redirect:tolist.do";
     }
 }

@@ -21,4 +21,10 @@ public interface ReceivetargetService {
 
     //分页查询结果
     Page<Receivetarget> queryPartReceivetargets(int currentPage,String txtname);
+
+    //根据tid查询Receivetarget(填充name字段)
+    Receivetarget queryReceivetargetByTid(int tid);
+
+    //批量删除
+    int deleteBatchByTid(String[] tid);
 }

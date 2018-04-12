@@ -41,6 +41,7 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
         return receivetargetMapper.countReceivetargetNumByTeamName(txtname);
     }
 
+
     @Override
     public Page<Receivetarget> queryPartReceivetargets(int currentPage,String txtname) {
         //统计符合要求的总条数
@@ -54,5 +55,15 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
         List<Receivetarget> receivetargets = receivetargetMapper.queryPartReceivetargets(parameters);
 
         return new Page<>(Page.RECEIVETARGET_PER_PAGE_RECORD_NUM,totalRecordsNum,receivetargets,currentPage);
+    }
+
+    @Override
+    public Receivetarget queryReceivetargetByTid(int tid) {
+        return receivetargetMapper.queryReceivetargetByTid(tid);
+    }
+
+    @Override
+    public int deleteBatchByTid(String[] tid) {
+        return receivetargetMapper.deleteBatchByTid(tid);
     }
 }
