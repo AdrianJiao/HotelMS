@@ -17,6 +17,16 @@ public class Receivetarget {
 
     private String contactPhoneNUmber;
 
+    private String targetTypeName;
+
+    public String getTargetTypeName() {
+        return targetTypeName;
+    }
+
+    public void setTargetTypeName(String targetTypeName) {
+        this.targetTypeName = targetTypeName;
+    }
+
     public Integer getTid() {
         return tid;
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="hotelms@localhost">
+<dataSource name="hotelms@192.168.3.6">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -985,7 +985,7 @@
     </column>
     <column id="245" parent="212" name="consumptionTime">
       <Position>5</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="246" parent="212" name="FK_consumption_commodityName">
@@ -1010,7 +1010,7 @@
     </column>
     <column id="250" parent="213" name="depositRegisterTime">
       <Position>2</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="251" parent="213" name="deposit">
@@ -1050,7 +1050,7 @@
     <column id="257" parent="214" name="birthDate">
       <Position>4</Position>
       <Comment>出生日期</Comment>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="258" parent="214" name="nationID">
@@ -1068,7 +1068,7 @@
     <column id="260" parent="214" name="papersValidity">
       <Position>7</Position>
       <Comment>证件有效期</Comment>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="261" parent="214" name="profession">
@@ -1160,7 +1160,7 @@
     </column>
     <column id="276" parent="215" name="registerTime">
       <Position>4</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="277" parent="215" name="rentOutTypeID">
@@ -1200,7 +1200,7 @@
     </column>
     <column id="284" parent="215" name="changRoomTime">
       <Position>12</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="285" parent="215" name="sumConst">
@@ -1215,7 +1215,7 @@
     </column>
     <column id="287" parent="215" name="payTime">
       <Position>15</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="288" parent="215" name="FK_passenger_checkin_pid">
@@ -1274,7 +1274,7 @@
     </column>
     <column id="299" parent="216" name="arriveTime">
       <Position>7</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="300" parent="216" name="reserveState">
@@ -1339,7 +1339,7 @@
     <column id="311" parent="217" name="registerTime">
       <Position>6</Position>
       <Comment>登记时间</Comment>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="312" parent="217" name="contactPhoneNUmber">
@@ -1376,7 +1376,7 @@
     </column>
     <column id="318" parent="218" name="registerTime">
       <Position>5</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="319" parent="218" name="rentOutTypeID">
@@ -1416,7 +1416,7 @@
     </column>
     <column id="326" parent="218" name="changRoomTime">
       <Position>13</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="327" parent="218" name="sumConst">
@@ -1431,7 +1431,7 @@
     </column>
     <column id="329" parent="218" name="payTime">
       <Position>16</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="330" parent="218" name="FK_receivetarget_checkin_tid">
@@ -1499,7 +1499,7 @@
     </column>
     <column id="343" parent="219" name="arriveTime">
       <Position>7</Position>
-      <DataType>date|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="344" parent="219" name="reserveState">

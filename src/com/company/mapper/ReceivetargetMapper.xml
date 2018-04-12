@@ -121,4 +121,15 @@
     from receivetarget
     where teamCode = #{teamCode}
   </select>
+
+  <select id="countReceivetargetNum" resultType="int">
+    select COUNT (*) from receivetarget;
+  </select>
+
+
+  <select id="queryPartReceivetargets" resultType="receivetarget">
+    select
+    <include refid="Base_Column_List" />
+    from receivetarget  limit #{limit} offset #{offset};
+  </select>
 </mapper>
