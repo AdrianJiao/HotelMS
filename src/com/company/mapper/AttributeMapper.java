@@ -14,4 +14,6 @@ public interface AttributeMapper {
     int updateByPrimaryKeySelective(Attribute record);
 
     int updateByPrimaryKey(Attribute record);
+
+    int queryAidByAttributeName(String attributeName);
 }

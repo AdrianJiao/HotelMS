@@ -68,4 +68,11 @@
       attributeDetailsName = #{attributeDetailsName,jdbcType=VARCHAR}
     where far_id = #{far_id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAttributevalueByAid" parameterType="int" resultType="attributevalue">
+    select
+    <include refid="Base_Column_List" />
+    from attributevalue
+    where aid = #{aid}
+  </select>
 </mapper>

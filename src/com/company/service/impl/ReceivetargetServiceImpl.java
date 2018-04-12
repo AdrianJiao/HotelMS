@@ -14,6 +14,8 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
     @Autowired
     ReceivetargetMapper receivetargetMapper;
 
+
+
     @Override
     public int addReceivetarget(Receivetarget receivetarget) {
         return receivetargetMapper.insert(receivetarget);

@@ -2,6 +2,8 @@ package com.company.mapper;
 
 import com.company.bean.Attributevalue;
 
+import java.util.List;
+
 public interface AttributevalueMapper {
     int deleteByPrimaryKey(Integer far_id);
 
@@ -14,4 +16,6 @@ public interface AttributevalueMapper {
     int updateByPrimaryKeySelective(Attributevalue record);
 
     int updateByPrimaryKey(Attributevalue record);
+
+    List<Attributevalue> queryAttributevalueByAid(int aid);
 }

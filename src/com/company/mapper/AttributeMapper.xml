@@ -55,4 +55,8 @@
     set attributeName = #{attributeName,jdbcType=VARCHAR}
     where aid = #{aid,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAidByAttributeName" parameterType="string" resultType="int">
+    select aid from attribute where attributeName like #{attributeName};
+  </select>
 </mapper>

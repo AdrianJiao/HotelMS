@@ -1,6 +1,9 @@
 package com.company.controller;
 
+import com.company.bean.Attributevalue;
 import com.company.bean.Receivetarget;
+import com.company.service.AttributeService;
+import com.company.service.AttributevalueService;
 import com.company.service.ReceivetargetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,7 @@ public class ReceivetargetController {
     @RequestMapping("toadd")
     public String toAddReceivetar(Model model){
         //填充对象类别
+
         return  "receivetarget/add";
     }
 
@@ -33,6 +37,8 @@ public class ReceivetargetController {
     @RequestMapping("add")
     public String addReceivetar(Receivetarget receivetarget){
         receivetargetService.addReceivetarget(receivetarget);
+
+
         return  "receivetarget/list";
     }
 
@@ -46,4 +52,5 @@ public class ReceivetargetController {
         }
         return 0;
     }
+
 }

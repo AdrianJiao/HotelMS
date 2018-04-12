@@ -30,4 +30,13 @@ public class Attributevalue {
     public void setAttributeDetailsName(String attributeDetailsName) {
         this.attributeDetailsName = attributeDetailsName == null ? null : attributeDetailsName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Attributevalue{" +
+                "far_id=" + far_id +
+                ", aid=" + aid +
+                ", attributeDetailsName='" + attributeDetailsName + '\'' +
+                '}';
+    }
 }

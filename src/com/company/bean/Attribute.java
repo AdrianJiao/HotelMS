@@ -20,4 +20,12 @@ public class Attribute {
     public void setAttributeName(String attributeName) {
         this.attributeName = attributeName == null ? null : attributeName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Attribute{" +
+                "aid=" + aid +
+                ", attributeName='" + attributeName + '\'' +
+                '}';
+    }
 }
