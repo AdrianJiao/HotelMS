@@ -3,9 +3,14 @@ package com.company.service.impl;
 import com.company.bean.Passenger;
 import com.company.mapper.PassengerMapper;
 import com.company.service.PassengerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+@Service(value = "passengerService")
 public class PassengerServiceImpl  implements PassengerService{
 
+    @Autowired
     PassengerMapper passengerMapper;
 
     @Override

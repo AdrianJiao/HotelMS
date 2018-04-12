@@ -18,4 +18,9 @@ public class AttributevalueServiceImpl implements AttributevalueService {
     public List<Attributevalue> queryAttributevalueByAid(int aid) {
         return attributevalueMapper.queryAttributevalueByAid(aid);
     }
+
+    @Override
+    public Attributevalue queryAttributevalueByFar_id(Integer far_id){
+        return attributevalueMapper.selectByPrimaryKey(far_id);
+    }
 }
