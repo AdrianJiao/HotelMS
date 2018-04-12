@@ -21,6 +21,7 @@ public class Page<T> {
     //当前页码数
     private int currentPage;
 
+
     //调用这个Page的构造方法
     public Page(int perPageRecordNum, int totalRecordsNum, List<T> result, int currentPage) {
         this.perPageRecordNum = perPageRecordNum;
