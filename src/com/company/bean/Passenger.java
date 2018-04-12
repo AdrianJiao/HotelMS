@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Passenger {
 
-    //证件id
+    //id
     private Integer pid;
 
     //姓名
