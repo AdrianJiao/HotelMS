@@ -260,8 +260,8 @@
    
    /* 分页要用的 */
    $(".tcdPageCode").createPage({
-     pageCount:${list.totalPage},
-     current:${list.currentPage},
+     pageCount:${list.totalPage}1,
+     current:${list.currentPage}1,
      backFn:function(p){
      var txtname=document.getElementById("txtnameid").value;
      location.href="${ctx}/RoomSet/tolist.do?currentPage="+p+"&txtname="+txtname;
