@@ -3,40 +3,59 @@ package com.company.bean;
 import java.util.Date;
 
 public class Passenger {
+
+    //id
     private Integer pid;
 
+    //姓名
     private String name;
 
+    //性别id
     private String genderID;
 
+    //生日
     private Date birthDate;
 
+    //民族id
     private String nationID;
 
+    //发证机关
     private String licenceIssuingAuthorty;
 
+    //证件有效期
     private Date papersValidity;
 
+    //职业
     private String profession;
 
+    //文化程度id
     private String educationDegreeID;
 
+    //旅客级别ID
     private String passengerLevelID;
 
+    //证件ID
     private String papersID;
 
+    //证件号码
     private String papersNumber;
 
+    //地址
     private String unitsOrAddress;
 
+    //事情缘由ID
     private String thingReasonID;
 
+    //来自哪里
     private String whereAreFrom;
 
+    //要去哪里
     private String whereToGo;
 
+    //联系电话
     private String contactPhoneNumber;
 
+    //备注
     private String remarks;
 
     public Integer getPid() {
