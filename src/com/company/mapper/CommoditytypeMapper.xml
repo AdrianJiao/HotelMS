@@ -19,10 +19,8 @@
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.Commoditytype">
-    insert into commoditytype (commodityTypeID, commodityTypeName
-      )
-    values (#{commodityTypeID,jdbcType=VARCHAR}, #{commodityTypeName,jdbcType=VARCHAR}
-      )
+    insert into commoditytype (commodityTypeID, commodityTypeName)
+    values (#{commodityTypeID,jdbcType=VARCHAR}, #{commodityTypeName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Commoditytype">
     insert into commoditytype
@@ -57,4 +55,8 @@
     set commodityTypeName = #{commodityTypeName,jdbcType=VARCHAR}
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
+
+  <select id="findAllCommoditytype" parameterType="com.company.bean.Commoditytype">
+    SELECT * FROM commoditytype
+  </select>
 </mapper>

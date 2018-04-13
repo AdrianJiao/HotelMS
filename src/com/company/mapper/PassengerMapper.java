@@ -1,24 +1,31 @@
 package com.company.mapper;
 
 import com.company.bean.Passenger;
+import com.company.utils.Page;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 public interface PassengerMapper {
 
-    //删除选中
-    int deleteByPrimaryKey(Integer pid);
+    int deleteByPrimaryKey(Integer id);
 
-    //插入全部
-    int insert(Passenger record);
+    int insertAll(Passenger passenger);
 
-    //插入选中
-    int insertSelective(Passenger record);
+    Passenger selectById(Integer id);
 
-    //根据选中id
-    Passenger selectByPrimaryKey(Integer pid);
+    int updateById(Passenger passenger);
 
-    //更新选中
-    int updateByPrimaryKeySelective(Passenger record);
+    int countPassengerNumByName(String txtname);
 
-    //更新全部
-    int updateByPrimaryKey(Passenger record);
+    List<Passenger> queryPartPassengers(Map<String, Object> parameters);
+
+    Passenger queryPassengerByPid(int pid);
+
+    int deleteBatchByPid(String[] pid);
+
+    List<Passenger> queryAllPassenger();
+
+    List<Passenger> queryPassengerByName(String txtname);
 }

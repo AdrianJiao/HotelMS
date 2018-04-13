@@ -113,7 +113,7 @@
 	      <tbody id="tbody">
 	        <c:forEach items="${list.result}" var="item">
 		        <tr>
-		          <td><input type="checkbox" name="id" value="${item.id}"></td>
+		          <td><input type="checkbox" name="pid" value="${item.pid}"></td>
 		          <td>${item.name}</td>
 		          <td>${item.genderName}</td>
 		          <td>${item.birthDate}</td>
@@ -146,14 +146,14 @@
    
    function updatefunction(){
    var chk_value=[];
-  	$('input[name="id"]:checked').each(function(){
+  	$('input[name="pid"]:checked').each(function(){
   		chk_value.push($(this).val());
   	});
   	if(chk_value!=""){
 		if(chk_value.toString().indexOf(",")>0){
 		   alert("修改只能选择一条");
 		}else{
-		   parent.document.getElementById("Mainid").src='${ctx}/Passenger/toupdate.do?id='+chk_value;
+		   parent.document.getElementById("Mainid").src='${ctx}/Passenger/toupdate.do?pid='+chk_value;
 		}
 	}else{
 	  alert("请选择一条数据进行修改");
@@ -162,13 +162,13 @@
   
    function deletefunction(){
    var chk_value=[];
-  	$('input[name="id"]:checked').each(function(){
+  	$('input[name="pid"]:checked').each(function(){
   		chk_value.push($(this).val());
   	});
   	if(chk_value!=""){
   	var flag=window.confirm("注意：您确定要永久删除该信息吗?");
      if(flag){
-  	  parent.document.getElementById("Mainid").src='${ctx}/Passenger/delete.do?id='+chk_value;
+  	  parent.document.getElementById("Mainid").src='${ctx}/Passenger/delete.do?pid='+chk_value;
   	}
   	}else{
 	  alert("请选择一条或多条数据进行删除");
@@ -184,8 +184,8 @@
    
   /* 分页要用的 */
   $(".tcdPageCode").createPage({
-     pageCount:${list.totalPage}1,
-     current:${list.currentPage}1,
+     pageCount:${list.totalPage},
+     current:${list.currentPage},
      backFn:function(p){
      var txtname=document.getElementById("txtnameid").value;
      location.href="${ctx}/Passenger/tolist.do?currentPage="+p+"&txtname="+txtname;

@@ -82,4 +82,18 @@ public class Receivetarget {
     public void setContactPhoneNUmber(String contactPhoneNUmber) {
         this.contactPhoneNUmber = contactPhoneNUmber == null ? null : contactPhoneNUmber.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Receivetarget{" +
+                "tid=" + tid +
+                ", targetTypeID='" + targetTypeID + '\'' +
+                ", principal='" + principal + '\'' +
+                ", teamName='" + teamName + '\'' +
+                ", teamCode='" + teamCode + '\'' +
+                ", registerTime=" + registerTime +
+                ", contactPhoneNUmber='" + contactPhoneNUmber + '\'' +
+                ", targetTypeName='" + targetTypeName + '\'' +
+                '}';
+    }
 }
