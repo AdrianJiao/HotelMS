@@ -357,7 +357,8 @@
 	      <tbody id="tbody">
 	        <c:forEach items="${list}" var="item">
 		        <tr>
-		          <td><input type="radio" name="id" value="${item.id}"></td>
+					<%--这里是pid--%>
+		          <td><input type="radio" name="pid" value="${item.pid}"></td>
 		          <td></td>
 		          <td></td>
 		          <td></td>
@@ -421,7 +422,7 @@
                 var tdPapersName = tr.insertCell(-1);
                 var tdPapersNumber = tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='id' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='pid' value='"+item.pid+"'>";
                 tdName.innerHTML = item.name;
                 tdGender.innerHTML = item.genderName;
                 tdPapersName.innerHTML =item.papersName;         //中间这个是数据
@@ -456,7 +457,9 @@
    
    function confirmfunction(){
      var chk_value=[];
-  	$('input[name="id"]:checked').each(function(){
+
+     /*提供的是pid*/
+  	$('input[name="pid"]:checked').each(function(){
   		chk_value.push($(this).val());
   	});
   	if(chk_value!=""){
@@ -468,15 +471,16 @@
 	         cache:false,
 	         type: "POST",
 	         url: '${ctx}/StayRegister/confirmPassenger.do',
-	         data:"id="+chk_value,
+	         data:"pid="+chk_value,
 	         async:false,
 	         success: function (result) {
 	         
 	            Name=result.papersNumber;
 	            document.getElementById("divTwo").style.display="none";
 	            document.getElementById("divOne").style.display="none";
-	        
-	            document.getElementById("lvKeId").value=result.id;
+
+	            /*经过查询的pid的结果是lvKeId*/
+	            document.getElementById("lvKeId").value=result.pid;
 	            
 	            document.getElementById("nameId").value=result.name;
 	            document.getElementById("genderId").value=result.genderID;

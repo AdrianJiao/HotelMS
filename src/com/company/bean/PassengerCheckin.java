@@ -39,6 +39,57 @@ public class PassengerCheckin {
     //房间对象
     private Room room;
 
+    //ID转Name的相应字段（5个）
+    private String rentOutTypeName;
+
+    private String passengerTypeName;
+
+    private String billUnitName;
+
+    private String depositPayWayName;
+
+    private String isBillName;
+
+    public String getRentOutTypeName() {
+        return rentOutTypeName;
+    }
+
+    public void setRentOutTypeName(String rentOutTypeName) {
+        this.rentOutTypeName = rentOutTypeName;
+    }
+
+    public String getPassengerTypeName() {
+        return passengerTypeName;
+    }
+
+    public void setPassengerTypeName(String passengerTypeName) {
+        this.passengerTypeName = passengerTypeName;
+    }
+
+    public String getBillUnitName() {
+        return billUnitName;
+    }
+
+    public void setBillUnitName(String billUnitName) {
+        this.billUnitName = billUnitName;
+    }
+
+    public String getDepositPayWayName() {
+        return depositPayWayName;
+    }
+
+    public void setDepositPayWayName(String depositPayWayName) {
+        this.depositPayWayName = depositPayWayName;
+    }
+
+    public String getIsBillName() {
+        return isBillName;
+    }
+
+    public void setIsBillName(String isBillName) {
+        this.isBillName = isBillName;
+    }
+
     public Passenger getPassenger() {
         return passenger;
     }
@@ -175,7 +226,6 @@ public class PassengerCheckin {
         this.payTime = payTime;
     }
 
-
     @Override
     public String toString() {
         return "PassengerCheckin{" +
@@ -196,6 +246,11 @@ public class PassengerCheckin {
                 ", payTime=" + payTime +
                 ", passenger=" + passenger +
                 ", room=" + room +
+                ", rentOutTypeName='" + rentOutTypeName + '\'' +
+                ", passengerTypeName='" + passengerTypeName + '\'' +
+                ", billUnitName='" + billUnitName + '\'' +
+                ", depositPayWayName='" + depositPayWayName + '\'' +
+                ", isBillName='" + isBillName + '\'' +
                 '}';
     }
 }

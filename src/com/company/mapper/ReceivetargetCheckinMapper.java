@@ -2,6 +2,8 @@ package com.company.mapper;
 
 import com.company.bean.ReceivetargetCheckin;
 
+import java.util.Map;
+
 public interface ReceivetargetCheckinMapper {
     int deleteByPrimaryKey(String receivetargetCheckInId);
 
