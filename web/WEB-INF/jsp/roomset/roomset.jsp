@@ -148,7 +148,8 @@
 		            <td style="background:#FF00FF;">${item.roomName}</td>
 		          </c:if>
 
-				  <td>${item.roomStateID}</td>
+						<%--多余字段--%>
+				  <%--<td>${item.roomStateID}</td>--%>
 				  <td>${item.roomAmount}</td>
 		          <td>￥${item.standardPriceDay}</td>
 		          <td>￥${item.standardPrice}</td>
