@@ -34,4 +34,12 @@ public interface RoomMapper {
     //批量删除房间信息
     int deleteBatchByRoom(String[] roomNumber);
 
+    //查询房间状态为空房的所有房间(填充相应字段)
+    List<Room> queryAllEmptyRoom();
+
+    //查询所有房间信息(填充相应字段)
+    List<Room> queryAllRoom();
+
+    //根据房间号查询所有房间(填充相应字段)
+    List<Room> queryAllRoomByRoomNumber(String roomName);
 }

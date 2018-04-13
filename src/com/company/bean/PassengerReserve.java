@@ -25,6 +25,7 @@ public class PassengerReserve {
     //房间对象
     private Room room;
 
+
     public Passenger getPassenger() {
         return passenger;
     }

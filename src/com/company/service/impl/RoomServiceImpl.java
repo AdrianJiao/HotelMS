@@ -70,4 +70,19 @@ public class RoomServiceImpl implements RoomService {
     public int deleteBatchByRoom(String[] roomNumber) {
         return roomMapper.deleteBatchByRoom(roomNumber);
     }
+
+    @Override
+    public List<Room> queryAllEmptyRoom() {
+        return roomMapper.queryAllEmptyRoom();
+    }
+
+    @Override
+    public List<Room> queryAllRoom() {
+        return roomMapper.queryAllRoom();
+    }
+
+    @Override
+    public List<Room> queryAllRoomByRoomNumber(String roomName) {
+        return roomMapper.queryAllRoomByRoomNumber(roomName);
+    }
 }

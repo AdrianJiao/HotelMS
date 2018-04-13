@@ -201,4 +201,48 @@
       </foreach>
     </where>
   </delete>
+
+  <!--查询房间状态为空房的所有房间-->
+  <select id="queryAllEmptyRoom" resultType="room">
+     select * from
+    (select * from room as temp
+    left outer join
+    (select  attributeDetailsName as guestRoomLevelName,far_id from attributevalue) as tempa
+    on temp.guestRoomLevelID = tempa.far_id ) as tempb
+    left outer join
+    (select  attributeDetailsName as roomName,far_id from attributevalue) as tempc
+    on tempb.roomStateID = tempc.far_id
+    where tempb.roomStateID = (
+       select  far_id from attributevalue where attributeDetailsName ='空房'
+    )
+  </select>
+
+  <!--查询所有房间信息-->
+  <select id="queryAllRoom" resultType="room">
+    select * from
+    (select * from room as temp
+    left outer join
+    (select  attributeDetailsName as guestRoomLevelName,far_id from attributevalue) as tempa
+    on temp.guestRoomLevelID = tempa.far_id ) as tempb
+    left outer join
+    (select  attributeDetailsName as roomName,far_id from attributevalue) as tempc
+    on tempb.roomStateID = tempc.far_id
+  </select>
+
+  <!--根据房间号查询所有房间-->
+  <select id="queryAllRoomByRoomNumber" parameterType="string" resultType="room">
+    select * from
+    (select * from room as temp
+    left outer join
+    (select  attributeDetailsName as guestRoomLevelName,far_id from attributevalue) as tempa
+    on temp.guestRoomLevelID = tempa.far_id ) as tempb
+    left outer join
+    (select  attributeDetailsName as roomName,far_id from attributevalue) as tempc
+    on tempb.roomStateID = tempc.far_id
+    <where>
+      <if test="_parameter != null and !_parameter.isEmpty()">
+        tempb.roomNumber like #{roomName}
+      </if>
+    </where>
+  </select>
 </mapper>
