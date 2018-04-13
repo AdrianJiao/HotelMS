@@ -57,9 +57,13 @@ public class PassengerServiceImpl  implements PassengerService{
         return new Page<>(Page.PASSENGER_PER_PAGE_RECORD_NUM,totalRecordsNum,passengers,currentPage);
     }
 
-/*    @Override
+    @Override
     public Passenger queryPassengerByPid(int pid) {
         return passengerMapper.queryPassengerByPid(pid);
-    }*/
+    }
 
+    @Override
+    public int deleteBatchByPid(String[] pid) {
+        return passengerMapper.deleteBatchByPid(pid);
+    }
 }

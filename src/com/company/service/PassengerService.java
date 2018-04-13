@@ -20,5 +20,7 @@ public interface PassengerService {
 
     Page<Passenger> queryPartPassengers(int currentPage, String txtname);
 
-    /*Passenger queryPassengerByPid(int pid);*/
+    Passenger queryPassengerByPid(int pid);
+
+    int deleteBatchByPid(String[] pid);
 }

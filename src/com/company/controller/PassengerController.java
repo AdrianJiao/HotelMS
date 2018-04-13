@@ -136,8 +136,10 @@ public class PassengerController {
         model.addAttribute("listThingReason", attributevalues5);
 
         //根据pid查询数据回显
-       /* Passenger passenger = passengerService.queryPassengerByPid(Integer.parseInt(pid));*/
-       /* model.addAttribute("list",passenger);*/
+        Passenger passenger = passengerService.queryPassengerByPid(Integer.parseInt(pid));
+
+        System.out.println("乘客"+passenger);
+        model.addAttribute("list",passenger);
         return "passenger/update";
     }
 
@@ -154,6 +156,7 @@ public class PassengerController {
     //批量删除
     @RequestMapping("delete")
     public String deleteReceivetars (String[] pid) {
+        passengerService.deleteBatchByPid(pid);
 
         //转到tolist请求
         return "redirect:tolist.do";

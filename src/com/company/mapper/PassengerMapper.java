@@ -21,5 +21,7 @@ public interface PassengerMapper {
 
     List<Passenger> queryPartPassengers(Map<String, Object> parameters);
 
-   /* Passenger queryPassengerByPid(int pid);*/
+    Passenger queryPassengerByPid(int pid);
+
+    int deleteBatchByPid(String[] pid);
 }

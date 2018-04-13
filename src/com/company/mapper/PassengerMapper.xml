@@ -339,8 +339,8 @@
     </where>
   </select>
 
-  <!--<select id="queryPassengerByPid" parameterType="pid" resultType="passenger">
-        select count(*) from
+  <select id="queryPassengerByPid" parameterType="int" resultType="passenger">
+        select * from
     (select * from
     (select * from
     (select * from
@@ -369,7 +369,17 @@
     inner join
     (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
     on tempj.thingReasonID = tempk.far_id5
-    where pid = #{pid}
-  </select>-->
+    where tempj.pid = #{pid}
+  </select>
+
+
+  <delete id="deleteBatchByPid" >
+    delete from passenger
+    <where>
+      <foreach collection="array" item="pid">
+        or pid = #{pid}
+      </foreach>
+    </where>
+  </delete>
 
 </mapper>
