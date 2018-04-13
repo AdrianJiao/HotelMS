@@ -66,4 +66,14 @@ public class PassengerServiceImpl  implements PassengerService{
     public int deleteBatchByPid(String[] pid) {
         return passengerMapper.deleteBatchByPid(pid);
     }
+
+    @Override
+    public List<Passenger> queryAllPassenger() {
+        return passengerMapper.queryAllPassenger();
+    }
+
+    @Override
+    public List<Passenger> queryPassengerByName(String txtname) {
+        return passengerMapper.queryPassengerByName(txtname);
+    }
 }
