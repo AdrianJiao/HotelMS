@@ -23,4 +23,8 @@ public interface PassengerService {
     Passenger queryPassengerByPid(int pid);
 
     int deleteBatchByPid(String[] pid);
+
+    List<Passenger> queryAllPassenger();
+
+    List<Passenger> queryPassengerByName(String txtname);
 }
