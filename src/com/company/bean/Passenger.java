@@ -58,6 +58,67 @@ public class Passenger {
     //备注
     private String remarks;
 
+
+    private String genderName;
+
+    private String nationName;
+
+    private String passengerLevelName;
+
+    private String papersName;
+
+    private String thingReasonName;
+
+    private String educationDegreeName;
+
+    public String getGenderName() {
+        return genderName;
+    }
+
+    public void setGenderName(String genderName) {
+        this.genderName = genderName;
+    }
+
+    public String getNationName() {
+        return nationName;
+    }
+
+    public void setNationName(String nationName) {
+        this.nationName = nationName;
+    }
+
+    public String getPassengerLevelName() {
+        return passengerLevelName;
+    }
+
+    public void setPassengerLevelName(String passengerLevelName) {
+        this.passengerLevelName = passengerLevelName;
+    }
+
+    public String getPapersName() {
+        return papersName;
+    }
+
+    public void setPapersName(String papersName) {
+        this.papersName = papersName;
+    }
+
+    public String getThingReasonName() {
+        return thingReasonName;
+    }
+
+    public void setThingReasonName(String thingReasonName) {
+        this.thingReasonName = thingReasonName;
+    }
+
+    public String getEducationDegreeName() {
+        return educationDegreeName;
+    }
+
+    public void setEducationDegreeName(String educationDegreeName) {
+        this.educationDegreeName = educationDegreeName;
+    }
+
     public Integer getPid() {
         return pid;
     }
@@ -200,5 +261,35 @@ public class Passenger {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "pid=" + pid +
+                ", name='" + name + '\'' +
+                ", genderID='" + genderID + '\'' +
+                ", birthDate=" + birthDate +
+                ", nationID='" + nationID + '\'' +
+                ", licenceIssuingAuthorty='" + licenceIssuingAuthorty + '\'' +
+                ", papersValidity=" + papersValidity +
+                ", profession='" + profession + '\'' +
+                ", educationDegreeID='" + educationDegreeID + '\'' +
+                ", passengerLevelID='" + passengerLevelID + '\'' +
+                ", papersID='" + papersID + '\'' +
+                ", papersNumber='" + papersNumber + '\'' +
+                ", unitsOrAddress='" + unitsOrAddress + '\'' +
+                ", thingReasonID='" + thingReasonID + '\'' +
+                ", whereAreFrom='" + whereAreFrom + '\'' +
+                ", whereToGo='" + whereToGo + '\'' +
+                ", contactPhoneNumber='" + contactPhoneNumber + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", genderName='" + genderName + '\'' +
+                ", nationName='" + nationName + '\'' +
+                ", passengerLevelName='" + passengerLevelName + '\'' +
+                ", papersName='" + papersName + '\'' +
+                ", thingReasonName='" + thingReasonName + '\'' +
+                ", educationDegreeName='" + educationDegreeName + '\'' +
+                '}';
     }
 }
