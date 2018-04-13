@@ -38,6 +38,17 @@ public class Commodity {
     }
 
     public void setuOMID(String uOMID) {
+
         this.uOMID = uOMID == null ? null : uOMID.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "commodityName='" + commodityName + '\'' +
+                ", commodityTypeID='" + commodityTypeID + '\'' +
+                ", salePrice=" + salePrice +
+                ", uOMID='" + uOMID + '\'' +
+                '}';
     }
 }

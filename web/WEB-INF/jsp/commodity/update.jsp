@@ -159,12 +159,12 @@
     </div>
     
     <form action="${ctx}/Commodity/update.do" method="post" onsubmit="return verify()">
-	    <input type="hidden" name="id" value="${listPo.id}">
+	    <input type="hidden" name="id" value="${commodity.commodityName}">
 	    <div class="span12">
 	      <div class="row-fluid">
 		      <div class="span5">
 			   	  <label class="labelroomnumber">商品名称：</label>
-			      <input id="commodityNameId" name="commodityName" class="textone inputone" value="${listPo.commodityName}"
+			      <input id="commodityNameId" name="commodityName" class="textone inputone" value="${commodity.commodityName}"
 			       style="height:26px;" type="text" onchange="onchangeOne()" onblur="YZ(this.value)">
 			      <div id="divOne" hidden>
 			         <label class="yansered" style="margin-top:18px;">*</label>
@@ -173,9 +173,9 @@
 			  <div class="span5 ">
 			   	  <label class="labelroomnumber">商品类别：</label>
 			      <select name="commodityTypeID" class="cboone inputone">
-		            <c:forEach items="${listTwo}" var="item">
-			          <option value="${item.far_id}" <c:if test="${item.far_id==listPo.commodityTypeID}" >selected="selected"</c:if>>
-			            ${item.attributeDetailsName}
+		            <c:forEach items="${commoditytypes}" var="item">
+			          <option value="${item.commodityTypeID}" <c:if test="${item.commodityTypeID==commodity.commodityTypeID}" >selected="selected"</c:if>>
+			            ${item.commodityTypeName}
 			          </option>
 			        </c:forEach> 
 		          </select>
@@ -189,7 +189,7 @@
                   <div class="input-prepend" style="float:left;">
 			        <span class="add-on" style="margin-top: 12px; height: 16px;">&yen;</span>
 			      </div>
-			      <input id="salePriceId" name="salePrice" class="textone inputthree radiusone" onchange="onchangeOne()" value="${listPo.salePrice}"
+			      <input id="salePriceId" name="salePrice" class="textone inputthree radiusone" onchange="onchangeOne()" value="${commodity.salePrice}"
 			      style="float:left;border-radius:0px; border-top-right-radius:4px; border-bottom-right-radius:4px; height:26px;" type="text">
 			      <div id="divTwo" hidden>
 			         <label class="yansered" style="margin-top:18px;">*</label>
@@ -198,9 +198,9 @@
 			  <div class="span5">
 			   	  <label class="labelroomnumber">计量单位：</label>
 			      <select name="uOMID" class="cboone inputone">
-		            <c:forEach items="${listOne}" var="item">
-			          <option value="${item.far_id}" <c:if test="${item.far_id==listPo.uOMID}">selected="selected"</c:if>>
-			            ${item.attributeDetailsName}
+		            <c:forEach items="${list}" var="item">
+			          <option value="${item}" <c:if test="${item==commodity.uOMID}">selected="selected"</c:if>>
+			            ${item}
 			          </option>
 			        </c:forEach> 
 		          </select>
@@ -292,7 +292,7 @@
        $.ajax({                                                      
           cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
           type: "POST",                                           //上面3行都是必须要的
-          url: '${ctx}/Commodity/YZ.do',       //地址 type 带参数
+          url: '${ctx}/Commodity/checkAddCommodityName.do',       //地址 type 带参数
           data:"commodityName="+value,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
           async:false,                                          // 是否 异步 提交
           success: function (result) {                          // 不出现异常 进行立面方

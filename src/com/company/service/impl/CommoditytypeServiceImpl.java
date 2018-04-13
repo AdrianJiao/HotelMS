@@ -10,36 +10,25 @@ import java.util.List;
 
 @Service
 public class CommoditytypeServiceImpl implements CommoditytypeService {
-
     @Autowired
     CommoditytypeMapper commoditytypeMapper;
 
     /**
-     *查询所有商品种类
-     * @return
+     * 查询所有商品分类数据
+     * @return 所有商品分类集合
      */
     @Override
-    public List<Commoditytype> findAllCommoditytype() {
-        return commoditytypeMapper.findAllCommoditytype();
+    public List<Commoditytype> findCommoditytypeList() {
+        return commoditytypeMapper.findCommoditytypeList();
     }
 
-    /**
-     * 增加商品种类
-     * @param commoditytype
-     * @return
-     */
     @Override
-    public int addCommodityType(Commoditytype commoditytype) {
-        return commoditytypeMapper.insert(commoditytype);
+    public void newAdd(Commoditytype co) {
+        commoditytypeMapper.insert(co);
     }
 
-    /**
-     * 删除商品种类
-     * @param commodityTypeID
-     * @return
-     */
     @Override
-    public int deleteCommodityType(String commodityTypeID) {
-        return commoditytypeMapper.deleteByPrimaryKey(commodityTypeID);
+    public void newdeleteById(String id) {
+        commoditytypeMapper.deleteByPrimaryKey(id);
     }
 }

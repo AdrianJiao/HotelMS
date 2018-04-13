@@ -1,82 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.CommodityMapper">
-  <resultMap id="BaseResultMap" type="com.company.bean.Commodity">
-    <id column="commodityName" jdbcType="VARCHAR" property="commodityName" />
-    <result column="commodityTypeID" jdbcType="VARCHAR" property="commodityTypeID" />
-    <result column="salePrice" jdbcType="DOUBLE" property="salePrice" />
-    <result column="uOMID" jdbcType="VARCHAR" property="uOMID" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.company.bean.Commodity">
+        <id column="commodityName" jdbcType="VARCHAR" property="commodityName"/>
+        <result column="commodityTypeID" jdbcType="VARCHAR" property="commodityTypeID"/>
+        <result column="salePrice" jdbcType="DOUBLE" property="salePrice"/>
+        <result column="uOMID" jdbcType="VARCHAR" property="uOMID"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     commodityName, commodityTypeID, salePrice, uOMID
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from commodity
-    where commodityName = #{commodityName,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from commodity
+        where commodityName = #{commodityName,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from commodity
     where commodityName = #{commodityName,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.company.bean.Commodity">
+    <insert id="insert" parameterType="com.company.bean.Commodity">
     insert into commodity (commodityName, commodityTypeID, salePrice, 
       uOMID)
     values (#{commodityName,jdbcType=VARCHAR}, #{commodityTypeID,jdbcType=VARCHAR}, #{salePrice,jdbcType=DOUBLE}, 
       #{uOMID,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.company.bean.Commodity">
-    insert into commodity
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commodityName != null">
-        commodityName,
-      </if>
-      <if test="commodityTypeID != null">
-        commodityTypeID,
-      </if>
-      <if test="salePrice != null">
-        salePrice,
-      </if>
-      <if test="uOMID != null">
-        uOMID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commodityName != null">
-        #{commodityName,jdbcType=VARCHAR},
-      </if>
-      <if test="commodityTypeID != null">
-        #{commodityTypeID,jdbcType=VARCHAR},
-      </if>
-      <if test="salePrice != null">
-        #{salePrice,jdbcType=DOUBLE},
-      </if>
-      <if test="uOMID != null">
-        #{uOMID,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Commodity">
-    update commodity
-    <set>
-      <if test="commodityTypeID != null">
-        commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR},
-      </if>
-      <if test="salePrice != null">
-        salePrice = #{salePrice,jdbcType=DOUBLE},
-      </if>
-      <if test="uOMID != null">
-        uOMID = #{uOMID,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where commodityName = #{commodityName,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.company.bean.Commodity">
+    <insert id="insertSelective" parameterType="com.company.bean.Commodity">
+        insert into commodity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commodityName != null">
+                commodityName,
+            </if>
+            <if test="commodityTypeID != null">
+                commodityTypeID,
+            </if>
+            <if test="salePrice != null">
+                salePrice,
+            </if>
+            <if test="uOMID != null">
+                uOMID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commodityName != null">
+                #{commodityName,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityTypeID != null">
+                #{commodityTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="salePrice != null">
+                #{salePrice,jdbcType=DOUBLE},
+            </if>
+            <if test="uOMID != null">
+                #{uOMID,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Commodity">
+        update commodity
+        <set>
+            <if test="commodityTypeID != null">
+                commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="salePrice != null">
+                salePrice = #{salePrice,jdbcType=DOUBLE},
+            </if>
+            <if test="uOMID != null">
+                uOMID = #{uOMID,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where commodityName = #{commodityName,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.company.bean.Commodity">
     update commodity
     set commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR},
       salePrice = #{salePrice,jdbcType=DOUBLE},
       uOMID = #{uOMID,jdbcType=VARCHAR}
     where commodityName = #{commodityName,jdbcType=VARCHAR}
   </update>
+    <!--查询分类商品分页对象-->
+    <!--<resultMap id="commodity" type="Commodity">-->
+    <!--<result column="commodityName" property="commodityName"/>-->
+    <!--<result column="commodityTypeID" property="commodityTypeID"/>-->
+    <!--</resultMap>-->
+    <select id="findPageCommodity" parameterType="com.company.vo.CommodityQueryvo"
+            resultType="com.company.vo.CommodityPage">
+        SELECT c1.commodityName,c2.commodityTypeName,c1.uOMID,c1.salePrice FROM commodity c1 INNER JOIN commoditytype c2
+        ON c1.commodityTypeID = c2.commodityTypeID
+        <where>
+            <if test="txtname!=null and txtname!=''">
+                and c1.commodityName LIKE "%"#{txtname}"%"
+            </if>
+            <if test="commodityTypeID!=null and commodityTypeID!=''">
+                and c1.commodityTypeID = #{commodityTypeID}
+            </if>
+        </where>
+        <if test="startrow !=null and size != null">
+            limit #{startrow},#{size}
+        </if>
+    </select>
+    <!--查询分类商品的总条数-->
+    <select id="findAllCommodityCount" parameterType="com.company.vo.CommodityQueryvo" resultType="java.lang.Integer">
+        SELECT count(*) FROM commodity
+        <where>
+            <if test="txtname!=null and txtname!=''">
+                and commodityName LIKE "%"#{txtname}"%"
+            </if>
+            <if test="commodityTypeID!=null and commodityTypeID!=''">
+                and commodityTypeID = #{commodityTypeID}
+            </if>
+        </where>
+    </select>
+
+    <!--检查添加商品的名称是否重复-->
+    <select id="checkAddCommodityName" parameterType="string" resultType="int">
+        SELECT count(*) from commodity WHERE commodityName = #{commodityName}
+    </select>
+
+    <!--查询所有商品-->
+    <select id="findCommodityList" resultType="com.company.bean.Commodity" >
+        SELECT * from commodity
+    </select>
+    <!--通过商品名查询商品-->
+    <select id="findCommodityByName" parameterType="java.lang.String" resultType="com.company.bean.Commodity">
+        SELECT commodityName,commodityTypeID,salePrice,uOMID from commodity WHERE commodityName = #{id}
+    </select>
+    <!--按商品名修改商品--><!--int updateCommodityById(Commodity commodity);-->
+    <select id="updateCommodityById" parameterType="com.company.vo.VoUpdate" >
+
+        UPDATE commodity SET
+        commodityName = #{commodity.commodityName},
+        commodityTypeID = #{commodity.commodityTypeID},
+        salePrice = #{commodity.salePrice},
+        uOMID = #{commodity.uOMID} WHERE commodityName = #{id}
+    </select>
 </mapper>
