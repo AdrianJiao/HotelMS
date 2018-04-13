@@ -69,7 +69,9 @@ public class ReceivetargetController {
         receivetargetService.addReceivetarget(receivetarget);
         Date registerTime = receivetarget.getRegisterTime();
         System.out.println(registerTime);
-        return "receivetarget/list";
+
+        //转到tolist请求
+        return "redirect:tolist.do";
     }
 
     //检查团队名是否存在
@@ -114,6 +116,20 @@ public class ReceivetargetController {
     @RequestMapping("delete")
     public String deleteReceivetars (String[] tid) {
         receivetargetService.deleteBatchByTid(tid);
+
+        //转到tolist请求
+        return "redirect:tolist.do";
+    }
+
+    //批量删除Receivetarget
+    @RequestMapping("test")
+    public String test (String[] tid) {
+        List<Receivetarget> receivetargets = receivetargetService.queryAllReceivetarget();
+        List<Receivetarget> receivetargets1 = receivetargetService.queryReceivetargetByTeamName("%F%");
+
+        System.out.println("全部查询"+receivetargets);
+        System.out.println("模糊查询"+receivetargets);
+
 
         //转到tolist请求
         return "redirect:tolist.do";

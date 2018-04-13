@@ -27,4 +27,11 @@ public interface ReceivetargetService {
 
     //批量删除
     int deleteBatchByTid(String[] tid);
+
+
+    //查询所有接待对象信息(填充name字段)
+    List<Receivetarget> queryAllReceivetarget();
+
+    //根据团队名称查询所有对象信息(填充name字段)
+    List<Receivetarget> queryReceivetargetByTeamName(String teamName);
 }

@@ -66,4 +66,14 @@ public class ReceivetargetServiceImpl implements ReceivetargetService{
     public int deleteBatchByTid(String[] tid) {
         return receivetargetMapper.deleteBatchByTid(tid);
     }
+
+    @Override
+    public List<Receivetarget> queryAllReceivetarget() {
+        return receivetargetMapper.queryAllReceivetarget();
+    }
+
+    @Override
+    public List<Receivetarget> queryReceivetargetByTeamName(String teamName) {
+        return receivetargetMapper.queryReceivetargetByTeamName(teamName);
+    }
 }
