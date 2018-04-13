@@ -1,22 +1,16 @@
 package com.company.controller;
 
-import com.company.bean.Attribute;
 import com.company.bean.Attributevalue;
 import com.company.bean.Passenger;
 import com.company.service.AttributeService;
 import com.company.service.AttributevalueService;
 import com.company.service.PassengerService;
-import com.company.utils.Page;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
-import java.sql.PseudoColumnUsage;
 import java.util.List;
 
 @Controller

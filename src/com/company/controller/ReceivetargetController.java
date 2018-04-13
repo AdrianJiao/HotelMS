@@ -5,13 +5,11 @@ import com.company.bean.Receivetarget;
 import com.company.service.AttributeService;
 import com.company.service.AttributevalueService;
 import com.company.service.ReceivetargetService;
-import com.company.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
@@ -31,11 +29,9 @@ public class ReceivetargetController {
     //跳转到显示接待对象界面
     @RequestMapping("tolist")
     public String showReceivetars(Model model) {
-
        /* //首页展示
         Page<Receivetarget> receivetargetPage = receivetargetService.queryPartReceivetargets(1);
       */
-
 
         return "receivetarget/list";
     }
@@ -57,9 +53,10 @@ public class ReceivetargetController {
         Date registerTime = receivetarget.getRegisterTime();
         System.out.println(registerTime);
         return "receivetarget/list";
+
     }
 
-    //检查团队名是否存在
+/*    //检查团队名是否存在
     @RequestMapping("YZ")
     public void checkTeamCode(String teamCode,HttpServletResponse response) throws IOException {
         //ajax直接使用response返回
@@ -68,5 +65,5 @@ public class ReceivetargetController {
             response.getWriter().write("1");
         }
         response.getWriter().write("0");
-    }
+    }*/
 }

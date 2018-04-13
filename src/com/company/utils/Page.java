@@ -7,18 +7,15 @@ public class Page<T> {
     //分页记录数
     public static final int  RECEIVETARGET_PER_PAGE_RECORD_NUM = 10;
 
-    //每页记录数
-    private int perPageRecordNum;
-    //总记录数
-    private int totalRecordsNum;
+    //客房list每页记录数
+    public static final int ROOM_PER_PAGE_RECORD_NUM = 3;
 
-    //结果集
+
+    private int perPageRecordNum;
+    private int totalRecordsNum;
     private List<T> result;
 
-    //总页数
     private int totalPage;
-
-    //当前页码数
     private int currentPage;
 
 
