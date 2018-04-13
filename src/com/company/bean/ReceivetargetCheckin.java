@@ -35,6 +35,39 @@ public class ReceivetargetCheckin {
 
     private Date payTime;
 
+    //接待对象
+    private Receivetarget receivetarget;
+
+    //旅客对象
+    private  Passenger passenger;
+
+    //房间对象
+    private Room room;
+
+    public Receivetarget getReceivetarget() {
+        return receivetarget;
+    }
+
+    public void setReceivetarget(Receivetarget receivetarget) {
+        this.receivetarget = receivetarget;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getReceivetargetCheckInId() {
         return receivetargetCheckInId;
     }
@@ -161,5 +194,30 @@ public class ReceivetargetCheckin {
 
     public void setPayTime(Date payTime) {
         this.payTime = payTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ReceivetargetCheckin{" +
+                "receivetargetCheckInId='" + receivetargetCheckInId + '\'' +
+                ", tid=" + tid +
+                ", pid=" + pid +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", registerTime=" + registerTime +
+                ", rentOutTypeID='" + rentOutTypeID + '\'' +
+                ", passengerTypeID='" + passengerTypeID + '\'' +
+                ", stayNumber=" + stayNumber +
+                ", billUnitID='" + billUnitID + '\'' +
+                ", depositPayWayID='" + depositPayWayID + '\'' +
+                ", changingRoomNumber=" + changingRoomNumber +
+                ", changRoomMoney=" + changRoomMoney +
+                ", changRoomTime=" + changRoomTime +
+                ", sumConst=" + sumConst +
+                ", isBillID='" + isBillID + '\'' +
+                ", payTime=" + payTime +
+                ", receivetarget=" + receivetarget +
+                ", passenger=" + passenger +
+                ", room=" + room +
+                '}';
     }
 }

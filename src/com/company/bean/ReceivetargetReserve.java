@@ -19,6 +19,28 @@ public class ReceivetargetReserve {
 
     private String reserveState;
 
+    //接待对象
+    private Receivetarget receivetarget;
+
+    //房间对象
+    private Room room;
+
+    public Receivetarget getReceivetarget() {
+        return receivetarget;
+    }
+
+    public void setReceivetarget(Receivetarget receivetarget) {
+        this.receivetarget = receivetarget;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getReceivetargetReserveId() {
         return receivetargetReserveId;
     }
@@ -81,5 +103,21 @@ public class ReceivetargetReserve {
 
     public void setReserveState(String reserveState) {
         this.reserveState = reserveState == null ? null : reserveState.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "ReceivetargetReserve{" +
+                "receivetargetReserveId='" + receivetargetReserveId + '\'' +
+                ", tid=" + tid +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", predetermineDay=" + predetermineDay +
+                ", deposit=" + deposit +
+                ", payWayID='" + payWayID + '\'' +
+                ", arriveTime=" + arriveTime +
+                ", reserveState='" + reserveState + '\'' +
+                ", receivetarget=" + receivetarget +
+                ", room=" + room +
+                '}';
     }
 }

@@ -19,6 +19,28 @@ public class PassengerReserve {
 
     private String reserveState;
 
+    //旅客对象
+    private Passenger passenger;
+
+    //房间对象
+    private Room room;
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getPassengerReserveId() {
         return passengerReserveId;
     }
@@ -81,5 +103,21 @@ public class PassengerReserve {
 
     public void setReserveState(String reserveState) {
         this.reserveState = reserveState == null ? null : reserveState.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "PassengerReserve{" +
+                "passengerReserveId='" + passengerReserveId + '\'' +
+                ", pid=" + pid +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", predetermineDay=" + predetermineDay +
+                ", deposit=" + deposit +
+                ", payWayID='" + payWayID + '\'' +
+                ", arriveTime=" + arriveTime +
+                ", reserveState='" + reserveState + '\'' +
+                ", passenger=" + passenger +
+                ", room=" + room +
+                '}';
     }
 }
