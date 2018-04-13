@@ -1,16 +1,30 @@
 package com.company.service;
 
 import com.company.bean.Passenger;
+import com.company.utils.Page;
+
+import java.util.List;
+
 
 public interface PassengerService {
 
-    public int deleteById(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Passenger passenger);
+    int insertAll(Passenger passenger);
 
-    public Passenger selectById(Integer id);
+    Passenger selectById(Integer id);
 
-    public int updateById(Passenger passenger);
+    int updateById(Passenger passenger);
 
+    int countPassengerNumByName(String txtname);
 
+    Page<Passenger> queryPartPassengers(int currentPage, String txtname);
+
+    Passenger queryPassengerByPid(int pid);
+
+    int deleteBatchByPid(String[] pid);
+
+    List<Passenger> queryAllPassenger();
+
+    List<Passenger> queryPassengerByName(String txtname);
 }

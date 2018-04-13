@@ -26,17 +26,25 @@
     profession, educationDegreeID, passengerLevelID, papersID, papersNumber, unitsOrAddress, 
     thingReasonID, whereAreFrom, whereToGo, contactPhoneNumber, remarks
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+  <!--修改需要使用的精确查询-->
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from passenger
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+
+
+  <!--根据主键删除-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from passenger
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.company.bean.Passenger">
+
+
+  <!--新增部分-->
+  <insert id="insertAll" parameterType="com.company.bean.Passenger">
     insert into passenger (pid, name, genderID, 
       birthDate, nationID, licenceIssuingAuthorty, 
       papersValidity, profession, educationDegreeID, 
@@ -52,6 +60,9 @@
       #{whereToGo,jdbcType=VARCHAR}, #{contactPhoneNumber,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
       )
   </insert>
+
+
+  <!--插入选择-->
   <insert id="insertSelective" parameterType="com.company.bean.Passenger">
     insert into passenger
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -167,6 +178,10 @@
       </if>
     </trim>
   </insert>
+
+
+
+  <!--修改选中，更新-->
   <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Passenger">
     update passenger
     <set>
@@ -224,7 +239,10 @@
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.company.bean.Passenger">
+
+
+  <!--根据id修改-->
+  <update id="updateById" parameterType="com.company.bean.Passenger">
     update passenger
     set name = #{name,jdbcType=VARCHAR},
       genderID = #{genderID,jdbcType=VARCHAR},
@@ -245,4 +263,193 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
+
+  <select id="queryPartPassengers" parameterType="hashmap" resultType="passenger">
+    select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger as temp
+    inner join
+    (select attributeDetailsName as genderName,far_id from attributevalue) as tempa
+    on temp.genderID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as nationName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.nationID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as educationDegreeName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.educationDegreeID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as passengerLevelName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.passengerLevelID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as papersName,far_id as far_id4 from attributevalue) as tempi
+    on temph.papersID = tempi.far_id4)
+    as tempj
+    inner join
+    (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
+    on tempj.thingReasonID = tempk.far_id5
+      <where>
+        <if test="txtname != null and !txtname.isEmpty()">
+          tempj.name like #{txtname}
+        </if>
+      </where>
+      limit #{limit} offset #{offset};
+  </select>
+
+  <select id="countPassengerNumByName" parameterType="string" resultType="int">
+    select count(*) from
+    (select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger as temp
+    inner join
+    (select attributeDetailsName as genderName,far_id from attributevalue) as tempa
+    on temp.genderID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as nationName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.nationID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as educationDegreeName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.educationDegreeID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as passengerLevelName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.passengerLevelID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as papersName,far_id as far_id4 from attributevalue) as tempi
+    on temph.papersID = tempi.far_id4)
+    as tempj
+    inner join
+    (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
+    on tempj.thingReasonID = tempk.far_id5
+    <where>
+      <if test="_parameter != null and ! _parameter.isEmpty()">
+        tempj.name like #{txtname}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryPassengerByPid" parameterType="int" resultType="passenger">
+        select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger as temp
+    inner join
+    (select attributeDetailsName as genderName,far_id from attributevalue) as tempa
+    on temp.genderID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as nationName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.nationID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as educationDegreeName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.educationDegreeID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as passengerLevelName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.passengerLevelID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as papersName,far_id as far_id4 from attributevalue) as tempi
+    on temph.papersID = tempi.far_id4)
+    as tempj
+    inner join
+    (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
+    on tempj.thingReasonID = tempk.far_id5
+    where tempj.pid = #{pid}
+  </select>
+
+  <delete id="deleteBatchByPid" >
+    delete from passenger
+    <where>
+      <foreach collection="array" item="pid">
+        or pid = #{pid}
+      </foreach>
+    </where>
+  </delete>
+
+
+  <select id="queryAllPassenger" resultType="passenger">
+       select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger as temp
+    inner join
+    (select attributeDetailsName as genderName,far_id from attributevalue) as tempa
+    on temp.genderID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as nationName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.nationID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as educationDegreeName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.educationDegreeID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as passengerLevelName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.passengerLevelID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as papersName,far_id as far_id4 from attributevalue) as tempi
+    on temph.papersID = tempi.far_id4)
+    as tempj
+    inner join
+    (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
+    on tempj.thingReasonID = tempk.far_id5
+  </select>
+
+
+  <select id="queryPassengerByName" parameterType="string" resultType="passenger">
+    select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger as temp
+    inner join
+    (select attributeDetailsName as genderName,far_id from attributevalue) as tempa
+    on temp.genderID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as nationName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.nationID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as educationDegreeName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.educationDegreeID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as passengerLevelName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.passengerLevelID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as papersName,far_id as far_id4 from attributevalue) as tempi
+    on temph.papersID = tempi.far_id4)
+    as tempj
+    inner join
+    (select attributeDetailsName as thingReasonName,far_id as far_id5 from attributevalue) as tempk
+    on tempj.thingReasonID = tempk.far_id5
+    <where>
+      <if test="_parameter != null and ! _parameter.isEmpty()">
+        tempj.name like #{txtname}
+      </if>
+    </where>
+  </select>
+
 </mapper>

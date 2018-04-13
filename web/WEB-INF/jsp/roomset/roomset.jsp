@@ -118,33 +118,39 @@
 	      <tbody id="tbody">
 	        <c:forEach items="${list.result}" var="item">
 		        <tr>
-		          <td><input type="checkbox" name="id" value="${item.id}"></td>
+					<%--将id改为roomNUmber--%>
+		          <td><input type="checkbox" name="roomNumber" value="${item.roomNumber}"></td>
+
 		          <td>${item.roomNumber}</td>
 		          <td>${item.guestRoomLevelName}</td>
-		          
+
+
 		          <c:if test="${item.roomStateID==1}">
 		            <td style="background:#99FF99;">${item.roomName}</td>
 		          </c:if>
 		          <c:if test="${item.roomStateID==2}">
 		            <td style="background:#DDDDDD;">${item.roomName}</td>
 		          </c:if>
-		          <c:if test="${item.roomStateID==4}">
+					<%--item.roomStateID==4修改为item.roomStateID==3，依次往下--%>
+		          <c:if test="${item.roomStateID==3}">
 		            <td style="background:#99FFFF;">${item.roomName}</td>
 		          </c:if>
-		          <c:if test="${item.roomStateID==5}">
+		          <c:if test="${item.roomStateID==4}">
 		            <td style="background:#BBBB00;">${item.roomName}</td>
 		          </c:if>
-		          <c:if test="${item.roomStateID==6}">
+		          <c:if test="${item.roomStateID==5}">
 		            <td style="background:#FF7744;">${item.roomName}</td>
 		          </c:if>
-		          <c:if test="${item.roomStateID==7}">
+		          <c:if test="${item.roomStateID==6}">
 		            <td style="background:#FF0088;">${item.roomName}</td>
 		          </c:if>
-		          <c:if test="${item.roomStateID==65}">
+		          <c:if test="${item.roomStateID==7}">
 		            <td style="background:#FF00FF;">${item.roomName}</td>
 		          </c:if>
-		          
-		          <td>${item.roomAmount}</td>
+
+						<%--多余字段--%>
+				  <%--<td>${item.roomStateID}</td>--%>
+				  <td>${item.roomAmount}</td>
 		          <td>￥${item.standardPriceDay}</td>
 		          <td>￥${item.standardPrice}</td>
 		          <td>${item.maxDuration}</td>
@@ -173,14 +179,14 @@
    
    function updatefunction(){
    var chk_value=[];
-  	$('input[name="id"]:checked').each(function(){
+  	$('input[name="roomNumber"]:checked').each(function(){
   		chk_value.push($(this).val());
   	});
   	if(chk_value!=""){
 		if(chk_value.toString().indexOf(",")>0){
 		   alert("修改只能选择一条");
 		}else{
-		   parent.document.getElementById("Mainid").src='${ctx}/RoomSet/toupdate.do?id='+chk_value;
+		   parent.document.getElementById("Mainid").src='${ctx}/RoomSet/toupdate.do?roomNumber='+chk_value;
 		}
 	}else{
 	  alert("请选择一条数据进行修改");
@@ -189,13 +195,13 @@
   
    function deletefunction(){
    var chk_value=[];
-  	$('input[name="id"]:checked').each(function(){
+  	$('input[name="roomNumber"]:checked').each(function(){
   		chk_value.push($(this).val());
   	});
   	if(chk_value!=""){
   	var flag=window.confirm("注意：您确定要永久删除该信息吗?");
      if(flag){
-  	  parent.document.getElementById("Mainid").src='${ctx}/RoomSet/delete.do?id='+chk_value;
+  	  parent.document.getElementById("Mainid").src='${ctx}/RoomSet/delete.do?roomNumber='+chk_value;
   	}
   	}else{
 	  alert("请选择一条或多条数据进行删除");
@@ -214,7 +220,7 @@
     $.ajax({                                                      
           cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
           type: "POST",                                           //上面3行都是必须要的
-          url: '${ctx}/RoomSet/fuzzyfind.do',       //地址 type 带参数
+          url: '/RoomSet/fuzzyfind.do',       //地址 type 带参数
           data:"txtname="+name,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
 //        dataType:"json",                                       // json 数据类型提交 
           async:false,  

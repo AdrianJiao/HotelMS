@@ -1,135 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.ReceivetargetMapper">
-  <resultMap id="BaseResultMap" type="com.company.bean.Receivetarget">
-    <id column="tid" jdbcType="INTEGER" property="tid" />
-    <result column="targetTypeID" jdbcType="VARCHAR" property="targetTypeID" />
-    <result column="principal" jdbcType="VARCHAR" property="principal" />
-    <result column="teamName" jdbcType="VARCHAR" property="teamName" />
-    <result column="teamCode" jdbcType="VARCHAR" property="teamCode" />
-    <result column="registerTime" jdbcType="DATE" property="registerTime" />
-    <result column="contactPhoneNUmber" jdbcType="VARCHAR" property="contactPhoneNUmber" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    tid, targetTypeID, principal, teamName, teamCode, registerTime, contactPhoneNUmber
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from receivetarget
-    where tid = #{tid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from receivetarget
-    where tid = #{tid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.company.bean.Receivetarget">
-    insert into receivetarget (tid, targetTypeID, principal, 
-      teamName, teamCode, registerTime, 
-      contactPhoneNUmber)
-    values (#{tid,jdbcType=INTEGER}, #{targetTypeID,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
-      #{teamName,jdbcType=VARCHAR}, #{teamCode,jdbcType=VARCHAR}, #{registerTime,jdbcType=DATE}, 
-      #{contactPhoneNUmber,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.company.bean.Receivetarget">
-    insert into receivetarget
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="tid != null">
-        tid,
-      </if>
-      <if test="targetTypeID != null">
-        targetTypeID,
-      </if>
-      <if test="principal != null">
-        principal,
-      </if>
-      <if test="teamName != null">
-        teamName,
-      </if>
-      <if test="teamCode != null">
-        teamCode,
-      </if>
-      <if test="registerTime != null">
-        registerTime,
-      </if>
-      <if test="contactPhoneNUmber != null">
-        contactPhoneNUmber,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="tid != null">
-        #{tid,jdbcType=INTEGER},
-      </if>
-      <if test="targetTypeID != null">
-        #{targetTypeID,jdbcType=VARCHAR},
-      </if>
-      <if test="principal != null">
-        #{principal,jdbcType=VARCHAR},
-      </if>
-      <if test="teamName != null">
-        #{teamName,jdbcType=VARCHAR},
-      </if>
-      <if test="teamCode != null">
-        #{teamCode,jdbcType=VARCHAR},
-      </if>
-      <if test="registerTime != null">
-        #{registerTime,jdbcType=DATE},
-      </if>
-      <if test="contactPhoneNUmber != null">
-        #{contactPhoneNUmber,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Receivetarget">
-    update receivetarget
-    <set>
-      <if test="targetTypeID != null">
-        targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
-      </if>
-      <if test="principal != null">
+    <resultMap id="BaseResultMap" type="com.company.bean.Receivetarget">
+        <id column="tid" jdbcType="INTEGER" property="tid" />
+        <result column="targetTypeID" jdbcType="VARCHAR" property="targetTypeID" />
+        <result column="principal" jdbcType="VARCHAR" property="principal" />
+        <result column="teamName" jdbcType="VARCHAR" property="teamName" />
+        <result column="teamCode" jdbcType="VARCHAR" property="teamCode" />
+        <result column="registerTime" jdbcType="DATE" property="registerTime" />
+        <result column="contactPhoneNUmber" jdbcType="VARCHAR" property="contactPhoneNUmber" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        tid, targetTypeID, principal, teamName, teamCode, registerTime, contactPhoneNUmber
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from receivetarget
+        where tid = #{tid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from receivetarget
+        where tid = #{tid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.company.bean.Receivetarget">
+        insert into receivetarget (tid, targetTypeID, principal,
+        teamName, teamCode, registerTime,
+        contactPhoneNUmber)
+        values (#{tid,jdbcType=INTEGER}, #{targetTypeID,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR},
+        #{teamName,jdbcType=VARCHAR}, #{teamCode,jdbcType=VARCHAR}, #{registerTime,jdbcType=DATE},
+        #{contactPhoneNUmber,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.company.bean.Receivetarget">
+        insert into receivetarget
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tid != null">
+                tid,
+            </if>
+            <if test="targetTypeID != null">
+                targetTypeID,
+            </if>
+            <if test="principal != null">
+                principal,
+            </if>
+            <if test="teamName != null">
+                teamName,
+            </if>
+            <if test="teamCode != null">
+                teamCode,
+            </if>
+            <if test="registerTime != null">
+                registerTime,
+            </if>
+            <if test="contactPhoneNUmber != null">
+                contactPhoneNUmber,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tid != null">
+                #{tid,jdbcType=INTEGER},
+            </if>
+            <if test="targetTypeID != null">
+                #{targetTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="principal != null">
+                #{principal,jdbcType=VARCHAR},
+            </if>
+            <if test="teamName != null">
+                #{teamName,jdbcType=VARCHAR},
+            </if>
+            <if test="teamCode != null">
+                #{teamCode,jdbcType=VARCHAR},
+            </if>
+            <if test="registerTime != null">
+                #{registerTime,jdbcType=DATE},
+            </if>
+            <if test="contactPhoneNUmber != null">
+                #{contactPhoneNUmber,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.company.bean.Receivetarget">
+        update receivetarget
+        <set>
+            <if test="targetTypeID != null">
+                targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
+            </if>
+            <if test="principal != null">
+                principal = #{principal,jdbcType=VARCHAR},
+            </if>
+            <if test="teamName != null">
+                teamName = #{teamName,jdbcType=VARCHAR},
+            </if>
+            <if test="teamCode != null">
+                teamCode = #{teamCode,jdbcType=VARCHAR},
+            </if>
+            <if test="registerTime != null">
+                registerTime = #{registerTime,jdbcType=DATE},
+            </if>
+            <if test="contactPhoneNUmber != null">
+                contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where tid = #{tid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.company.bean.Receivetarget">
+        update receivetarget
+        set targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
         principal = #{principal,jdbcType=VARCHAR},
-      </if>
-      <if test="teamName != null">
         teamName = #{teamName,jdbcType=VARCHAR},
-      </if>
-      <if test="teamCode != null">
         teamCode = #{teamCode,jdbcType=VARCHAR},
-      </if>
-      <if test="registerTime != null">
         registerTime = #{registerTime,jdbcType=DATE},
-      </if>
-      <if test="contactPhoneNUmber != null">
-        contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where tid = #{tid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.company.bean.Receivetarget">
-    update receivetarget
-    set targetTypeID = #{targetTypeID,jdbcType=VARCHAR},
-      principal = #{principal,jdbcType=VARCHAR},
-      teamName = #{teamName,jdbcType=VARCHAR},
-      teamCode = #{teamCode,jdbcType=VARCHAR},
-      registerTime = #{registerTime,jdbcType=DATE},
-      contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR}
-    where tid = #{tid,jdbcType=INTEGER}
-  </update>
+        contactPhoneNUmber = #{contactPhoneNUmber,jdbcType=VARCHAR}
+        where tid = #{tid,jdbcType=INTEGER}
+    </update>
 
-  <select id="queryReceivetargetByTeamCode" parameterType="string"  resultType="receivetarget">
-    select
-    <include refid="Base_Column_List" />
-    from receivetarget
-    where teamCode = #{teamCode}
-  </select>
+    <select id="queryReceivetargetByTeamCode" parameterType="string"  resultType="receivetarget">
+        select
+        <include refid="Base_Column_List" />
+        from receivetarget
+        where teamCode = #{teamCode}
+    </select>
 
-  <select id="countReceivetargetNum" resultType="int">
-    select COUNT (*) from receivetarget;
-  </select>
+    <select id="countAllReceivetargetNum" resultType="int">
+        select count(*) from receivetarget;
+    </select>
 
+    <!--不能传递多个参数-->
+    <select id="queryPartReceivetargets" parameterType="hashmap" resultType="receivetarget">
+        select * from receivetarget tempa
+        left outer join
+        (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+        as tempb
+        on tempa.targetTypeID = tempb.far_id
+        <where>
+            <if test="txtname != null and !txtname.isEmpty()">
+                tempa.teamName like #{txtname}
+            </if>
+        </where>
+        limit #{limit} offset #{offset};
+    </select>
 
-  <select id="queryPartReceivetargets" resultType="receivetarget">
-    select
-    <include refid="Base_Column_List" />
-    from receivetarget  limit #{limit} offset #{offset};
-  </select>
+    <!--查询团名为某个参数的数量-->
+    <select id="countReceivetargetNumByTeamName" parameterType="string" resultType="int">
+        select  count(*)
+        from receivetarget
+        <where>
+            <if test="_parameter != null and ! _parameter.isEmpty()">
+                teamName like #{txtname}
+            </if>
+        </where>
+    </select>
+
+    <!--根据tid查询Receivetarget(填充name字段)-->
+    <select id="queryReceivetargetByTid" parameterType="int" resultType="receivetarget">
+        select  *
+        from receivetarget tempa
+        left outer join
+        (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+        as tempb
+        on tempa.targetTypeID = tempb.far_id
+        where tid = #{tid}
+    </select>
+
+    <!--批量删除-->
+    <delete id="deleteBatchByTid" >
+        delete from receivetarget
+        <where>
+            <foreach collection="array" item="tid">
+                or tid = #{tid}
+            </foreach>
+        </where>
+    </delete>
+
+    <!--查询所有接待对象信息(填充name字段)-->
+    <select id="queryAllReceivetarget" resultType="receivetarget">
+        select  *
+        from receivetarget tempa
+        left outer join
+        (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+        as tempb
+        on tempa.targetTypeID = tempb.far_id
+    </select>
+
+    <!--根据团队名称查询所有对象信息(填充name字段)-->
+    <!--注意这里使用联合查询不能使用引入SQL片段，否则无法填充字段-->
+    <select id="queryReceivetargetByTeamName" parameterType="string" resultType="receivetarget">
+        select *
+        from receivetarget tempa
+        left outer join
+        (select  attributeDetailsName as targetTypeName,far_id from attributevalue)
+        as tempb
+        on tempa.targetTypeID = tempb.far_id
+        <where>
+            <if test="_parameter != null and ! _parameter.isEmpty()">
+                teamName like #{txtname}
+            </if>
+        </where>
+    </select>
 </mapper>
