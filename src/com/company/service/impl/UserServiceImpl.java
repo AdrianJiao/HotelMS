@@ -17,4 +17,8 @@ public class UserServiceImpl implements UserService {
         int isLoginSuccess = userMapper.selectByUsernameAndPassword(user);
         return isLoginSuccess > 0 ? true : false;
     }
+
+
+
+
 }
