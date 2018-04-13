@@ -26,6 +26,7 @@
     delete from room
     where roomNumber = #{roomNumber,jdbcType=VARCHAR}
   </delete>
+  <!--增加房间-->
   <insert id="insert" parameterType="com.company.bean.Room">
     insert into room (roomNumber, roomStateID, roomAmount, 
       guestRoomLevelID, standardPriceDay, standardPrice, 
@@ -139,4 +140,65 @@
       firstDuration = #{firstDuration,jdbcType=DOUBLE}
     where roomNumber = #{roomNumber,jdbcType=VARCHAR}
   </update>
+
+
+
+
+<!--*************************新增分隔线********************************-->
+  <!--/根据房间号查询房间信息-->
+  <select id="queryRoomByRoomNumber" parameterType="string" resultType="room">
+    select * from
+    (select * from room as temp
+    left outer join
+    (select  attributeDetailsName as guestRoomLevelName,far_id from attributevalue) as tempa
+    on temp.guestRoomLevelID = tempa.far_id ) as tempb
+    left outer join
+    (select  attributeDetailsName as roomName,far_id from attributevalue) as tempc
+    on tempb.roomStateID = tempc.far_id
+    WHERE tempb.roomNumber = #{roomNumber}
+  </select>
+
+
+  <!--分页查询-->
+  <select id="queryPartRoom" parameterType="hashmap" resultType="room">
+    select * from
+    (select * from room as temp
+    left outer join
+    (select  attributeDetailsName as guestRoomLevelName,far_id from attributevalue) as tempa
+    on temp.guestRoomLevelID = tempa.far_id ) as tempb
+    left outer join
+    (select  attributeDetailsName as roomName,far_id from attributevalue) as tempc
+    on tempb.roomStateID = tempc.far_id
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        tempb.roomNumber like #{txtname}
+      </if>
+    </where>
+    limit #{limit} offset #{offset};
+  </select>
+
+  <!--/查询list为总记录数-->
+  <select id="countToatalRoomRecorders" resultType="int">
+    select count(*) from room;
+  </select>
+
+  <!--  根据房间号查询记录数-->
+  <select id="countRoomRecordersByRoomNumber" parameterType="string" resultType="int">
+    select  count(*) from room
+    <where>
+      <if test="_parameter != null and ! _parameter.isEmpty()">
+        roomNumber like #{txtname}
+      </if>
+    </where>
+  </select>
+
+  <!--批量删除-->
+  <delete id="deleteBatchByRoom" >
+    delete from room
+    <where>
+      <foreach collection="array" item="roomNumber">
+        or roomNumber = #{roomNumber}
+      </foreach>
+    </where>
+  </delete>
 </mapper>

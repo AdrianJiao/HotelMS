@@ -19,6 +19,29 @@ public class Room {
 
     private Double firstDuration;
 
+    /*添加字段*/
+    private String guestRoomLevelName;
+
+    /*添加字段*/
+    private String roomName;
+
+
+    public String getGuestRoomLevelName() {
+        return guestRoomLevelName;
+    }
+
+    public void setGuestRoomLevelName(String guestRoomLevelName) {
+        this.guestRoomLevelName = guestRoomLevelName;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
     public String getRoomNumber() {
         return roomNumber;
     }
@@ -89,5 +112,22 @@ public class Room {
 
     public void setFirstDuration(Double firstDuration) {
         this.firstDuration = firstDuration;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber='" + roomNumber + '\'' +
+                ", roomStateID='" + roomStateID + '\'' +
+                ", roomAmount=" + roomAmount +
+                ", guestRoomLevelID='" + guestRoomLevelID + '\'' +
+                ", standardPriceDay=" + standardPriceDay +
+                ", standardPrice=" + standardPrice +
+                ", maxDuration=" + maxDuration +
+                ", firstPrice=" + firstPrice +
+                ", firstDuration=" + firstDuration +
+                ", guestRoomLevelName='" + guestRoomLevelName + '\'' +
+                ", roomName='" + roomName + '\'' +
+                '}';
     }
 }

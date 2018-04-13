@@ -130,7 +130,6 @@ public class ReceivetargetController {
         System.out.println("全部查询"+receivetargets);
         System.out.println("模糊查询"+receivetargets);
 
-
         //转到tolist请求
         return "redirect:tolist.do";
     }
