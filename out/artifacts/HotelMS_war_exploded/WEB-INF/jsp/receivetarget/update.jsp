@@ -163,7 +163,8 @@
     </div>
     
     <form action="${ctx}/ReceiveTarget/update.do" method="post" onsubmit="return verify()">
-        <input name="id" value="${list.id}" type="hidden">
+		<%--将id改为tid--%>
+        <input name="tid" value="${list.tid}" type="hidden">
 	    <div class="span12">
 	      <div class="row-fluid">
 			  <div class="span5 ">
