@@ -33,6 +33,28 @@ public class PassengerCheckin {
 
     private Date payTime;
 
+    //旅客对象
+    private Passenger passenger;
+
+    //房间对象
+    private Room room;
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getPassengerCheckInId() {
         return passengerCheckInId;
     }
@@ -151,5 +173,29 @@ public class PassengerCheckin {
 
     public void setPayTime(Date payTime) {
         this.payTime = payTime;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PassengerCheckin{" +
+                "passengerCheckInId='" + passengerCheckInId + '\'' +
+                ", pid=" + pid +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", registerTime=" + registerTime +
+                ", rentOutTypeID='" + rentOutTypeID + '\'' +
+                ", passengerTypeID='" + passengerTypeID + '\'' +
+                ", stayNumber=" + stayNumber +
+                ", billUnitID='" + billUnitID + '\'' +
+                ", depositPayWayID='" + depositPayWayID + '\'' +
+                ", changingRoomNumber=" + changingRoomNumber +
+                ", changRoomMoney=" + changRoomMoney +
+                ", changRoomTime=" + changRoomTime +
+                ", sumConst=" + sumConst +
+                ", isBillID='" + isBillID + '\'' +
+                ", payTime=" + payTime +
+                ", passenger=" + passenger +
+                ", room=" + room +
+                '}';
     }
 }
