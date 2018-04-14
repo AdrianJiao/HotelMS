@@ -26,4 +26,5 @@ public interface PassengerCheckinMapper {
 
     //根据passengerCheckInId查到PassengerCheckin数据
     PassengerCheckin queryPassengerCheckinByPassengerCheckInId(String passengerCheckInId);
+
 }

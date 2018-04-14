@@ -170,7 +170,8 @@
     <!--  ———————————————————————————————————————————————————————————————————————————————————————— -->
 	    
 	    <input id="lvKeId" name="lvKeID" type="hidden">                                       <!-- 旅客ID -->
-	    <input id="stayRegisterId" name="stayRegisterID" type="hidden" value="${stayRegisterId}">     <!-- 住宿登记ID -->
+		<%--注意这里--%>
+	    <input id="stayRegisterId" name="stayRegisterId" type="hidden" value="${stayRegisterId}">     <!-- 住宿登记ID -->
 	    <input id="LvKeLeiXingId" type="hidden" value="${LvKeLeiXingId}">
 	    <div class="span12">
 	      <div class="row-fluid">

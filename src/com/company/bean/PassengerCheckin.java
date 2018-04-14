@@ -50,6 +50,17 @@ public class PassengerCheckin {
 
     private String isBillName;
 
+    //表设计阶段决定押金单独存放,起到接收前端数据的作用
+    private double deposit;
+
+    public double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
+    }
+
     public String getRentOutTypeName() {
         return rentOutTypeName;
     }
@@ -251,6 +262,7 @@ public class PassengerCheckin {
                 ", billUnitName='" + billUnitName + '\'' +
                 ", depositPayWayName='" + depositPayWayName + '\'' +
                 ", isBillName='" + isBillName + '\'' +
+                ", deposit=" + deposit +
                 '}';
     }
 }

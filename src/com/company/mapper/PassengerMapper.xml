@@ -473,7 +473,6 @@
   </insert>
 
 
-
   <!--根据id获取用户不填充相应字段-->
   <select id="selectPassengerByIdWithoutFill" parameterType="int" resultType="passenger">
     select *

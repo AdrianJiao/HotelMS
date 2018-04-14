@@ -64,4 +64,9 @@ public class PassengerCheckinServiceImpl implements PassengerCheckinService {
     public PassengerCheckin queryPassengerCheckinByPassengerCheckInId(String passengerCheckInId) {
         return passengerCheckinMapper.queryPassengerCheckinByPassengerCheckInId(passengerCheckInId);
     }
+
+    @Override
+    public int updateByPrimaryKeySelective(PassengerCheckin record) {
+        return passengerCheckinMapper.updateByPrimaryKeySelective(record);
+    }
 }

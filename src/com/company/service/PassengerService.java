@@ -33,4 +33,5 @@ public interface PassengerService {
 
     //根据id获取用户不填充相应字段
     Passenger selectPassengerByIdWithoutFill(int pid);
+
 }

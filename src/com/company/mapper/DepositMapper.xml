@@ -79,4 +79,15 @@
       depositPayWayId = #{depositPayWayId,jdbcType=VARCHAR}
     where checkInId = #{checkInId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 通过CheckID查询所有记录-->
+  <select id="queryDepositsByCheckID" parameterType="string" resultType="deposit">
+    select  *
+    from deposit tempa
+    left outer join
+    (select  attributeDetailsName as depositPayWayName,far_id from attributevalue)
+    as tempb
+    on tempa.depositPayWayId = tempb.far_id
+    where checkInId = #{checkInId,jdbcType=VARCHAR}
+  </select>
 </mapper>
