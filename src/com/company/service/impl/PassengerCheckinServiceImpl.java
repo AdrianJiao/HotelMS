@@ -27,8 +27,8 @@ public class PassengerCheckinServiceImpl implements PassengerCheckinService {
         int totalRecordsNum = countPartPassengerCheckinByRoomNameAndBillState(txtname,isBillID);
 
         HashMap<String, Object> parameters = new HashMap<>();
-        parameters.put("limit",Page.PASSENGERCHCKIN_PER_PAGE_RECORD_NUM);
-        parameters.put("offset",(currentPage - 1) * Page.PASSENGERCHCKIN_PER_PAGE_RECORD_NUM);
+        parameters.put("limit",Page.CHCKIN_PER_PAGE_RECORD_NUM);
+        parameters.put("offset",(currentPage - 1) * Page.CHCKIN_PER_PAGE_RECORD_NUM);
         parameters.put("txtname",txtname);
         parameters.put("isBillID",isBillID);
 
@@ -39,7 +39,7 @@ public class PassengerCheckinServiceImpl implements PassengerCheckinService {
         for (PassengerCheckin passengerCheckin : passengerCheckins) {
             passengerCheckinVOS.add(new PassengerCheckinVO(passengerCheckin));
         }
-        return new Page<>(Page.PASSENGERCHCKIN_PER_PAGE_RECORD_NUM,totalRecordsNum,passengerCheckinVOS,currentPage);
+        return new Page<>(Page.CHCKIN_PER_PAGE_RECORD_NUM,totalRecordsNum,passengerCheckinVOS,currentPage);
     }
 
     @Override

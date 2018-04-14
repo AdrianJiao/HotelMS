@@ -13,7 +13,10 @@ public class Page<T> {
     public static final int ROOM_PER_PAGE_RECORD_NUM = 10;
 
     //入住模块每页记录数
-	public static final int PASSENGERCHCKIN_PER_PAGE_RECORD_NUM = 1;
+	public static final int CHCKIN_PER_PAGE_RECORD_NUM = 10;
+
+	//预定模块每页记录数
+	public static final int RRESERVE_PER_PAGE_RECORD_NUM = 10;
 
 	//每页记录数
 	private int perPageRecordNum;

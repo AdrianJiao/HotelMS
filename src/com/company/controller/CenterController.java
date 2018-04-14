@@ -11,7 +11,7 @@ public class CenterController {
 
     //分发显示团队登记和散客登记
     @RequestMapping("StayRegister/tolist")
-    public String chooseShowController(String LvKeLeiXingId){
+    public String chooseShowCheckInController(String LvKeLeiXingId){
 
         //默认值55为散客
         int LvKeLeiXingIdInt = 55;
@@ -27,6 +27,28 @@ public class CenterController {
         }else {
             //LvKeLeiXingId值为55为散客登记
             return "forward:tolist_PassengerCheckin.do";
+        }
+    }
+
+    //分发显示团队登记和散客登记
+    @RequestMapping("Predetermine/tolist")
+    public String chooseShowReserveController(String LvKeLeiXingId){
+
+        //默认值56为团体
+        int LvKeLeiXingIdInt = 56;
+        if(LvKeLeiXingId != null&&!"".equals(LvKeLeiXingId)){
+            LvKeLeiXingIdInt = Integer.parseInt(LvKeLeiXingId);
+        }
+
+        //LvKeLeiXingId值为55为散客登记
+        if(LvKeLeiXingIdInt==55){
+
+            //LvKeLeiXingId值为55为散客登记
+            return "forward:tolist_PassengerReserve.do";
+        }else {
+
+            //这里通过forward避免添加WEB-INF的影响
+            return "forward:tolist_ReceivetargetReserve.do";
         }
     }
 }
