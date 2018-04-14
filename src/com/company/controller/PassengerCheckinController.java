@@ -40,12 +40,9 @@ public class PassengerCheckinController {
     @Autowired
     DepositService depositService;
 
-    @RequestMapping("tolist")
+
+    @RequestMapping("tolist_PassengerCheckin")
     public String showPassengerCheckin(String txtname, String isBillID,String currentPage, Model model){
-
-
-        System.out.println("显示参数参数参数参："+isBillID);
-
         //填充数据
         int currentPageInt;
         int isBillIDInt ;
@@ -89,7 +86,6 @@ public class PassengerCheckinController {
         return "stayregister/list";
     }
 
-
     //安排房间
     @RequestMapping("toarrangeroom")
     public String toArrangeRoom(Integer LvKeLeiXingId, Integer tuanDuiID,Model model ){
@@ -117,6 +113,8 @@ public class PassengerCheckinController {
 
         System.out.println(result);
         model.addAttribute("list",result);
+
+        //旅客信息ID和团队ID
         model.addAttribute("LvKeLeiXingId", LvKeLeiXingId);
         model.addAttribute("tuanDuiID", tuanDuiID);
         return "/stayregister/arrangeroom";
@@ -197,11 +195,11 @@ public class PassengerCheckinController {
         //填充房间号和id
         model.addAttribute("roomNumber", roomNumber);
 
-        //无用信息，jsp不错而已
-        model.addAttribute("id", passengerCheckInId);
+        //存放记录ID
+        model.addAttribute("stayRegisterId", passengerCheckInId);
 
-        //填充LvKeLeiXingId字段为注册提供信息
-        model.addAttribute("LvKeLeiXingId", passengerCheckInId);
+        //散客操作
+        model.addAttribute("LvKeLeiXingId", 55);
         return "stayregister/register";
     }
 
@@ -228,9 +226,11 @@ public class PassengerCheckinController {
 
     //登记用户
     @RequestMapping("register")
-    public  String register(@RequestParam("LvKeLeiXingId") String passengerCheckInId,
-                            String lvKeID,Passenger passenger){
-        //最终关联数据的pid
+    public  String register(String lvKeID,
+                            Passenger passenger,
+                            @RequestParam("stayRegisterId") String passengerCheckInId){
+
+        //最终关联数据的pid(即lvKeID)
         int afterInsertPid;
 
         //lvKeID就是pid
@@ -276,7 +276,6 @@ public class PassengerCheckinController {
             //更新表中的数据
             passengerCheckinService.updateByPrimaryKeySelective(passengerCheckin);
         }
-        return "redirect:tolist.do";
+        return "redirect:tolist.do?LvKeLeiXingId=55";
     }
-
 }

@@ -6,6 +6,10 @@ import com.company.service.DepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class DepositServiceImpl implements DepositService{
 
@@ -15,5 +19,10 @@ public class DepositServiceImpl implements DepositService{
     @Override
     public int insertSelective(Deposit record) {
         return depositMapper.insertSelective(record);
+    }
+
+    @Override
+    public List<Deposit> queryDepositsByCheckID(String checkInId) {
+        return depositMapper.queryDepositsByCheckID(checkInId);
     }
 }

@@ -11,6 +11,17 @@ public class Deposit {
 
     private String depositPayWayId;
 
+    //depositPayWayName是对应depositPayWayId查出来的参数
+    private String depositPayWayName;
+
+    public String getDepositPayWayName() {
+        return depositPayWayName;
+    }
+
+    public void setDepositPayWayName(String depositPayWayName) {
+        this.depositPayWayName = depositPayWayName;
+    }
+
     public String getCheckInId() {
         return checkInId;
     }
@@ -41,5 +52,16 @@ public class Deposit {
 
     public void setDepositPayWayId(String depositPayWayId) {
         this.depositPayWayId = depositPayWayId == null ? null : depositPayWayId.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Deposit{" +
+                "checkInId='" + checkInId + '\'' +
+                ", depositRegisterTime=" + depositRegisterTime +
+                ", deposit=" + deposit +
+                ", depositPayWayId='" + depositPayWayId + '\'' +
+                ", depositPayWayName='" + depositPayWayName + '\'' +
+                '}';
     }
 }
