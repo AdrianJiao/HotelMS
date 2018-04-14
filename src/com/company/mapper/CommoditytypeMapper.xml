@@ -19,8 +19,10 @@
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.company.bean.Commoditytype">
-    insert into commoditytype (commodityTypeID, commodityTypeName)
-    values (#{commodityTypeID,jdbcType=VARCHAR}, #{commodityTypeName,jdbcType=VARCHAR})
+    insert into commoditytype (commodityTypeID, commodityTypeName
+      )
+    values (#{commodityTypeID,jdbcType=VARCHAR}, #{commodityTypeName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.company.bean.Commoditytype">
     insert into commoditytype
@@ -55,8 +57,12 @@
     set commodityTypeName = #{commodityTypeName,jdbcType=VARCHAR}
     where commodityTypeID = #{commodityTypeID,jdbcType=VARCHAR}
   </update>
-
-  <select id="findAllCommoditytype" parameterType="com.company.bean.Commoditytype">
-    SELECT * FROM commoditytype
+  <!--查询所有商品类别-->
+  <select id="findCommoditytypeList" resultType="Commoditytype">
+    SELECT * FROM  commoditytype
   </select>
+  <!--&lt;!&ndash;查询商品分类的ID&ndash;&gt;-->
+<select id="findCommoditytypeIdByName" parameterType="string" resultType="string">
+  SELECT commodityTypeID FROM commoditytype WHERE commodityTypeName = #{name}
+</select>
 </mapper>
