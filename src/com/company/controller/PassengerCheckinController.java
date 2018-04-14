@@ -1,13 +1,7 @@
 package com.company.controller;
 
-import com.company.bean.Attributevalue;
-import com.company.bean.Passenger;
-import com.company.bean.PassengerCheckin;
-import com.company.bean.Receivetarget;
-import com.company.service.AttributeService;
-import com.company.service.AttributevalueService;
-import com.company.service.PassengerCheckinService;
-import com.company.service.PassengerService;
+import com.company.bean.*;
+import com.company.service.*;
 import com.company.utils.Page;
 import com.company.vo.PassengerCheckinVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @RequestMapping("StayRegister")
@@ -37,6 +32,9 @@ public class PassengerCheckinController {
 
     @Autowired
     PassengerService passengerService;
+
+    @Autowired
+    RoomService roomService;
 
     @RequestMapping("tolist")
     public String showPassengerCheckin(String txtname, String isBillID,String currentPage, Model model){
@@ -84,9 +82,63 @@ public class PassengerCheckinController {
 
         //一定要注意这个问题
         model.addAttribute("isBillID", isBillIDInt);
-
-        System.out.println("下拉框"+attributevalues);
         return "stayregister/list";
+    }
+
+
+
+    //安排房间
+    @RequestMapping("toarrangeroom")
+    public String toArrangeRoom(Integer LvKeLeiXingId, Integer tuanDuiID,Model model ){
+
+        //填充出租方式
+        int aid1 = attributeService.queryAidByAttributeName("出租方式");
+        List<Attributevalue> attributevalues1 = attributevalueService.queryAttributevalueByAid(aid1);
+        model.addAttribute("listRentOutType",attributevalues1);
+
+        //填充旅客类别
+        int aid2 = attributeService.queryAidByAttributeName("旅客类别");
+        List<Attributevalue> attributevalues2 = attributevalueService.queryAttributevalueByAid(aid2);
+        model.addAttribute("listPassengerType",attributevalues2);
+
+        //填充结账单位
+        int aid3 = attributeService.queryAidByAttributeName("结账单位");
+        List<Attributevalue> attributevalues3 = attributevalueService.queryAttributevalueByAid(aid3);
+        model.addAttribute("listBillUnit",attributevalues3);
+
+        //填充支付方式
+        int aid4 = attributeService.queryAidByAttributeName("支付方式");
+        List<Attributevalue> attributevalues4 = attributevalueService.queryAttributevalueByAid(aid4);
+        model.addAttribute("listPayWay",attributevalues4);
+        List<Room> result = roomService.queryAllRoom();
+
+        System.out.println(result);
+        model.addAttribute("list",result);
+        model.addAttribute("LvKeLeiXingId", LvKeLeiXingId);
+        model.addAttribute("tuanDuiID", tuanDuiID);
+        return "/stayregister/arrangeroom";
+    }
+
+    @RequestMapping("guestRoomLevelSelectRoom")
+    @ResponseBody
+    public List<Room> guestRoomLevelSelectRoom(@RequestParam Integer guestRoomLevelID, HttpServletResponse response) throws IOException {
+        if (guestRoomLevelID == 0) {
+            List<Room> result = roomService.queryAllRoom();
+            System.out.println("result1="+result);
+            return result ;
+        }
+        List<Room> result= roomService.queryRoomByGuestRoomLevel(guestRoomLevelID);
+        System.out.println("result2="+result);
+        return result;
+    }
+
+    @RequestMapping("arrangeroom")
+    public String arrangeRoom(){
+//        Room room = roomService.queryRoomByRoomNumber(roomNumber);
+//        System.out.println("roomstay= "+room);
+
+        // passengerCheckinService.arrangeroom();
+        return "redirect:tolist.do";
     }
 
     /*登记用户填充数据*/
@@ -153,17 +205,69 @@ public class PassengerCheckinController {
     //登记用户
     @RequestMapping("register")
     public  String register(@RequestParam("LvKeLeiXingId") String passengerCheckInId,
-                            String lvKeID){
-        //lvKeID就是pid
+                            String lvKeID,Passenger passenger){
+        //最终关联数据的pid
+        int afterInsertPid;
 
-        //新建的旅客则需新建一条旅客信息记录，然后获取新建的pid
+        //lvKeID就是pid
+        //直接新建一条旅客信息记录，然后获取新建的pid
         if(lvKeID==null||"".equals(lvKeID)){
+
+            //插入数据
+            passengerService.insertAndGetId(passenger);
+
+            //插入后的pid
+            afterInsertPid = passenger.getPid();
 
         }else {
             //如果是选择选出来的数据，判断是否修改过选出来的数据
 
+            //这手工置入pid，不改前端了
+            passenger.setPid(Integer.parseInt(lvKeID));
+
+            //查询旅客信息表看是否更改了数据
+            Passenger searchedPassenger = passengerService.selectPassengerByIdWithoutFill(Integer.parseInt(lvKeID));
+
+            //若数据未被更改
+            if(searchedPassenger.equals(passenger)){
+
+                afterInsertPid = Integer.parseInt(lvKeID);
+
+            }else {
+                 //数据被更改后，插入一条新数据
+                 passengerService.insertAndGetId(passenger);
+
+                 //获取新插入数据的pid,使用插入后返回主键是会从传入的插入参数中获取
+                afterInsertPid = passenger.getPid();
+
+            }
+
+            //新建入住记录，填充入住房间号和入住旅客信息
+            PassengerCheckin passengerCheckin = new PassengerCheckin();
+
+            //设置主键
+            passengerCheckin.setPassengerCheckInId(UUID.randomUUID().toString());
+
+            //设置旅客
+            passengerCheckin.setPid(afterInsertPid);
+
+            //设置为未结账,记住表不能更改
+            passengerCheckin.setIsBillID(""+62);
+
+            //插入记录
+            passengerCheckinService.insertSelective(passengerCheckin);
         }
-        return "stayregister/register";
+        return "redirect:tolist.do";
     }
 
+    //选择填充数据后回显
+    @RequestMapping("test")
+    public String  test(){
+        PassengerCheckin passengerCheckin =
+                passengerCheckinService.queryPassengerCheckinByPassengerCheckInId("fsdfsadfas");
+
+        System.out.println("结果"+passengerCheckin);
+
+        return "redirect:tolist.do";
+    }
 }

@@ -85,4 +85,9 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> queryAllRoomByRoomNumber(String roomName) {
         return roomMapper.queryAllRoomByRoomNumber(roomName);
     }
+
+    @Override
+    public List<Room> queryRoomByGuestRoomLevel(Integer guestRoomLevelID) {
+        return roomMapper.queryRoomByGuestRoomLevel(guestRoomLevelID);
+    }
 }

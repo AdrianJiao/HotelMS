@@ -303,4 +303,32 @@
     </where>
   </select>
 
+  <!--根据passengerCheckInId查到PassengerCheckin数据-->
+  <select id="queryPassengerCheckinByPassengerCheckInId" parameterType="string" resultMap="fillOutPassengerAndRoomMap">
+    select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from passenger_checkin as temp
+    inner join
+    (select attributeDetailsName as rentOutTypeName,far_id from attributevalue) as tempa
+    on temp.rentOutTypeID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as passengerTypeName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.passengerTypeID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as billUnitName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.billUnitID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as depositPayWayName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.depositPayWayID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as isBillName,far_id as far_id4 from attributevalue) as tempi
+    on temph.isBillID = tempi.far_id4
+    where temph.passengerCheckInId = #{passengerCheckInId}
+  </select>
 </mapper>

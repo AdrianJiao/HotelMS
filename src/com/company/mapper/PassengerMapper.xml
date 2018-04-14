@@ -452,4 +452,32 @@
     </where>
   </select>
 
+
+  <!--插入后获取主键-->
+  <insert id="insertAndGetId"  parameterType="com.company.bean.Passenger"
+          useGeneratedKeys="true" keyProperty="pid" keyColumn="pid">
+    insert into passenger (name, genderID,
+      birthDate, nationID, licenceIssuingAuthorty,
+      papersValidity, profession, educationDegreeID,
+      passengerLevelID, papersID, papersNumber,
+      unitsOrAddress, thingReasonID, whereAreFrom,
+      whereToGo, contactPhoneNumber, remarks
+      )
+    values (#{name,jdbcType=VARCHAR}, #{genderID,jdbcType=VARCHAR},
+      #{birthDate,jdbcType=DATE}, #{nationID,jdbcType=VARCHAR}, #{licenceIssuingAuthorty,jdbcType=VARCHAR},
+      #{papersValidity,jdbcType=DATE}, #{profession,jdbcType=VARCHAR}, #{educationDegreeID,jdbcType=VARCHAR},
+      #{passengerLevelID,jdbcType=VARCHAR}, #{papersID,jdbcType=VARCHAR}, #{papersNumber,jdbcType=VARCHAR},
+      #{unitsOrAddress,jdbcType=VARCHAR}, #{thingReasonID,jdbcType=VARCHAR}, #{whereAreFrom,jdbcType=VARCHAR},
+      #{whereToGo,jdbcType=VARCHAR}, #{contactPhoneNumber,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+
+
+
+  <!--根据id获取用户不填充相应字段-->
+  <select id="selectPassengerByIdWithoutFill" parameterType="int" resultType="passenger">
+    select *
+    from passenger
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

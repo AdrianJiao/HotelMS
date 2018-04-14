@@ -42,4 +42,7 @@ public interface RoomMapper {
 
     //根据房间号查询所有房间(填充相应字段)
     List<Room> queryAllRoomByRoomNumber(String roomName);
+
+    //根据房间等级来查询房间
+    List<Room> queryRoomByGuestRoomLevel(Integer guestRoomLevelID);
 }

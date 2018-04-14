@@ -306,7 +306,8 @@
 	      <div class="row-fluid">
 		    <div class="span3">
 		   	   <label class="labelroomnumber" style="font-size:15px">联系电话：</label>
-	           <input id="contactPhoneNUmberId" name="contactPhoneNUmber" onblur="contactPhoneNUmberOne(this.value)" 
+                <%--注意这里的代码contactPhoneNumber的名称大小写--%>
+	           <input id="contactPhoneNUmberId" name="contactPhoneNumber" onblur="contactPhoneNUmberOne(this.value)"
 	           style="width:100%;height:27px;" type="text" onchange="onchangeOne()">
 			</div>
 	      </div>
