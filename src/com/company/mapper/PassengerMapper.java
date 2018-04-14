@@ -28,4 +28,10 @@ public interface PassengerMapper {
     List<Passenger> queryAllPassenger();
 
     List<Passenger> queryPassengerByName(String txtname);
+
+    //插入后获取主键
+    int insertAndGetId(Passenger passenger);
+
+    //根据id获取用户不填充相应字段
+    Passenger selectPassengerByIdWithoutFill(int pid);
 }

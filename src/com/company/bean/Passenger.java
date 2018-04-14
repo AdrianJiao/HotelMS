@@ -1,6 +1,7 @@
 package com.company.bean;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Passenger {
 
@@ -261,6 +262,47 @@ public class Passenger {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
+    }
+
+
+    /*重写equals方法*/
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Passenger passenger = (Passenger) o;
+        return Objects.equals(pid, passenger.pid) &&
+                Objects.equals(name, passenger.name) &&
+                Objects.equals(genderID, passenger.genderID) &&
+                Objects.equals(birthDate, passenger.birthDate) &&
+                Objects.equals(nationID, passenger.nationID) &&
+                Objects.equals(licenceIssuingAuthorty, passenger.licenceIssuingAuthorty) &&
+                Objects.equals(papersValidity, passenger.papersValidity) &&
+                Objects.equals(profession, passenger.profession) &&
+                Objects.equals(educationDegreeID, passenger.educationDegreeID) &&
+                Objects.equals(passengerLevelID, passenger.passengerLevelID) &&
+                Objects.equals(papersID, passenger.papersID) &&
+                Objects.equals(papersNumber, passenger.papersNumber) &&
+                Objects.equals(unitsOrAddress, passenger.unitsOrAddress) &&
+                Objects.equals(thingReasonID, passenger.thingReasonID) &&
+                Objects.equals(whereAreFrom, passenger.whereAreFrom) &&
+                Objects.equals(whereToGo, passenger.whereToGo) &&
+                Objects.equals(contactPhoneNumber, passenger.contactPhoneNumber) &&
+                Objects.equals(remarks, passenger.remarks) &&
+                Objects.equals(genderName, passenger.genderName) &&
+                Objects.equals(nationName, passenger.nationName) &&
+                Objects.equals(passengerLevelName, passenger.passengerLevelName) &&
+                Objects.equals(papersName, passenger.papersName) &&
+                Objects.equals(thingReasonName, passenger.thingReasonName) &&
+                Objects.equals(educationDegreeName, passenger.educationDegreeName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pid, name, genderID, birthDate, nationID, licenceIssuingAuthorty, papersValidity,
+                profession, educationDegreeID, passengerLevelID, papersID, papersNumber, unitsOrAddress,
+                thingReasonID, whereAreFrom, whereToGo, contactPhoneNumber, remarks, genderName,
+                nationName, passengerLevelName, papersName, thingReasonName, educationDegreeName);
     }
 
     @Override

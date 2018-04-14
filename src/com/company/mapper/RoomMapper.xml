@@ -245,4 +245,9 @@
       </if>
     </where>
   </select>
+
+  <!--根据房间等级来查询房间-->
+  <select id="queryRoomByGuestRoomLevel" parameterType="Integer" resultType="room">
+    SELECT * FROM room WHERE guestRoomLevelID = #{guestRoomLevelID};
+  </select>
 </mapper>

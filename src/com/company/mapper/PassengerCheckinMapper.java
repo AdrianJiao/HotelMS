@@ -23,4 +23,7 @@ public interface PassengerCheckinMapper {
 
     //计算分页和模糊查询的总记录数
     int countPartPassengerCheckinByRoomNameAndBillState(Map<String,Object> map);
+
+    //根据passengerCheckInId查到PassengerCheckin数据
+    PassengerCheckin queryPassengerCheckinByPassengerCheckInId(String passengerCheckInId);
 }
