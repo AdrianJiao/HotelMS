@@ -40,14 +40,6 @@ public class PassengerCheckinVO {
 
     private String id;
 
-
-    //从前端获取的数据
-
-
-
-
-
-
     //只能通过这个构造方法产生vo对象
     public PassengerCheckinVO(PassengerCheckin passengerCheckin) {
         this.remind = 1;
@@ -65,15 +57,32 @@ public class PassengerCheckinVO {
         this.receiveTeamName ="散客";
 
         //旅客姓名
-        this.passengerName = passengerCheckin.getPassenger().getName();
+        if(passengerCheckin.getPassenger()==null){
+            this.passengerName = "";
+        }else {
+           this.passengerName = passengerCheckin.getPassenger().getName();
+        }
 
         this.passengerTypeName = passengerCheckin.getPassengerTypeName();
 
-        this.changingRoomNumber = passengerCheckin.getChangingRoomNumber();
 
-        this.changRoomMoney = passengerCheckin.getChangRoomMoney();
+        if(passengerCheckin.getChangingRoomNumber() == null){
+            this.changingRoomNumber = 0 ;
+        }else {
+            this.changingRoomNumber = passengerCheckin.getChangingRoomNumber();
+        }
 
-        this.changRoomTime = passengerCheckin.getChangRoomTime();
+        if(passengerCheckin.getChangRoomMoney()==null){
+            this.changRoomMoney = 0;
+        }else {
+              this.changRoomMoney = passengerCheckin.getChangRoomMoney();
+        }
+
+        if(passengerCheckin.getChangRoomTime()==null){
+            this.changRoomTime = new Date();
+        }else {
+             this.changRoomTime = passengerCheckin.getChangRoomTime();
+        }
 
         this.registerTime = passengerCheckin.getRegisterTime();
 

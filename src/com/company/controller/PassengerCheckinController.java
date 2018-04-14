@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -35,6 +36,9 @@ public class PassengerCheckinController {
 
     @Autowired
     RoomService roomService;
+
+    @Autowired
+    DepositService depositService;
 
     @RequestMapping("tolist")
     public String showPassengerCheckin(String txtname, String isBillID,String currentPage, Model model){
@@ -86,7 +90,6 @@ public class PassengerCheckinController {
     }
 
 
-
     //安排房间
     @RequestMapping("toarrangeroom")
     public String toArrangeRoom(Integer LvKeLeiXingId, Integer tuanDuiID,Model model ){
@@ -133,11 +136,32 @@ public class PassengerCheckinController {
     }
 
     @RequestMapping("arrangeroom")
-    public String arrangeRoom(){
-//        Room room = roomService.queryRoomByRoomNumber(roomNumber);
-//        System.out.println("roomstay= "+room);
+    public String arrangeRoom(PassengerCheckin passengerCheckin,String roomName){
 
-        // passengerCheckinService.arrangeroom();
+        //手动设置房间号
+        passengerCheckin.setRoomNumber(roomName);
+
+        //设置主键
+        String passengerCheckInId = UUID.randomUUID().toString();
+        passengerCheckin.setPassengerCheckInId(passengerCheckInId);
+
+        //设置为未结账,记住表不能更改
+        passengerCheckin.setIsBillID(""+62);
+
+        //押金表中要添加的数据
+        double depositValue = passengerCheckin.getDeposit();
+        String depositPayWayID = passengerCheckin.getDepositPayWayID();
+        Date registerTime = passengerCheckin.getRegisterTime();
+
+        //押金表添加操作
+        Deposit deposit = new Deposit();
+        deposit.setCheckInId(passengerCheckInId);
+        deposit.setDeposit(depositValue);
+        deposit.setDepositRegisterTime(registerTime);
+        depositService.insertSelective(deposit);
+
+        //添加入住用户
+        passengerCheckinService.insertSelective(passengerCheckin);
         return "redirect:tolist.do";
     }
 
@@ -242,32 +266,17 @@ public class PassengerCheckinController {
 
             }
 
-            //新建入住记录，填充入住房间号和入住旅客信息
-            PassengerCheckin passengerCheckin = new PassengerCheckin();
-
-            //设置主键
-            passengerCheckin.setPassengerCheckInId(UUID.randomUUID().toString());
+            //获取旅客数据
+            PassengerCheckin passengerCheckin = passengerCheckinService.
+                    queryPassengerCheckinByPassengerCheckInId(passengerCheckInId);
 
             //设置旅客
             passengerCheckin.setPid(afterInsertPid);
 
-            //设置为未结账,记住表不能更改
-            passengerCheckin.setIsBillID(""+62);
-
-            //插入记录
-            passengerCheckinService.insertSelective(passengerCheckin);
+            //更新表中的数据
+            passengerCheckinService.updateByPrimaryKeySelective(passengerCheckin);
         }
         return "redirect:tolist.do";
     }
 
-    //选择填充数据后回显
-    @RequestMapping("test")
-    public String  test(){
-        PassengerCheckin passengerCheckin =
-                passengerCheckinService.queryPassengerCheckinByPassengerCheckInId("fsdfsadfas");
-
-        System.out.println("结果"+passengerCheckin);
-
-        return "redirect:tolist.do";
-    }
 }
