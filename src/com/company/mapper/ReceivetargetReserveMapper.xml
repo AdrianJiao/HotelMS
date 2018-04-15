@@ -195,4 +195,21 @@
     </where>
     limit #{limit} offset #{offset};
   </select>
+
+
+  <!-- /**
+    *
+    * 批量删除
+    * @author Yiqiang Tao
+    * @date 2018/4/14 20:35
+    */-->
+
+  <delete id="deleteBatchByPrimaryKey" >
+    delete from receivetarget_reserve
+    <where>
+      <foreach collection="array" item="receivetargetReserveId">
+        or receivetargetReserveId = #{receivetargetReserveId}
+      </foreach>
+    </where>
+  </delete>
 </mapper>

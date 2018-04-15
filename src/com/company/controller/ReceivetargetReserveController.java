@@ -1,10 +1,8 @@
 package com.company.controller;
 
 import com.company.bean.Attributevalue;
-import com.company.service.AttributeService;
-import com.company.service.AttributevalueService;
-import com.company.service.PassengerReserveService;
-import com.company.service.ReceivetargetReserveService;
+import com.company.bean.Receivetarget;
+import com.company.service.*;
 import com.company.utils.Page;
 import com.company.vo.PassengerReserveVO;
 import com.company.vo.ReceivetargetReserveVO;
@@ -12,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -27,6 +27,9 @@ public class ReceivetargetReserveController {
 
     @Autowired
     ReceivetargetReserveService receivetargetReserveService;
+
+    @Autowired
+    ReceivetargetService receivetargetService;
 
     @RequestMapping("tolist_ReceivetargetReserve")
     public String showPassengers(String txtname, String state,String currentPage, Model model){
@@ -75,5 +78,34 @@ public class ReceivetargetReserveController {
         model.addAttribute("LvKeLeiXingId",56);
 
         return "predetermine/list";
+    }
+
+    //接待对象填充
+    @RequestMapping(path="/selectTarget",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Receivetarget> selectReceivetargetByTeamName(String txtname) {
+        if (txtname==null||"".equals(txtname)) {
+            return receivetargetService.queryAllReceivetarget();
+        } else {
+
+            return receivetargetService.queryReceivetargetByTeamName("%"+txtname+"%");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //团队预定批量删除
+    @RequestMapping("delete_PassengerReserve")
+    public String deleteReserve (String[] id) {
+        receivetargetReserveService.deleteBatchByPrimaryKey(id);
+       return "redirect:tolist.do?LvKeLeiXingId=56";
     }
 }

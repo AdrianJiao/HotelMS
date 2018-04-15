@@ -415,7 +415,7 @@
 		if(chk_value.toString().indexOf(",")>0){
 		   alert("修改只能选择一条");
 		}else{
-		   parent.document.getElementById("Mainid").src='${ctx}/Predetermine/toupdate.do?id='+chk_value;
+		   parent.document.getElementById("Mainid").src='${ctx}/Predetermine/toupdate.do?id='+chk_value+'&LvKeLeiXingId=${LvKeLeiXingId}';
 		}
 	}else{
 	  alert("请选择一条数据进行修改");
@@ -430,7 +430,7 @@
   	if(chk_value!=""){
   	var flag=window.confirm("注意：删除该预订信息会扣除该房间的押金的哦！您确定要永久删除该信息吗?");
      if(flag){
-  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/delete.do?id='+chk_value;
+  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/delete.do?id='+chk_value+'&LvKeLeiXingId=${LvKeLeiXingId}';
   	}
   	}else{
 	  alert("请选择一条或多条数据进行删除");
