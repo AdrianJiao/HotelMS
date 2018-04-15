@@ -164,6 +164,7 @@
 			      <button onclick="teamSelect()" type="button" class="btn-success" style="margin-left:-4px;height:26px;"><li class="icon-search icon-white"></li>查询</button>
 			   </div>
 		    </form>
+			  <%--isBillID是它从model中查询出的数据--%>
 		    <select id="teamIsBillId" style="width:8%;height:27px; float:left; margin-right:5px;" onchange="teamSelect()">
 	            <c:forEach items="${listOne}" var="item">
 		          <option value="${item.far_id}" <c:if test="${item.far_id==isBillID}">selected="selected"</c:if>>
@@ -379,7 +380,9 @@
   		roomNumber=table.rows[selectedIndex-1].cells[1].innerHTML;
   		TOF=table.rows[selectedIndex-1].cells[12].innerHTML;
   	});
-  	if(TOF==69){
+
+  	/*数据库中已结账为61*/
+  	if(TOF==61){
        alert("很抱歉！该数据已经结账没法进行此操作！");
        return;
      }
@@ -408,7 +411,9 @@
   		roomNumber=table.rows[selectedIndex-1].cells[1].innerHTML;
   		TOF=table.rows[selectedIndex-1].cells[12].innerHTML;
   	});
-  	if(TOF==69){
+
+  	/*数据库中已结账为61*/
+  	if(TOF==61){
        alert("很抱歉！该数据已经结账没法进行此操作！");
        return;
      }
@@ -416,6 +421,8 @@
 		if(chk_value.toString().indexOf(",")>0){
 		   alert("登记只能根据一个房间登记");
 		}else{
+
+		    /**/
 		   parent.document.getElementById("Mainid").src='${ctx}/StayRegister/toregister.do?id='+chk_value+
 		   '&roomNumber='+roomNumber+'&LvKeLeiXingId='+56;
 		}
@@ -915,8 +922,7 @@
      "&isBillID="+isBillID+"&LvKeLeiXingId="+LvKeLeiXingId;
      }
    });
-   
-  
+
  </script>
    
   </body>

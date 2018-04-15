@@ -192,7 +192,7 @@
 		  <div class="span6" style="text-align:center;">
 		      <div class="row-fluid">
 			      <div class="span12" style="margin-bottom: 8px;">
-				   	 <button class="btn btn-primary" type="button" onclick="tijiao()"">
+				   	 <button class="btn btn-primary" type="button" onclick="tijiao()">
 				   	 <li class="icon-check icon-white"></li>保存</button>
 				  </div> 
 			  </div>
@@ -333,7 +333,8 @@
          <c:forEach items="${list}" var="item">
 	       <c:if test="${item.roomStateID==1}">
 	         <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666;  float:left;margin:2px; background:#99FF99;">
-	             <input style="display: none;" value="${item.id}" />
+					<%--把id改为roomNumber--%>
+	              <input style="display: none;" value="${item.roomNumber}" />
 	             <input style="display: none;" value="${item.roomStateID}" />
 	             <label>${item.roomNumber}</label>
 	             <label style="margin-top:-5px;">${item.roomName}</label>
@@ -346,7 +347,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==2}">
 	         <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#DDDDDD;">
-	             <input style="display: none;" value="${item.id}" />
+					 <%--把id改为roomNumber--%>
+				 <input style="display: none;" value="${item.roomNumber}" />
 	             <input style="display: none;" value="${item.roomStateID}" />
 	             <label>${item.roomNumber}</label>
 	             <label style="margin-top:-5px;">${item.roomName}</label>
@@ -359,7 +361,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==4}">
 	           <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#99FFFF;">
-		           <input style="display: none;" value="${item.id}" />
+					   <%--把id改为roomNumber--%>
+		           <input style="display: none;" value="${item.roomNumber}" />
 		           <input style="display: none;" value="${item.roomStateID}" />
 		           <label>${item.roomNumber}</label>
 		           <label style="margin-top:-5px;">${item.roomName}</label>
@@ -372,7 +375,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==5}">
 	           <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#BBBB00;">
-		           <input style="display: none;" value="${item.id}" />
+					   <%--把id改为roomNumber--%>
+		           <input style="display: none;" value="${item.roomNumber}" />
 		           <input style="display: none;" value="${item.roomStateID}" />
 		           <label>${item.roomNumber}</label>
 		           <label style="margin-top:-5px;">${item.roomName}</label>
@@ -385,7 +389,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==6}">
 	           <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF7744;">
-		           <input style="display: none;" value="${item.id}" />
+					   <%--把id改为roomNumber--%>
+		           <input style="display: none;" value="${item.roomNumber}" />
 		           <input style="display: none;" value="${item.roomStateID}" />
 		           <label>${item.roomNumber}</label>
 		           <label style="margin-top:-5px;">${item.roomName}</label>
@@ -398,7 +403,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==7}">
 	           <button onclick="suibian(this)"  style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF0088;">
-		           <input style="display: none;" value="${item.id}" />
+					   <%--把id改为roomNumber--%>
+		           <input style="display: none;" value="${item.roomNumber}" />
 		           <input style="display: none;" value="${item.roomStateID}" />
 		           <label>${item.roomNumber}</label>
 		           <label style="margin-top:-5px;">${item.roomName}</label>
@@ -411,7 +417,8 @@
 	       </c:if>
 	       <c:if test="${item.roomStateID==65}">
 	           <button onclick="suibian(this)" style="width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF00FF;">
-		           <input style="display: none;" value="${item.id}" />
+					   <%--把id改为roomNumber--%>
+		           <input style="display: none;" value="${item.roomNumber}" />
 		           <input style="display: none;" value="${item.roomStateID}" />
 		           <label>${item.roomNumber}</label>
 		           <label style="margin-top:-5px;">${item.roomName}</label>
@@ -455,10 +462,14 @@
    		document.getElementById("roomId").value=ss.children[0].value;
    		document.getElementById("roomNameId").value=ss.children[2].textContent;
    		document.getElementById("biaoZhunFangJiaId").value=ss.children[5].textContent;
+   		/*钟点房*/
    		document.getElementById("zhongDianFangId").value='￥'+ss.children[6].value;
+   		/*首段价格*/
    		document.getElementById("shouDuanJiaGeId").value='￥'+ss.children[7].value;
+   		/*首段时间*/
    		document.getElementById("shouDuanShiChangId").value=ss.children[8].value;
 	 }else{
+
 	    alert("不是空房不可以安排房间的哦！");
 	 }
    		
@@ -506,9 +517,9 @@
    function pickedFunc() {
             shijian = $dp.cal.getNewDateStr();
         }
-        
+
    function allroomfunction(){
-     guestRoomLevelID=0;
+	 guestRoomLevelID=0;
      tenfunction();
    }
         
@@ -556,13 +567,16 @@
           data:"guestRoomLevelID="+guestRoomLevelID,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
           async:false,                                          // 是否 异步 提交
           success: function (result) {                          // 不出现异常 进行立面方
-             for (var key in result) {
+            for (var key in result) {
                 var item = result[key];
                 if(item.roomStateID==1){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#99FF99;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+					/* value="+item.id+"  它的id  改为 roomNumber*/
+			     /*  "<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumbe+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
+						/*在bean（Room）里面添加了roomName属性*/
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.guestRoomLevelName+"</label>"+
 			      "<label style='margin-top:-5px;'>"+"￥"+item.standardPriceDay+"</label>"+
@@ -574,7 +588,9 @@
                 }
                 if(item.roomStateID==2){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#DDDDDD;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+                  /*  "<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -586,9 +602,13 @@
 			     "</button>")
     			 $("#div1").append(btn);
                 }
-                if(item.roomStateID==4){
+
+                /*item.roomStateID==4 为了和数据库对应，把4改为3*/
+                if(item.roomStateID==3){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#99FFFF;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+				/*	"<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -600,9 +620,12 @@
 			     "</button>")
     			 $("#div1").append(btn);
                 }
-                if(item.roomStateID==5){
+                 /*item.roomStateID==5 为了和数据库对应，把5改为4*/
+                if(item.roomStateID==4){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#BBBB00;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+			     /*  "<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -614,9 +637,12 @@
 			     "</button>")
     			 $("#div1").append(btn);
                 }
-                if(item.roomStateID==6){
+                 /*item.roomStateID==6 为了和数据库对应，把6改为5*/
+                if(item.roomStateID==5){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF7744;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+			     /*  "<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -628,9 +654,12 @@
 			     "</button>")
     			 $("#div1").append(btn);
                 }
-                if(item.roomStateID==7){
+                 /*item.roomStateID==7 为了和数据库对应，把7改为6*/
+                if(item.roomStateID==6){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF0088;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+			  /*     "<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -642,9 +671,12 @@
 			     "</button>")
     			 $("#div1").append(btn);
                 }
-                if(item.roomStateID==65){
+                 /*item.roomStateID==65 为了和数据库对应，把65改为7*/
+                if(item.roomStateID==7){
                 var btn=$("<button onclick='suibian(this)' style='width:95px;;height:93px;border: 3px solid #666666; float:left;margin:2px; background:#FF00FF;'>"+
-			      "<input style='display: none;' value="+item.id+" />"+
+                    /* value="+item.id+"  它的id  改为 roomNumber*/
+					/*"<input style='display: none;' value="+item.id+" />"+*/
+                    "<input style='display: none;' value="+item.roomNumber+" />"+
 			      "<input style='display: none;' value="+item.roomStateID+" />"+
 			      "<label>"+item.roomNumber+"</label>"+
 			      "<label style='margin-top:-5px;'>"+item.roomName+"</label>"+
@@ -703,6 +735,7 @@
    }
   
  </script>
-   
+
+</div>
   </body>
 </html>
