@@ -58,4 +58,9 @@ public class PassengerReserveServiceImpl implements PassengerReserveService{
     public int insertSelective(PassengerReserve passengerReserve) {
         return passengerReserveMapper.insertSelective(passengerReserve);
     }
+
+    @Override
+    public int deleteBatchByPrimaryKey(String[] passengerReserveId) {
+        return passengerReserveMapper.deleteBatchByPrimaryKey(passengerReserveId);
+    }
 }

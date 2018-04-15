@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CenterController {
 
+    //............登记模块...............
+
     //分发显示团队登记和散客登记
     @RequestMapping("StayRegister/tolist")
     public String chooseShowCheckInController(String LvKeLeiXingId){
@@ -30,7 +32,9 @@ public class CenterController {
         }
     }
 
-    //分发显示团队登记和散客登记
+    //............预定模块...............
+
+    //分发显示团队登记和散客预定
     @RequestMapping("Predetermine/tolist")
     public String chooseShowReserveController(String LvKeLeiXingId){
 
@@ -49,6 +53,30 @@ public class CenterController {
 
             //这里通过forward避免添加WEB-INF的影响
             return "forward:tolist_ReceivetargetReserve.do";
+        }
+    }
+
+
+
+    //分发显示团队登记和散客预定
+    @RequestMapping("Predetermine/delete")
+    public String chooseDeleteReserveController(String LvKeLeiXingId){
+
+        //默认值56为团体
+        int LvKeLeiXingIdInt = 56;
+        if(LvKeLeiXingId != null&&!"".equals(LvKeLeiXingId)){
+            LvKeLeiXingIdInt = Integer.parseInt(LvKeLeiXingId);
+        }
+
+        //LvKeLeiXingId值为55为散客登记
+        if(LvKeLeiXingIdInt==55){
+
+            //LvKeLeiXingId值为55为散客登记
+            return "forward:delete_PassengerReserve.do";
+        }else {
+
+            //这里通过forward避免添加WEB-INF的影响
+            return "forward:delete_ReceivetargetReserve.do";
         }
     }
 }

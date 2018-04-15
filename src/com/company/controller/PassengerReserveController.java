@@ -86,25 +86,24 @@ public class PassengerReserveController {
         return "predetermine/list";
     }
 
-
-
-
     @RequestMapping(path="/selectPassenger",method = RequestMethod.POST)
     @ResponseBody
-    public List<Passenger>selectPassenger(String name) {
-        List<Passenger> result = passengerService.queryAllPassenger();
-
-        return result;
+    public List<Passenger>selectPassenger(String txtname) {
+        //是否有条件查询
+        if(txtname==null||"".equals(txtname)){
+            return passengerService.queryAllPassenger();
+        }else {
+            //模糊查询
+            return passengerService.queryPassengerByName("%"+txtname+"%");
+        }
     }
 
+    //添加手机号码显示
     @RequestMapping("/confirmPassenger")
     @ResponseBody
     public String confirmPassenger(@RequestParam int id){
-
         String  contactPhoneNumber= passengerService.queryContactPhoneNumber(id);
-
         System.out.println("contactPhoneNumber="+contactPhoneNumber);
-
         return contactPhoneNumber;
     }
 
@@ -122,17 +121,20 @@ public class PassengerReserveController {
     //新增里面的选择房间
     @RequestMapping("/selectRoom")
     @ResponseBody
-    public List<Room> selectRoom(){
-
-        List<Room> rooms = roomService.queryAllRoom();
-        System.out.println(rooms);
-        return rooms;
+    public List<Room> selectRoom(String roomNumber){
+        //是否有条件查询
+        if(roomNumber==null||"".equals(roomNumber)){
+            return  roomService.queryAllRoom();
+        }else {
+            //模糊查询
+            return roomService.queryAllRoomByRoomNumber("%"+roomNumber+"%");
+        }
     }
-
 
     //新增保存
     @RequestMapping("add")
-    public String addRoom(@RequestParam("name")String name,int pid,String roomNumber, PassengerReserve passengerReserve ){
+    public String addRoom(String name,int pid,String roomNumber,
+                          PassengerReserve passengerReserve ){
 
         //设置主键
         String passengerReserveId = UUID.randomUUID().toString();
@@ -144,15 +146,19 @@ public class PassengerReserveController {
         return "redirect:tolist.do";
     }
 
-
     @RequestMapping("/toupdate")
     public String   toupdatePredetermin(Model model){
-
         int aid = attributeService.queryAidByAttributeName("支付方式");
         List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
         model.addAttribute("listOne",attributevalues);
-
-        //未万恒未万恒未万恒未万恒未万恒未万恒未万恒未万恒
         return "";
+    }
+
+
+    //旅客对象预定批量删除
+    @RequestMapping("delete_ReceivetargetReserve")
+    public String deleteReserve (String[] id) {
+        passengerReserveService.deleteBatchByPrimaryKey(id);
+        return "redirect:tolist.do?LvKeLeiXingId=55";
     }
 }

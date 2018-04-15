@@ -20,4 +20,12 @@ public interface PassengerReserveService {
      * @return
      */
     int insertSelective(PassengerReserve passengerReserve);
+
+    /**
+     *批量删除
+     * @author Yiqiang Tao
+     * @date 2018/4/14 20:35
+     */
+
+    int deleteBatchByPrimaryKey(String[] passengerReserveId);
 }

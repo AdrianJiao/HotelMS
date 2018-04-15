@@ -50,4 +50,9 @@ public class ReceivetargetReserveServiceImpl implements ReceivetargetReserveServ
         parameters.put("reserveState",reserveState);
         return receivetargetReserveMapper.countPartReceivetargetReserveByNameAndReserveState(parameters);
     }
+
+    @Override
+    public int deleteBatchByPrimaryKey(String[] receivetargetReserveId) {
+        return receivetargetReserveMapper.deleteBatchByPrimaryKey(receivetargetReserveId);
+    }
 }
