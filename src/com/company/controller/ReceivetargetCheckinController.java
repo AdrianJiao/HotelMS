@@ -85,6 +85,9 @@ public class ReceivetargetCheckinController {
 
         //一定要注意这个问题
         model.addAttribute("isBillID", isBillIDInt);
+
+        //一定要注意这个问题
+        model.addAttribute("LvKeLeiXingId",56);
         return "stayregister/list";
     }
 

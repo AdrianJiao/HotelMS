@@ -35,8 +35,7 @@ public class PassengerReserveController {
     @Autowired
     PassengerService passengerService;
 
-    @Autowired
-    RoomService roomService;
+
 
     @RequestMapping("tolist_PassengerReserve")
     public String showPassengers(String txtname, String state,String currentPage, Model model){
@@ -98,7 +97,7 @@ public class PassengerReserveController {
         }
     }
 
-    //添加手机号码显示
+    //只在passenger这加了一个
     @RequestMapping("/confirmPassenger")
     @ResponseBody
     public String confirmPassenger(@RequestParam int id){
@@ -107,35 +106,9 @@ public class PassengerReserveController {
         return contactPhoneNumber;
     }
 
-    @RequestMapping("/toadd")
-    public String toAddPassengerPredetermine(@RequestParam("name") String name, Model model){
-
-        int aid = attributeService.queryAidByAttributeName("支付方式");
-        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
-        model.addAttribute("listOne",attributevalues);
-
-        model.addAttribute("name", name);
-        return "/predetermine/add";
-    }
-
-    //新增里面的选择房间
-    @RequestMapping("/selectRoom")
-    @ResponseBody
-    public List<Room> selectRoom(String roomNumber){
-        //是否有条件查询
-        if(roomNumber==null||"".equals(roomNumber)){
-            return  roomService.queryAllRoom();
-        }else {
-            //模糊查询
-            return roomService.queryAllRoomByRoomNumber("%"+roomNumber+"%");
-        }
-    }
-
-    //新增保存
-    @RequestMapping("add")
-    public String addRoom(String name,int pid,String roomNumber,
-                          PassengerReserve passengerReserve ){
-
+    /*//新增旅客用户
+    @RequestMapping("/add_PassengerReserve")
+    public String addRoom(String id,String type,String roomIdShuZu){
         //设置主键
         String passengerReserveId = UUID.randomUUID().toString();
         passengerReserve.setPassengerReserveId(passengerReserveId);
@@ -143,8 +116,8 @@ public class PassengerReserveController {
         System.out.println("passengerReserveId="+passengerReserveId);
         passengerReserveService.insertSelective(passengerReserve);
 
-        return "redirect:tolist.do";
-    }
+    }*/
+
 
     @RequestMapping("/toupdate")
     public String   toupdatePredetermin(Model model){
@@ -153,7 +126,6 @@ public class PassengerReserveController {
         model.addAttribute("listOne",attributevalues);
         return "";
     }
-
 
     //旅客对象预定批量删除
     @RequestMapping("delete_ReceivetargetReserve")

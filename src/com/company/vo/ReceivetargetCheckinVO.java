@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class ReceivetargetCheckinVO {
 
+    private String id;
+
     private int remind;
 
     private String roomNumber;
@@ -41,6 +43,7 @@ public class ReceivetargetCheckinVO {
         this.roomNumber = receivetargetCheckin.getRoomNumber();
         this.roomGuestRoomLevelName = receivetargetCheckin.getRoom().getGuestRoomLevelName();
         this.roomAmount = receivetargetCheckin.getRoom().getRoomAmount();
+        this.id = receivetargetCheckin.getReceivetargetCheckInId();
 
         //取不等于2
         this.receiveTargetID = 3;
@@ -56,6 +59,14 @@ public class ReceivetargetCheckinVO {
         this.sumConst = receivetargetCheckin.getSumConst();
         this.isBillID = receivetargetCheckin.getIsBillID();
         this.stayregisterdetailsId = receivetargetCheckin.getReceivetargetCheckInId();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getRemind() {
@@ -181,7 +192,8 @@ public class ReceivetargetCheckinVO {
     @Override
     public String toString() {
         return "ReceivetargetCheckinVO{" +
-                "remind=" + remind +
+                "id='" + id + '\'' +
+                ", remind=" + remind +
                 ", roomNumber='" + roomNumber + '\'' +
                 ", roomGuestRoomLevelName='" + roomGuestRoomLevelName + '\'' +
                 ", roomAmount=" + roomAmount +

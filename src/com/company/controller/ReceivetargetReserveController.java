@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.bean.Attributevalue;
+import com.company.bean.PassengerReserve;
 import com.company.bean.Receivetarget;
 import com.company.service.*;
 import com.company.utils.Page;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("Predetermine")
@@ -92,12 +94,14 @@ public class ReceivetargetReserveController {
         }
     }
 
+   /* //新增团队用户
+    @RequestMapping("/add_ReceivetargetReserve")
+    public String addReceive(String id,String type,String roomIdShuZu){
 
 
 
-
-
-
+    }
+*/
 
 
 
