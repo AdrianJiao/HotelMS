@@ -25,6 +25,27 @@ public class ReceivetargetReserve {
     //房间对象
     private Room room;
 
+    //ID转Name所需要的字段
+    private String payWayName;
+
+    private String predetermineStateName;
+
+    public String getPayWayName() {
+        return payWayName;
+    }
+
+    public void setPayWayName(String payWayName) {
+        this.payWayName = payWayName;
+    }
+
+    public String getPredetermineStateName() {
+        return predetermineStateName;
+    }
+
+    public void setPredetermineStateName(String predetermineStateName) {
+        this.predetermineStateName = predetermineStateName;
+    }
+
     public Receivetarget getReceivetarget() {
         return receivetarget;
     }
@@ -118,6 +139,8 @@ public class ReceivetargetReserve {
                 ", reserveState='" + reserveState + '\'' +
                 ", receivetarget=" + receivetarget +
                 ", room=" + room +
+                ", payWayName='" + payWayName + '\'' +
+                ", predetermineStateName='" + predetermineStateName + '\'' +
                 '}';
     }
 }

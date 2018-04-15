@@ -129,8 +129,10 @@
     <div class="span12">
     <div class="tabbable" >  <!-- style="border:1px solid red"  -->
       <ul class="nav nav-tabs">
-        <li class="active" id="tabOneId"><a href="#tab1" data-toggle="tab">接待对象</a></li>
-        <li ><a href="#tab2" data-toggle="tab">旅客信息</a></li>
+
+		  <%--添加按钮选择查询旅客还是团队--%>
+        <li class="active" id="tabOneId"><a id="twoid2"  href="#tab1" data-toggle="tab" onclick="teamfunction()">接待对象</a></li>
+        <li ><a id="oneid2" href="#tab2" data-toggle="tab" onclick="lvKefunction()" >旅客信息</a></li>
       </ul>
       
       <div class="tab-content">
@@ -460,7 +462,7 @@
                 var tdPapersName = tr.insertCell(-1);
                 var tdPapersNumber = tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.pid+"'>";
                 tdName.innerHTML = item.name;
                 tdGender.innerHTML = item.genderName;
                 tdPapersName.innerHTML =item.papersName;         //中间这个是数据
@@ -608,10 +610,25 @@
 	  alert("请选择一条或多条数据进行安排房间");
 	}
    }
-   
-   
-   
-  /* 分页要用的 */
+
+
+ /*添加JSP分两个模块查询*/
+ function teamfunction(){
+     parent.document.getElementById("Mainid").src='${ctx}/Predetermine/tolist.do?LvKeLeiXingId='+56;
+ }
+ function lvKefunction(){
+     parent.document.getElementById("Mainid").src='${ctx}/Predetermine/tolist.do?LvKeLeiXingId='+55;
+ }
+
+ /*添加分页标签设置*/
+ if(${LvKeLeiXingId==55}){
+     $('#oneid2').tab('show');
+ }else if(${LvKeLeiXingId==56}){
+     $('#twoid2').tab('show');
+ }
+
+
+ /* 分页要用的 */
   $(".tcdPageCode").createPage({
      pageCount:${list.totalPage},
      current:${list.currentPage},

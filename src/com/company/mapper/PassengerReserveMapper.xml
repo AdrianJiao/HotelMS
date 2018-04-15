@@ -126,4 +126,73 @@
       reserveState = #{reserveState,jdbcType=VARCHAR}
     where passengerReserveId = #{passengerReserveId,jdbcType=VARCHAR}
   </update>
+
+  <!--统计模糊查询的总记录数-->
+  <select id="countPartPassengerReserveByNameAndReserveState" parameterType="hashmap" resultType="int">
+    select count(*) from
+    (select * from
+    (select * from
+    (select * from passenger_reserve as temp
+    inner join
+    (select attributeDetailsName as payWayName,far_id from attributevalue) as tempa
+    on temp.payWayID = tempa.far_id ) as tempb
+    inner join
+    (select attributeDetailsName as predetermineStateName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.reserveState = tempc.far_id1)  as tempd
+    inner join (select pid as pid1,name from passenger) as tempe
+    on tempd.pid = tempe.pid1) as tempf
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        tempf.name like #{txtname}
+      </if>
+      and tempf.reserveState = #{reserveState}
+    </where>
+  </select>
+
+
+  <!--分页和模糊查询的结果集填充旅客对象和房间对象-->
+  <resultMap id="fillOutPassengerAndRoomMap" type="passengerReserve">
+    <id column="passengerReserveId" property="passengerReserveId"></id>
+    <!--这里查询的两个字段必须用result才会显示-->
+    <result property="pid" column="pid"/>
+    <result property="roomNumber" column="roomNumber"/>
+
+    <!--填充旅客对象-->
+    <association property="passenger"
+                 javaType="passenger"
+                 select="com.company.mapper.PassengerMapper.queryPassengerByPid"
+                 column="pid">
+      <id column="pid" property="pid"></id>
+    </association>
+    <!--填充房间对象-->
+    <association property="room"
+                 javaType="room"
+                 select="com.company.mapper.RoomMapper.queryRoomByRoomNumber"
+                 column="roomNumber">
+      <id column="roomNumber" property="roomNumber"></id>
+    </association>
+  </resultMap>
+
+  <!--分页和模糊查询-->
+  <select id="queryPartPassengerReserves" parameterType="map" resultMap="fillOutPassengerAndRoomMap">
+    select * from
+    (select * from
+    (select * from
+    (select * from passenger_reserve as temp
+    inner join
+    (select attributeDetailsName as payWayName,far_id from attributevalue) as tempa
+    on temp.payWayID = tempa.far_id ) as tempb
+    inner join
+    (select attributeDetailsName as predetermineStateName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.reserveState = tempc.far_id1)  as tempd
+    inner join (select pid as pid1,name from passenger) as tempe
+    on tempd.pid = tempe.pid1) as tempf
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        tempf.name like #{txtname}
+      </if>
+      and tempf.reserveState = #{reserveState}
+    </where>
+    limit #{limit} offset #{offset};
+  </select>
 </mapper>

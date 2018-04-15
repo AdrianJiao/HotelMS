@@ -34,4 +34,12 @@ public interface PassengerMapper {
 
     //根据id获取用户不填充相应字段
     Passenger selectPassengerByIdWithoutFill(int pid);
+
+    /******************************************************************/
+    /**
+     * 根据pid查询电话号码
+     * @param pid
+     * @return
+     */
+    String queryContactPhoneNumber(int pid);
 }

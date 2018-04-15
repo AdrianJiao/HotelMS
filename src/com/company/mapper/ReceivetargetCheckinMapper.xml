@@ -221,4 +221,137 @@
       payTime = #{payTime,jdbcType=DATE}
     where receivetargetCheckInId = #{receivetargetCheckInId,jdbcType=VARCHAR}
   </update>
+
+  <!--分页和模糊查询的结果集填充旅客对象和房间对象-->
+  <resultMap id="fillOutReceivetargetAndRoomMap" type="receivetargetCheckin">
+    <id column="receivetargetCheckInId" property="receivetargetCheckInId"></id>
+    <!--这里查询的两个字段必须用result才会显示-->
+    <result property="pid" column="pid"/>
+    <result property="tid" column="tid"/>
+    <result property="roomNumber" column="roomNumber"/>
+
+    <!--填充旅客对象-->
+    <association property="passenger"
+                 javaType="passenger"
+                 select="com.company.mapper.PassengerMapper.queryPassengerByPid"
+                 column="pid">
+      <id column="pid" property="pid"></id>
+    </association>
+
+    <!--填充团队对象-->
+    <association property="receivetarget"
+                 javaType="receivetarget"
+                 select="com.company.mapper.ReceivetargetMapper.queryReceivetargetByTid"
+                 column="tid">
+      <id column="tid" property="tid"></id>
+    </association>
+
+    <!--填充房间对象-->
+    <association property="room"
+                 javaType="room"
+                 select="com.company.mapper.RoomMapper.queryRoomByRoomNumber"
+                 column="roomNumber">
+      <id column="roomNumber" property="roomNumber"></id>
+    </association>
+  </resultMap>
+
+  <!--分页和模糊查询-->
+  <select id="queryPartReceivetargetCheckins" parameterType="hashmap" resultMap="fillOutReceivetargetAndRoomMap">
+    select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from receivetarget_checkin as temp
+    inner join
+    (select attributeDetailsName as rentOutTypeName,far_id from attributevalue) as tempa
+    on temp.rentOutTypeID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as passengerTypeName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.passengerTypeID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as billUnitName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.billUnitID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as depositPayWayName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.depositPayWayID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as isBillName,far_id as far_id4 from attributevalue) as tempi
+    on temph.isBillID = tempi.far_id4
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        temph.roomNumber like #{txtname}
+      </if>
+      and temph.isBillID = #{isBillID}
+    </where>
+    limit #{limit} offset #{offset};
+  </select>
+
+
+  <!--统计查询的总记录数-->
+  <select id="countPartReceivetargetCheckinByRoomNameAndBillState" parameterType="hashmap" resultType="int">
+    select count(*) from
+    (select * from
+    (select * from
+    (select * from
+    (select * from receivetarget_checkin as temp
+    inner join
+    (select attributeDetailsName as rentOutTypeName,far_id from attributevalue) as tempa
+    on temp.rentOutTypeID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as passengerTypeName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.passengerTypeID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as billUnitName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.billUnitID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as depositPayWayName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.depositPayWayID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as isBillName,far_id as far_id4 from attributevalue) as tempi
+    on temph.isBillID = tempi.far_id4
+    <where>
+      <if test="txtname != null and !txtname.isEmpty()">
+        temph.roomNumber like #{txtname}
+      </if>
+      and temph.isBillID = #{isBillID}
+    </where>
+  </select>
+
+  <!--根据passengerCheckInId查到PassengerCheckin数据-->
+  <select id="queryReceivetargetCheckinByReceivetargetCheckInId" parameterType="string" resultMap="fillOutReceivetargetAndRoomMap">
+    select * from
+    (select * from
+    (select * from
+    (select * from
+    (select * from receivetarget_checkin as temp
+    inner join
+    (select attributeDetailsName as rentOutTypeName,far_id from attributevalue) as tempa
+    on temp.rentOutTypeID = tempa.far_id )
+    as tempb
+    inner join
+    (select attributeDetailsName as passengerTypeName,far_id as far_id1 from attributevalue)   as tempc
+    on tempb.passengerTypeID = tempc.far_id1 )
+    as tempd
+    inner join
+    (select attributeDetailsName as billUnitName,far_id as far_id2 from attributevalue) as tempe
+    on tempd.billUnitID = tempe.far_id2)
+    as tempf
+    inner join
+    (select attributeDetailsName as depositPayWayName,far_id as far_id3 from attributevalue) as tempg
+    on tempf.depositPayWayID = tempg.far_id3)
+    as temph
+    inner join
+    (select attributeDetailsName as isBillName,far_id as far_id4 from attributevalue) as tempi
+    on temph.isBillID = tempi.far_id4
+    where temph.receivetargetCheckInId = #{receivetargetCheckInId}
+  </select>
+
 </mapper>

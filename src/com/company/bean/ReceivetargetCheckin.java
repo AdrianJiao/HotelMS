@@ -41,8 +41,71 @@ public class ReceivetargetCheckin {
     //旅客对象
     private  Passenger passenger;
 
+
     //房间对象
     private Room room;
+
+    //ID转Name的相应字段（5个）
+    private String rentOutTypeName;
+
+    private String passengerTypeName;
+
+    private String billUnitName;
+
+    private String depositPayWayName;
+
+    private String isBillName;
+
+    //表设计阶段决定押金单独存放,起到接收前端数据的作用
+    private double deposit;
+
+    public String getRentOutTypeName() {
+        return rentOutTypeName;
+    }
+
+    public void setRentOutTypeName(String rentOutTypeName) {
+        this.rentOutTypeName = rentOutTypeName;
+    }
+
+    public String getPassengerTypeName() {
+        return passengerTypeName;
+    }
+
+    public void setPassengerTypeName(String passengerTypeName) {
+        this.passengerTypeName = passengerTypeName;
+    }
+
+    public String getBillUnitName() {
+        return billUnitName;
+    }
+
+    public void setBillUnitName(String billUnitName) {
+        this.billUnitName = billUnitName;
+    }
+
+    public String getDepositPayWayName() {
+        return depositPayWayName;
+    }
+
+    public void setDepositPayWayName(String depositPayWayName) {
+        this.depositPayWayName = depositPayWayName;
+    }
+
+    public String getIsBillName() {
+        return isBillName;
+    }
+
+    public void setIsBillName(String isBillName) {
+        this.isBillName = isBillName;
+    }
+
+    public double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
+    }
 
     public Receivetarget getReceivetarget() {
         return receivetarget;
@@ -218,6 +281,12 @@ public class ReceivetargetCheckin {
                 ", receivetarget=" + receivetarget +
                 ", passenger=" + passenger +
                 ", room=" + room +
+                ", rentOutTypeName='" + rentOutTypeName + '\'' +
+                ", passengerTypeName='" + passengerTypeName + '\'' +
+                ", billUnitName='" + billUnitName + '\'' +
+                ", depositPayWayName='" + depositPayWayName + '\'' +
+                ", isBillName='" + isBillName + '\'' +
+                ", deposit=" + deposit +
                 '}';
     }
 }
