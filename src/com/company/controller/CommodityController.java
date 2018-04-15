@@ -225,10 +225,9 @@ public class CommodityController {
 
         try{
             commoditytypeService.newdeleteById(id);
-        }catch (Exception ex){
-            throw new MyException("商品分类删除异常");
+        }catch (Exception e){
+            throw new MyException("您删除的数据与其它数据有关联，请先删除其它关联数据！");
         }
-
 
         return "redirect:/Commodity/tolist.do";
     }

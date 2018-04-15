@@ -120,20 +120,18 @@ public class PassengerReserveController {
         return "redirect:tolist.do?LvKeLeiXingId=55";
     }
 
-    @RequestMapping("/toupdate")
-    public String   toupdatePredetermin(Model model){
-        int aid = attributeService.queryAidByAttributeName("支付方式");
-        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
-        model.addAttribute("listOne",attributevalues);
-        return "";
-    }
 
     //旅客对象预定批量删除
-    @RequestMapping("delete_ReceivetargetReserve")
+    @RequestMapping("delete_PassengerReserve")
     public String deleteReserve (String[] id) {
         passengerReserveService.deleteBatchByPrimaryKey(id);
         return "redirect:tolist.do?LvKeLeiXingId=55";
     }
 
+    //旅客对象更新
+    @RequestMapping("toupdate_PassengerReserve")
+    public String updateRserve () {
 
+        return "predetermine/update";
+    }
 }

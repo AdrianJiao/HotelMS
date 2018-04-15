@@ -181,4 +181,26 @@ public class CenterController {
             }
         }
     }
+
+    //修改预定数据
+    @RequestMapping("Predetermine/toupdate")
+    public String updatReserve(String id,String LvKeLeiXingId,Model model){
+        //默认值56为团体
+        int LvKeLeiXingIdInt = Integer.parseInt(LvKeLeiXingId);
+
+        //填充下拉菜单
+        int aid = attributeService.queryAidByAttributeName("支付方式");
+        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
+        model.addAttribute("listOne",attributevalues);
+
+        if(LvKeLeiXingIdInt==56){
+            //团体
+
+            return "forward:toupdate_ReceivetargetReserve.do";
+        }else {
+
+            //旅客
+            return "forward:toupdate_PassengerReserve.do";
+        }
+    }
 }

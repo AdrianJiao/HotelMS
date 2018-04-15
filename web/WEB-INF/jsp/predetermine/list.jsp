@@ -580,8 +580,6 @@
   	document.getElementById("registerTimeId").value=registerTime;
    }
    
-   
-   
    function selectOne(){
      var txtname=document.getElementById("txtnameid").value;
      var state=document.getElementById("stateId").value;

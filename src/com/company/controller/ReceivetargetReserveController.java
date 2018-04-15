@@ -113,11 +113,17 @@ public class ReceivetargetReserveController {
     }
 
     //团队预定批量删除
-    @RequestMapping("delete_PassengerReserve")
+    @RequestMapping("delete_ReceivetargetReserve")
     public String deleteReserve (String[] id) {
         receivetargetReserveService.deleteBatchByPrimaryKey(id);
        return "redirect:tolist.do?LvKeLeiXingId=56";
     }
 
+    //团队更新
+    @RequestMapping("toupdate_ReceivetargetReserve")
+    public String updateRserve () {
 
+
+        return "predetermine/update";
+    }
 }

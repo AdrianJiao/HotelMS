@@ -18,12 +18,12 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
         if (e instanceof  MyException){
 
             //发生了自定义异常
-            mv.setViewName("error/error");
+            mv.setViewName("error/error-500");
             mv.addObject("errormsg",e.getMessage());
         }else{
 
             //发生了未知异常
-            mv.setViewName("error/error");
+            mv.setViewName("error/error-500");
             mv.addObject("errormsg","unknown error!");
         }
         return mv;

@@ -5,6 +5,7 @@ import com.company.bean.Passenger;
 import com.company.service.AttributeService;
 import com.company.service.AttributevalueService;
 import com.company.service.PassengerService;
+import com.company.utils.MyException;
 import com.company.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -148,8 +149,12 @@ public class PassengerController {
 
     //批量删除
     @RequestMapping("delete")
-    public String deleteReceivetars (String[] pid) {
-        passengerService.deleteBatchByPid(pid);
+    public String deleteReceivetars (String[] pid) throws MyException {
+        try{
+            passengerService.deleteBatchByPid(pid);
+        }catch (Exception e){
+            throw new MyException("您删除的数据与其它数据有关联，请先删除其它关联数据！");
+        }
 
         //转到tolist请求
         return "redirect:tolist.do";

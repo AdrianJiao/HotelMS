@@ -409,7 +409,6 @@
 	    });
    }
    
-   
    //验证
    function onchangeOne(){
      //预订天数
@@ -445,7 +444,6 @@
        document.getElementById("divThree").style.display="block"; //显示
      }
    }
-
  </script>
    
   </body>

@@ -5,6 +5,7 @@ import com.company.bean.Room;
 import com.company.service.AttributeService;
 import com.company.service.AttributevalueService;
 import com.company.service.RoomService;
+import com.company.utils.MyException;
 import com.company.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -135,8 +136,12 @@ public class RoomController {
 
     //批量删除Receivetarget
     @RequestMapping("/RoomSet/delete")
-    public String deleteReceivetars (String[] roomNumber) {
-        roomService.deleteBatchByRoom(roomNumber);
+    public String deleteReceivetars (String[] roomNumber) throws MyException {
+        try{
+            roomService.deleteBatchByRoom(roomNumber);
+        }catch (Exception e){
+            throw new MyException("您删除的数据与其它数据有关联，请先删除其它关联数据！");
+        }
 
         //转到tolist请求
         return "redirect:tolist.do";
