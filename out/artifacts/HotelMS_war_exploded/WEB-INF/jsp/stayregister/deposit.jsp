@@ -285,10 +285,11 @@
      var LvKeLeiXingId=document.getElementById("LvKeLeiXingId").value
      parent.document.getElementById('Mainid').src='${ctx}/StayRegister/tolist.do?LvKeLeiXingId='+LvKeLeiXingId;
    }
-   
+
+   /*已结账为61*/
    function fn(s){
     var isBillID=document.getElementById("isBillID").value;
-     if(isBillID==69){
+     if(isBillID==61){
        alert("很抱歉！该数据已经结账没法进行此操作！");
        $("#dd").removeAttr("href");
      }

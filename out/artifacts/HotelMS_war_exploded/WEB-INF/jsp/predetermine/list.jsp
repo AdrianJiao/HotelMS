@@ -86,8 +86,8 @@
   <body>
   <div class="container" style="height:630px;overflow-x:auto;">
   
-    <input type="hidden" id="oneId">     <!-- 房间ID -->
-    <input type="hidden" id="twoId">    
+    <input type="hidden" id="oneId">     <%--团队ID--%>
+    <input type="hidden" id="twoId">    <%--旅客ID--%>
     <div class="span4">
 	    <div class="row-fluid">
 		       <label class="labelroomnumber">团队/旅客：</label>
@@ -129,8 +129,10 @@
     <div class="span12">
     <div class="tabbable" >  <!-- style="border:1px solid red"  -->
       <ul class="nav nav-tabs">
-        <li class="active" id="tabOneId"><a href="#tab1" data-toggle="tab">接待对象</a></li>
-        <li ><a href="#tab2" data-toggle="tab">旅客信息</a></li>
+
+		  <%--添加按钮选择查询旅客还是团队--%>
+        <li class="active" id="tabOneId"><a id="twoid2"  href="#tab1" data-toggle="tab" onclick="teamfunction()">接待对象</a></li>
+        <li ><a id="oneid2" href="#tab2" data-toggle="tab" onclick="lvKefunction()" >旅客信息</a></li>
       </ul>
       
       <div class="tab-content">
@@ -382,8 +384,8 @@
    
    function addfunction(){
      var classone=document.getElementById("tabOneId").className;
-     var one=document.getElementById("oneId").value;
-     var two=document.getElementById("twoId").value;
+     var one=document.getElementById("oneId").value; /*团队ID*/
+     var two=document.getElementById("twoId").value; /*旅客ID*/
      var lvKeName=document.getElementById("nameId").value;
      var teamName=document.getElementById("teamNameId").value;
      if(classone == "active"){
@@ -391,14 +393,14 @@
           alert("你还没有添加对象信息哦！")
         }else{
           parent.document.getElementById('Mainid').src='${ctx}/Predetermine/toadd.do?id='+one+
-          '&name='+teamName+'&type=1';
+          '&name='+teamName+'&type=1';  /*团队ID*/
         }
      }else{
        if(two == "" ){
           alert("你还没有添加旅客信息哦！")
         }else{
           parent.document.getElementById('Mainid').src='${ctx}/Predetermine/toadd.do?id='+two+
-          '&name='+lvKeName+'&type=2';
+          '&name='+lvKeName+'&type=2';  /*旅客ID*/
         }
      }
      
@@ -413,7 +415,7 @@
 		if(chk_value.toString().indexOf(",")>0){
 		   alert("修改只能选择一条");
 		}else{
-		   parent.document.getElementById("Mainid").src='${ctx}/Predetermine/toupdate.do?id='+chk_value;
+		   parent.document.getElementById("Mainid").src='${ctx}/Predetermine/toupdate.do?id='+chk_value+'&LvKeLeiXingId=${LvKeLeiXingId}';
 		}
 	}else{
 	  alert("请选择一条数据进行修改");
@@ -428,7 +430,7 @@
   	if(chk_value!=""){
   	var flag=window.confirm("注意：删除该预订信息会扣除该房间的押金的哦！您确定要永久删除该信息吗?");
      if(flag){
-  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/delete.do?id='+chk_value;
+  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/delete.do?id='+chk_value+'&LvKeLeiXingId=${LvKeLeiXingId}';
   	}
   	}else{
 	  alert("请选择一条或多条数据进行删除");
@@ -460,7 +462,7 @@
                 var tdPapersName = tr.insertCell(-1);
                 var tdPapersNumber = tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.pid+"'>";
                 tdName.innerHTML = item.name;
                 tdGender.innerHTML = item.genderName;
                 tdPapersName.innerHTML =item.papersName;         //中间这个是数据
@@ -490,6 +492,8 @@
   		papersType=table.rows[selectedIndex-1].cells[3].innerHTML;     // 获取选中的索引的 单元格的值
   		papersNumber=table.rows[selectedIndex-1].cells[4].innerHTML;     // 获取选中的索引的 单元格的值
   	});
+
+  	/*多了一个confirmPassenger的确认*/
       $.ajax({      
          cache:false,
          type: "POST",
@@ -533,7 +537,7 @@
                 var tdRegisterTime = tr.insertCell(-1);
                 var tdContactPhoneNUmber=tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='idTwo' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='idTwo' value='"+item.tid+"'>";
                 tdTargetTypeName.innerHTML = item.targetTypeName;
                 tdTeamName.innerHTML = item.teamName;
                 tdTeamCode.innerHTML =item.teamCode;         //中间这个是数据
@@ -608,10 +612,25 @@
 	  alert("请选择一条或多条数据进行安排房间");
 	}
    }
-   
-   
-   
-  /* 分页要用的 */
+
+
+ /*添加JSP分两个模块查询*/
+ function teamfunction(){
+     parent.document.getElementById("Mainid").src='${ctx}/Predetermine/tolist.do?LvKeLeiXingId='+56;
+ }
+ function lvKefunction(){
+     parent.document.getElementById("Mainid").src='${ctx}/Predetermine/tolist.do?LvKeLeiXingId='+55;
+ }
+
+ /*添加分页标签设置*/
+ if(${LvKeLeiXingId==55}){
+     $('#oneid2').tab('show');
+ }else if(${LvKeLeiXingId==56}){
+     $('#twoid2').tab('show');
+ }
+
+
+ /* 分页要用的 */
   $(".tcdPageCode").createPage({
      pageCount:${list.totalPage},
      current:${list.currentPage},

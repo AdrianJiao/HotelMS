@@ -91,8 +91,8 @@
   <body>
   <div class="container" style="height:630px;overflow-x:auto;border: solid; border-color: #DDDDDD;">
     
-    <input id="lvkeorteamId" type="hidden" value="${id}" >  <!-- 是团队还是旅客的ID -->
-    <input id="teamId" type="hidden" value="${type}" >  <!-- 是团队还是旅客 -->
+    <input id="lvkeorteamId" type="hidden" value="${id}" >  <%--字段表示对应的ID值--%>
+    <input id="teamId" type="hidden" value="${type}" >  <%--传输字段代表是旅客还是团队--%>
     
     <div class="span12" style="text-align: center;">
       <div class="row-fluid">
@@ -288,8 +288,9 @@
                 var tdroomName = tr.insertCell(-1);
                 var tdroomAmount = tr.insertCell(-1);
                 var tdstandardPriceDay = tr.insertCell(-1);
-                
-                tdcheckbox.innerHTML = "<input type='checkbox' name='idTwo' value='"+item.id+"'>";
+
+                /*提交的checkBox的值应该为房间号，字段为idTwo*/
+                tdcheckbox.innerHTML = "<input type='checkbox' name='idTwo' value='"+item.roomNumber+"'>";
                 tdroomNumber.innerHTML = item.roomNumber;
                 tdguestRoomLevelName.innerHTML = item.guestRoomLevelName;
                 tdroomName.innerHTML =item.roomName;         //中间这个是数据
@@ -377,7 +378,8 @@
       }
      var id= document.getElementById("lvkeorteamId").value;
      var teamId= document.getElementById("teamId").value;
-     
+
+     /*roomIdShuZu为房间号，id表示id，type表示旅客还是团队*/
      form1.action="${ctx}/Predetermine/add.do?id="+id+"&type="+teamId+"&roomIdShuZu="+roomIdShuZu;
      form1.submit();
    }
