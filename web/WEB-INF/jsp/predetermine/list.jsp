@@ -462,7 +462,7 @@
                 var tdPapersName = tr.insertCell(-1);
                 var tdPapersNumber = tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='idThree' value='"+item.pid+"'>";
                 tdName.innerHTML = item.name;
                 tdGender.innerHTML = item.genderName;
                 tdPapersName.innerHTML =item.papersName;         //中间这个是数据

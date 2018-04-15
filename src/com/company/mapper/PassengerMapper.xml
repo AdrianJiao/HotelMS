@@ -479,4 +479,11 @@
     from passenger
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+
+
+  <!--*************新写的*************************************************************-->
+  <!--通过pid查询电话-->
+  <select id="queryContactPhoneNumber" parameterType="int" resultType="string">
+    SELECT contactPhoneNumber FROM passenger WHERE pid = #{pid}
+  </select>
 </mapper>

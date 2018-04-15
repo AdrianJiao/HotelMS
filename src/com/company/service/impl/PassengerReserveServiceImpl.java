@@ -48,4 +48,14 @@ public class PassengerReserveServiceImpl implements PassengerReserveService{
         parameters.put("reserveState",reserveState);
         return passengerReserveMapper.countPartPassengerReserveByNameAndReserveState(parameters);
     }
+
+    /**
+     * 选择性插入
+     * @param passengerReserve
+     * @return
+     */
+    @Override
+    public int insertSelective(PassengerReserve passengerReserve) {
+        return passengerReserveMapper.insertSelective(passengerReserve);
+    }
 }

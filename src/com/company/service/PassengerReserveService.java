@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.bean.PassengerReserve;
 import com.company.utils.Page;
 import com.company.vo.PassengerReserveVO;
 import java.util.List;
@@ -12,4 +13,11 @@ public interface PassengerReserveService {
 
     //计算分页和模糊查询的总记录数
     int countPartPassengerReserveByNameAndReserveState(String txtname, int reserveState);
+
+    /**
+     * 选择性插入
+     * @param passengerReserve
+     * @return
+     */
+    int insertSelective(PassengerReserve passengerReserve);
 }

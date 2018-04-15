@@ -86,4 +86,16 @@ public class PassengerServiceImpl  implements PassengerService{
     public Passenger selectPassengerByIdWithoutFill(int pid) {
         return passengerMapper.selectPassengerByIdWithoutFill(pid);
     }
+
+    /******************************************************************************/
+    /**
+     * 4/14 新写
+     * 查询联系电话
+     * @param pid
+     * @return
+     */
+    @Override
+    public String queryContactPhoneNumber(int pid) {
+        return passengerMapper.queryContactPhoneNumber(pid);
+    }
 }

@@ -1,9 +1,10 @@
 package com.company.controller;
 
 import com.company.bean.Attributevalue;
-import com.company.service.AttributeService;
-import com.company.service.AttributevalueService;
-import com.company.service.PassengerReserveService;
+import com.company.bean.Passenger;
+import com.company.bean.PassengerReserve;
+import com.company.bean.Room;
+import com.company.service.*;
 import com.company.utils.Page;
 import com.company.vo.PassengerCheckinVO;
 import com.company.vo.PassengerReserveVO;
@@ -11,8 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("Predetermine")
@@ -26,6 +31,12 @@ public class PassengerReserveController {
 
     @Autowired
     PassengerReserveService passengerReserveService;
+
+    @Autowired
+    PassengerService passengerService;
+
+    @Autowired
+    RoomService roomService;
 
     @RequestMapping("tolist_PassengerReserve")
     public String showPassengers(String txtname, String state,String currentPage, Model model){
@@ -75,4 +86,73 @@ public class PassengerReserveController {
         return "predetermine/list";
     }
 
+
+
+
+    @RequestMapping(path="/selectPassenger",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Passenger>selectPassenger(String name) {
+        List<Passenger> result = passengerService.queryAllPassenger();
+
+        return result;
+    }
+
+    @RequestMapping("/confirmPassenger")
+    @ResponseBody
+    public String confirmPassenger(@RequestParam int id){
+
+        String  contactPhoneNumber= passengerService.queryContactPhoneNumber(id);
+
+        System.out.println("contactPhoneNumber="+contactPhoneNumber);
+
+        return contactPhoneNumber;
+    }
+
+    @RequestMapping("/toadd")
+    public String toAddPassengerPredetermine(@RequestParam("name") String name, Model model){
+
+        int aid = attributeService.queryAidByAttributeName("支付方式");
+        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
+        model.addAttribute("listOne",attributevalues);
+
+        model.addAttribute("name", name);
+        return "/predetermine/add";
+    }
+
+    //新增里面的选择房间
+    @RequestMapping("/selectRoom")
+    @ResponseBody
+    public List<Room> selectRoom(){
+
+        List<Room> rooms = roomService.queryAllRoom();
+        System.out.println(rooms);
+        return rooms;
+    }
+
+
+    //新增保存
+    @RequestMapping("add")
+    public String addRoom(@RequestParam("name")String name,int pid,String roomNumber, PassengerReserve passengerReserve ){
+
+        //设置主键
+        String passengerReserveId = UUID.randomUUID().toString();
+        passengerReserve.setPassengerReserveId(passengerReserveId);
+
+        System.out.println("passengerReserveId="+passengerReserveId);
+        passengerReserveService.insertSelective(passengerReserve);
+
+        return "redirect:tolist.do";
+    }
+
+
+    @RequestMapping("/toupdate")
+    public String   toupdatePredetermin(Model model){
+
+        int aid = attributeService.queryAidByAttributeName("支付方式");
+        List<Attributevalue> attributevalues = attributevalueService.queryAttributevalueByAid(aid);
+        model.addAttribute("listOne",attributevalues);
+
+        //未万恒未万恒未万恒未万恒未万恒未万恒未万恒未万恒
+        return "";
+    }
 }
