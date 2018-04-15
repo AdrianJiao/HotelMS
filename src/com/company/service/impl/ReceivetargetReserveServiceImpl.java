@@ -55,4 +55,9 @@ public class ReceivetargetReserveServiceImpl implements ReceivetargetReserveServ
     public int deleteBatchByPrimaryKey(String[] receivetargetReserveId) {
         return receivetargetReserveMapper.deleteBatchByPrimaryKey(receivetargetReserveId);
     }
+
+    @Override
+    public int insertSelective(ReceivetargetReserve record) {
+        return receivetargetReserveMapper.insertSelective(record);
+    }
 }

@@ -92,8 +92,8 @@
   <body>
   <div class="container" style="height:630px;overflow-x:auto;border: solid; border-color: #DDDDDD;">
     
-    <input id="lvkeorteamId" type="hidden" value="${id}" >  <!-- 是团队还是旅客的ID -->
-    <input id="teamId" type="hidden" value="${type}" >  <!-- 是团队还是旅客 -->
+    <input id="lvkeorteamId" type="hidden" value="${id}" >  <!--团队的ID或旅客的ID-->
+    <input id="teamId" type="hidden" value="${type}" >      <!-- 是团队还是旅客 -->
     <input id="pangduan" type="hidden" value="${pangduan}" >  <!-- 是团队还是旅客 -->
     
     <div class="span12" style="text-align: center;">

@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.bean.ReceivetargetReserve;
 import com.company.utils.Page;
 import com.company.vo.ReceivetargetReserveVO;
 
@@ -18,4 +19,6 @@ public interface ReceivetargetReserveService {
      */
 
     int deleteBatchByPrimaryKey(String[] receivetargetReserveId);
+
+    int insertSelective(ReceivetargetReserve record);
 }

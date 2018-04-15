@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,8 +35,6 @@ public class PassengerReserveController {
 
     @Autowired
     PassengerService passengerService;
-
-
 
     @RequestMapping("tolist_PassengerReserve")
     public String showPassengers(String txtname, String state,String currentPage, Model model){
@@ -106,18 +105,20 @@ public class PassengerReserveController {
         return contactPhoneNumber;
     }
 
-    /*//新增旅客用户
+    //新增旅客用户
     @RequestMapping("/add_PassengerReserve")
-    public String addRoom(String id,String type,String roomIdShuZu){
+    public String addReceive(HttpServletRequest request){
+        PassengerReserve passengerReserve =
+                (PassengerReserve) request.getAttribute("passengerReserve");
+        //注意这里是从Reques中获取
+
         //设置主键
         String passengerReserveId = UUID.randomUUID().toString();
         passengerReserve.setPassengerReserveId(passengerReserveId);
 
-        System.out.println("passengerReserveId="+passengerReserveId);
         passengerReserveService.insertSelective(passengerReserve);
-
-    }*/
-
+        return "redirect:tolist.do?LvKeLeiXingId=55";
+    }
 
     @RequestMapping("/toupdate")
     public String   toupdatePredetermin(Model model){
@@ -133,4 +134,6 @@ public class PassengerReserveController {
         passengerReserveService.deleteBatchByPrimaryKey(id);
         return "redirect:tolist.do?LvKeLeiXingId=55";
     }
+
+
 }

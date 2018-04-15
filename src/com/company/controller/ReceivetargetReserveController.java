@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.bean.Attributevalue;
 import com.company.bean.PassengerReserve;
 import com.company.bean.Receivetarget;
+import com.company.bean.ReceivetargetReserve;
 import com.company.service.*;
 import com.company.utils.Page;
 import com.company.vo.PassengerReserveVO;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -94,17 +96,21 @@ public class ReceivetargetReserveController {
         }
     }
 
-   /* //新增团队用户
+    //新增团队用户
     @RequestMapping("/add_ReceivetargetReserve")
-    public String addReceive(String id,String type,String roomIdShuZu){
+    public String addReceive(HttpServletRequest request){
+        //注意这里是从Reques中获取
 
+        ReceivetargetReserve receivetargetReserve =
+                (ReceivetargetReserve) request.getAttribute("receivetargetReserve");
 
+        //设置主键
+        String receivetargetReserveId = UUID.randomUUID().toString();
+        receivetargetReserve.setReceivetargetReserveId(receivetargetReserveId);
 
+        receivetargetReserveService.insertSelective(receivetargetReserve);
+        return "redirect:tolist.do?LvKeLeiXingId=56";
     }
-*/
-
-
-
 
     //团队预定批量删除
     @RequestMapping("delete_PassengerReserve")
@@ -112,4 +118,6 @@ public class ReceivetargetReserveController {
         receivetargetReserveService.deleteBatchByPrimaryKey(id);
        return "redirect:tolist.do?LvKeLeiXingId=56";
     }
+
+
 }

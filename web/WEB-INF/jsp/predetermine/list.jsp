@@ -602,9 +602,11 @@
   	if(chk_value!=""){
   	var flag=window.confirm("注意：房间已安排成功，是否转到，住宿登记界面，便于登记旅客信息");
 	     if(flag){
+	         //同意则直接跳转
 	  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/arrangeRoom.do?id='
 	  	  +chk_value+'&tiaoZhuang='+1;
 	  	}else{
+	         //不同意则留在此页面
 	  	  parent.document.getElementById("Mainid").src='${ctx}/Predetermine/arrangeRoom.do?id='
 	  	  +chk_value+'&tiaoZhuang='+2;
 	  	}

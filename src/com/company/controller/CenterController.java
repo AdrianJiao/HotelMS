@@ -2,6 +2,8 @@ package com.company.controller;
 
 
 import com.company.bean.Attributevalue;
+import com.company.bean.PassengerReserve;
+import com.company.bean.ReceivetargetReserve;
 import com.company.bean.Room;
 import com.company.service.AttributeService;
 import com.company.service.AttributevalueService;
@@ -77,8 +79,6 @@ public class CenterController {
         }
     }
 
-
-
     //分发显示团队登记和散客预定删除
     @RequestMapping("Predetermine/delete")
     public String chooseDeleteReserveController(String LvKeLeiXingId){
@@ -134,19 +134,50 @@ public class CenterController {
 
     //分配添加操作
     @RequestMapping("Predetermine/add")
-    public String addReserve(String id,String type,String roomIdShuZu){
+    public String addReserve(String id, String type, String roomIdShuZu, Model model,
+                             ReceivetargetReserve receivetargetReserve,
+                             PassengerReserve passengerReserve){
         int typeInt;
+
+        //添加旅客预定对象
+        passengerReserve.setPid(Integer.parseInt(id));
+        passengerReserve.setRoomNumber(roomIdShuZu);
+        passengerReserve.setReserveState(""+57);
+        model.addAttribute("passengerReserve",passengerReserve);
+
+        //团队
+        receivetargetReserve.setTid(Integer.parseInt(id));
+        receivetargetReserve.setRoomNumber(roomIdShuZu);
+        receivetargetReserve.setReserveState(""+58);
+        model.addAttribute("receivetargetReserve",receivetargetReserve);
+
         //type为1表示团队，type为2表示旅客
         if(type==null||"".equals(type)){
-            return "forward:add_PassengerReserve.do?id="+id+"&type="+type+"&roomIdShuZu="+roomIdShuZu;
+            return "forward:add_PassengerReserve.do";
         }else {
             typeInt = Integer.parseInt(type);
             if(typeInt==1){
-                //团队
-                return "forward:add_ReceivetargetReserve.do?id="+id+"&type="+type+"&roomIdShuZu="+roomIdShuZu;
+                return "forward:add_ReceivetargetReserve.do";
             }else {
-                //旅客
-                return "forward:add_PassengerReserve.do?id="+id+"&type="+type+"&roomIdShuZu="+roomIdShuZu;
+                return "forward:add_PassengerReserve.do";
+            }
+        }
+    }
+
+    //分配添加操作
+    @RequestMapping("Predetermine/arrangeRoom")
+    public  String  arrangeRoom(String id,String tiaoZhuang){
+
+        if(tiaoZhuang==null||"".equals(tiaoZhuang)){
+            //留在本页
+            return "redirect:tolist.do?LvKeLeiXingId=56";
+        }else {
+            if(Integer.parseInt(tiaoZhuang)==1){
+                //跳转到入住
+                return "redirect:/StayRegister/tolist.do?LvKeLeiXingId=55";
+            }else {
+                //留在本页
+                return "redirect:tolist.do?LvKeLeiXingId=56";
             }
         }
     }
