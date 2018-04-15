@@ -86,8 +86,8 @@
   <body>
   <div class="container" style="height:630px;overflow-x:auto;">
   
-    <input type="hidden" id="oneId">     <!-- 房间ID -->
-    <input type="hidden" id="twoId">    
+    <input type="hidden" id="oneId">     <%--团队ID--%>
+    <input type="hidden" id="twoId">    <%--旅客ID--%>
     <div class="span4">
 	    <div class="row-fluid">
 		       <label class="labelroomnumber">团队/旅客：</label>
@@ -384,8 +384,8 @@
    
    function addfunction(){
      var classone=document.getElementById("tabOneId").className;
-     var one=document.getElementById("oneId").value;
-     var two=document.getElementById("twoId").value;
+     var one=document.getElementById("oneId").value; /*团队ID*/
+     var two=document.getElementById("twoId").value; /*旅客ID*/
      var lvKeName=document.getElementById("nameId").value;
      var teamName=document.getElementById("teamNameId").value;
      if(classone == "active"){
@@ -393,14 +393,14 @@
           alert("你还没有添加对象信息哦！")
         }else{
           parent.document.getElementById('Mainid').src='${ctx}/Predetermine/toadd.do?id='+one+
-          '&name='+teamName+'&type=1';
+          '&name='+teamName+'&type=1';  /*团队ID*/
         }
      }else{
        if(two == "" ){
           alert("你还没有添加旅客信息哦！")
         }else{
           parent.document.getElementById('Mainid').src='${ctx}/Predetermine/toadd.do?id='+two+
-          '&name='+lvKeName+'&type=2';
+          '&name='+lvKeName+'&type=2';  /*旅客ID*/
         }
      }
      
@@ -492,6 +492,8 @@
   		papersType=table.rows[selectedIndex-1].cells[3].innerHTML;     // 获取选中的索引的 单元格的值
   		papersNumber=table.rows[selectedIndex-1].cells[4].innerHTML;     // 获取选中的索引的 单元格的值
   	});
+
+  	/*多了一个confirmPassenger的确认*/
       $.ajax({      
          cache:false,
          type: "POST",
@@ -535,7 +537,7 @@
                 var tdRegisterTime = tr.insertCell(-1);
                 var tdContactPhoneNUmber=tr.insertCell(-1);
                 
-                tdcheckbox.innerHTML = "<input type='radio' name='idTwo' value='"+item.id+"'>";
+                tdcheckbox.innerHTML = "<input type='radio' name='idTwo' value='"+item.tid+"'>";
                 tdTargetTypeName.innerHTML = item.targetTypeName;
                 tdTeamName.innerHTML = item.teamName;
                 tdTeamCode.innerHTML =item.teamCode;         //中间这个是数据

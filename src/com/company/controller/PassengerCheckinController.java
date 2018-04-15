@@ -83,6 +83,9 @@ public class PassengerCheckinController {
 
         //一定要注意这个问题
         model.addAttribute("isBillID", isBillIDInt);
+
+        //一定要注意这个问题
+        model.addAttribute("LvKeLeiXingId",55);
         return "stayregister/list";
     }
 
