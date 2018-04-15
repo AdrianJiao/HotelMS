@@ -92,7 +92,7 @@
       width: 46.2%;
     }
         .inputthree{
-      width: 35.%;
+      width: 35%;
     }
     }
     
@@ -500,6 +500,7 @@
      }
    }
  </script>
-   
+
+</div>
   </body>
 </html>
