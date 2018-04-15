@@ -59,8 +59,8 @@
             xAxis: {
                 type : 'category',
           	    boundaryGap : false,
-                data: ['${year12}','${year11}','${year10}','${year9}','${year8}','${year7}',
-                       '${year6}','${year5}','${year4}','${year3}','${year2}','${year1}']
+                data: ['${year[11]}','${year[10]}','${year[9]}','${year[8]}','${year[7]}','${year[6]}',
+                    '${year[5]}','${year[4]}','${year[3]}','${year[2]}','${year[1]}','${year[0]}']
             },
             yAxis:[{
 	            type : 'value'
@@ -71,25 +71,25 @@
 	            type:'line',
 	            stack: '总量',
 	            areaStyle: {normal: {}},
-	            data:[${sZongFeiYong12}, ${sZongFeiYong11}, ${sZongFeiYong10}, ${sZongFeiYong9}, 
-	                  ${sZongFeiYong8}, ${sZongFeiYong7}, ${sZongFeiYong6}, ${sZongFeiYong5},
-	                  ${sZongFeiYong4}, ${sZongFeiYong3}, ${sZongFeiYong2}, ${sZongFeiYong1}]
-	        },
+                data:[ ${sanke[11]}, ${sanke[10]}, ${sanke[9]},
+                    ${sanke[8]}, ${sanke[7]}, ${sanke[6]}, ${sanke[5]},
+                    ${sanke[4]}, ${sanke[3]}, ${sanke[2]}, ${sanke[1]},${sanke[0]}]
+            },
 	        {
 	            name:'团队',
 	            type:'line',
 	            stack: '总量',
 	            label: {
                 normal: {
-	                    show: true,
-	                    position: 'top'
+	                    // show: true,
+	                    // position: 'top'
 	                }
 	            },
 	            areaStyle: {normal: {}},
-	            data:[ ${tZongFeiYong12}, ${tZongFeiYong11}, ${tZongFeiYong10}, ${tZongFeiYong9}, 
-	                   ${tZongFeiYong8}, ${tZongFeiYong7}, ${tZongFeiYong6}, ${tZongFeiYong5},
-	                   ${tZongFeiYong4}, ${tZongFeiYong3}, ${tZongFeiYong2}, ${tZongFeiYong1}]
-	        }
+                data:[ ${tuandui[11]}, ${tuandui[10]}, ${tuandui[9]},
+                    ${tuandui[8]}, ${tuandui[7]}, ${tuandui[6]}, ${tuandui[5]},
+                    ${tuandui[4]}, ${tuandui[3]}, ${tuandui[2]}, ${tuandui[1]},${tuandui[0]}]
+            }
 	        ]
         };
 
